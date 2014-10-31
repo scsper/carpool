@@ -43,6 +43,7 @@ People can create and join rides.  They must be approved to join the group by an
 	* Easy to trade.  Sometimes, there is a last minute shuffle that takes place, and administrators will want to step in and make sure that people end up where they need to be. 
 * Sometimes, a driver / administrator will want to add a person to a car without having them register (non-Christian, new person to fellowship).  This should be made possible.  
 * Something that happens with GoC is that some cars will come to one service or both services (ie, sunday school or not).  Perhaps we should think about making services customizable.  Some services could have Sunday school, setup, prayer meeting, etc.
+* The other side of this app is people needing rides to go home from church.  Sometimes, people can get to church, but not home.  Maybe we can do something to make finding a driver easier.  
 
 #### Login
 * Facebook
