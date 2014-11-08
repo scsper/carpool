@@ -49,3 +49,9 @@ People can create and join rides.  They must be approved to join the group by an
 * Facebook
 * Google
 * Own login service supported?  Probably not in v1, but maybe later, depending on what people think.
+
+#### Contacts
+Dmitrii A.
+Benjamin D.
+Patreeya P.
+
