@@ -1,0 +1,25 @@
+{
+  "name": "carpool",
+  "version": "0.0.0",
+  "description": "carpool ========",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scsper/carpool.git"
+  },
+  "author": "Scott Sperling, Dmitrii Abramov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scsper/carpool/issues"
+  },
+  "homepage": "https://github.com/scsper/carpool",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}
