@@ -1,3 +1,4 @@
 .vagrant/
 .git
 node_modules/
+public/
