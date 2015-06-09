@@ -1,4 +1,5 @@
 var path = require('path');
+
 module.exports = function(grunt) {
     var webpack = require('webpack');
     var webpackConfig = require('./webpack.config.js');
@@ -9,10 +10,18 @@ module.exports = function(grunt) {
             build: {}
         },
 
+        express: {
+            dev: {
+                options: {
+                    script: './index.js'
+                }
+            }
+        },
+
         watch: {
             app: {
-                files: ['src/browser/**/*'],
-                tasks: ['webpack:build'],
+                files: ['src/browser/**/*', 'src/server/**/'],
+                tasks: ['webpack:build', 'express:dev'],
                 options: {
                     spawn: false
                 }
@@ -22,7 +31,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
 
     // Dev. build
-    grunt.registerTask('default', ['webpack:build', 'watch:app']);
+    grunt.registerTask('default', ['webpack:build', 'express:dev', 'watch:app']);
 };
