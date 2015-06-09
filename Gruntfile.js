@@ -34,5 +34,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-express-server');
 
     // Dev. build
-    grunt.registerTask('default', ['webpack:build', 'express:dev', 'watch:app']);
+    grunt.registerTask('default', [
+        'webpack:build',
+        'express:dev',
+        'watch:app'
+    ]);
 };
