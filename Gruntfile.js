@@ -39,4 +39,8 @@ module.exports = function(grunt) {
         'express:dev',
         'watch:app'
     ]);
+
+    grunt.registerTask('heroku', [
+        'webpack:build'
+    ]);
 };
