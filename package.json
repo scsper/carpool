@@ -23,6 +23,7 @@
   "homepage": "https://github.com/scsper/carpool",
   "dependencies": {
     "express": "^4.12.4",
+    "fluxible": "^0.4.10",
     "jade": "^1.10.0",
     "react": "^0.13.3"
   },
