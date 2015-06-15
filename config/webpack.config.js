@@ -7,7 +7,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.jsx$/, loader: 'jsx-loader?insertPragma=React.DOM' },
-            { test: /\.css$/, loader: "style!css" }
+            { test: /\.css$/, loader: 'style!css' }
         ]
     }
 };

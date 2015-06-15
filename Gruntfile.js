@@ -1,8 +1,5 @@
-var path = require('path');
-
 module.exports = function(grunt) {
-    var webpack = require('webpack');
-    var webpackConfig = require('./webpack.config.js');
+    var webpackConfig = require('./config/webpack.config.js');
 
     grunt.initConfig({
         mochaTest: {
@@ -36,6 +33,13 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             }
+        },
+
+        eslint: {
+            options: {
+                configFile: 'config/eslint.json'
+            },
+            target: ['*.js']
         }
     });
 
@@ -43,7 +47,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-mocha-test');
-    
+    grunt.loadNpmTasks('grunt-eslint');
+
     // Dev. build
     grunt.registerTask('default', [
         'webpack:build',
@@ -51,5 +56,7 @@ module.exports = function(grunt) {
         'watch:app'
     ]);
 
-    grunt.registerTask('test', ['mochaTest']);
+    grunt.registerTask('lint', ['eslint']);
+    grunt.registerTask('test', ['lint', 'mochaTest']);
+
 };
