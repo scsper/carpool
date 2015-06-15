@@ -1,12 +1,7 @@
-language: node_js
-node_js:
-- '0.10'
-before_install: npm install -g grunt-cli
-install: npm install
 deploy:
   provider: heroku
   api_key:
-    secure: l9lmz3fkIiFVhoWrRKihts+2Eowqt3mF5u5OpgipuGLek2wkMZmBoWQIXTq57ivVPp4tAUSmemxDmjCuD+Zp58Ui9ED7TaOLCqqg0I8twSVcxTXb3APzOlrdTd71l4UhyGOvzDfiq4yoGa9AnGO8BCvdPW/P3xaVB07zhasZHX0=
-  app: ch-carpool 
+    secure: KIbqlyRIzOg7mpQ/vNCc3Kd7Lbz8jSct7hequC8cQ0gkklWcGUue2RpWzCwK9dScfCQZ0xrZpVV3gWXTbOUJAkNOhhboP/YGpIGm1kkQ+QlobnOrl+73Aqtzydl/YPfQYQfybAzGPX//ztcamMt/5HahSFfJZkmJP6MeSGfgjC8=
+  app: ch-carpool
   on:
     repo: scsper/carpool
