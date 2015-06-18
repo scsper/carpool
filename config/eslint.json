@@ -10,7 +10,7 @@
         "classes": true,
         "destructuring": true,
         "jsx": true,
-        "blockBindings", true
+        "blockBindings": true
     },
     "rules": {
         "dot-notation": 1,
