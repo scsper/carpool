@@ -6,4 +6,3 @@ require('./gulp_tasks/test');
 var gulp = require('gulp');
 
 gulp.task('default', ['server']);
-
