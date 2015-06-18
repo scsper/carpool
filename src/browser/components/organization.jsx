@@ -5,7 +5,7 @@ var Organization;
 Organization = React.createClass({
     render: function() {
         return (
-            <div>{this.props.orgs[0].name}</div>
+            <div onClick={this.props.onClick}>{this.props.orgs[0].name}</div>
         );
     }
 });

@@ -88,6 +88,7 @@
 	        this.organizations.push({
 	            name: name
 	        });
+	        this.emit('change');
 	    },
 
 	    get: function() {
@@ -25106,9 +25107,15 @@
 	        return flux.store('OrganizationStore').get();
 	    },
 
+	    onClick: function() {
+	        var actions = this.getFlux().actions;
+
+	        actions.create('hello world!');
+	    },
+
 	    render: function() {
 	        return (
-	            React.createElement(Organization, {orgs: this.state.orgs})
+	            React.createElement(Organization, {onClick: this.onClick, orgs: this.state.orgs})
 	        );
 	    }
 	});
@@ -25127,7 +25134,7 @@
 	Organization = React.createClass({displayName: "Organization",
 	    render: function() {
 	        return (
-	            React.createElement("div", null, this.props.orgs[0].name)
+	            React.createElement("div", {onClick: this.props.onClick}, this.props.orgs[0].name)
 	        );
 	    }
 	});
@@ -25139,6 +25146,7 @@
 /* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var OrganizationConstants = __webpack_require__(99)
 	var OrganizationActions = {
 	    create: function(name) {
 	        this.dispatch(OrganizationConstants.CREATE, {name: name});

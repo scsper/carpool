@@ -17,6 +17,7 @@ var OrganizationStore = Fluxxor.createStore({
         this.organizations.push({
             name: name
         });
+        this.emit('change');
     },
 
     get: function() {

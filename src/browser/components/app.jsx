@@ -20,9 +20,15 @@ App = React.createClass({
         return flux.store('OrganizationStore').get();
     },
 
+    onClick: function() {
+        var actions = this.getFlux().actions;
+
+        actions.create('hello world!');
+    },
+
     render: function() {
         return (
-            <Organization orgs={this.state.orgs} />
+            <Organization onClick={this.onClick} orgs={this.state.orgs} />
         );
     }
 });
