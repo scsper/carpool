@@ -4,6 +4,7 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var OrganizationStore = require('../stores/organization.js');
 var Organization = require('./organization.jsx');
+var Navigation = require('./navigation.jsx');
 var App;
 
 App = React.createClass({
@@ -28,7 +29,10 @@ App = React.createClass({
 
     render: function() {
         return (
-            <Organization onClick={this.onClick} orgs={this.state.orgs} />
+            <div>
+                <Navigation />
+                <Organization onClick={this.onClick} orgs={this.state.orgs} />
+            </div>
         );
     }
 });

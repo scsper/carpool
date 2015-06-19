@@ -5,4 +5,4 @@ require('./gulp_tasks/test');
 
 var gulp = require('gulp');
 
-gulp.task('default', ['server']);
+gulp.task('default', ['webpack', 'server']);
