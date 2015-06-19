@@ -13,6 +13,10 @@ Navigation = React.createClass({
                         <li className='nav-item pure-menu-item'><a href='#' className='pure-menu-link'>Blog</a></li>
                         <li className='nav-item pure-menu-item'><a href='#' className='pure-menu-link'>About</a></li>
                     </ul>
+
+                    <div className='user'>
+                        <span>Hello, name!</span>
+                    </div>
                 </div>
             </div>
         );
