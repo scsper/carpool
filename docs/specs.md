@@ -14,8 +14,17 @@
 ###### Organization
 Organization refers to the campus organization or the church _hosting_ the rides.  So, Cru @ Berkeley, theHOUSE @ UCI, and theHOUSE college group could all be considered organizations.
 
-###### Service
-Service refers to the actual service that rides will go to.  7:30pm, Friday night at theHOUSE would be considered a service.
+A user may:
+* Create an organization.
+* Update an organization, by:
+    * adding other administrators
+    * changing the name
+    * adding a user as an authorized driver
+    * creating an event
+* Delete an organization.
+
+###### Event
+Event refers to the actual gathering that rides will go to.  7:30pm, Friday night at theHOUSE would be considered a event.
 
 ###### Rides
 These are driven by people to services.
