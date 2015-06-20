@@ -7,6 +7,7 @@ var RideStore = require('./stores/ride.js');
 var EventStore = require('./stores/event.js');
 
 var OrganizationActions = require('./actions/organization.js');
+var EventActions = require('./actions/event.js');
 
 window.onload = function() {
     require('../browser/styles/app.css');
@@ -17,7 +18,12 @@ window.onload = function() {
         EventStore: new EventStore()
     };
 
-    var flux = new Fluxxor.Flux(stores, OrganizationActions);
+    var actions = {
+        Organization: OrganizationActions,
+        Event: EventActions
+    };
+
+    var flux = new Fluxxor.Flux(stores, actions);
 
     React.render(React.createElement(App, {
         flux: flux
