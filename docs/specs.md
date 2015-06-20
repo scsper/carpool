@@ -18,7 +18,6 @@ A user may:
 * Create an organization.
 * View an organization.
 * Ask to join an organization.
-    * We probably don't want open organizations because a driver's personal information is shared.
 
 An administrator of the organization may:
 * Update an organization, by:
@@ -47,12 +46,22 @@ Events will have the following data:
 * Start Date/Time
 * Location
 * Description
+* Recurring
 
 ###### Rides
 These are driven by people to services.
 
+Rides are created by drivers or administrators.  They have the following information:
+* Make of car
+* Model of car
+* Leave time, date
+* Return time, date
+* Driver
+
 ###### People
 People can create and join rides.  They must be approved to join the group by an administrator.
+
+
 
 #### Necessary Features
 * Email reminders
