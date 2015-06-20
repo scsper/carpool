@@ -7,7 +7,6 @@ Event = React.createClass({
     mixins: [FluxMixin],
 
     selectEvent: function() {
-        debugger;
         this.getFlux().actions.Event.selectEvent(this.props.event);
     },
 
