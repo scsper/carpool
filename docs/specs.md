@@ -16,15 +16,37 @@ Organization refers to the campus organization or the church _hosting_ the rides
 
 A user may:
 * Create an organization.
+* View an organization.
+* Ask to join an organization.
+    * We probably don't want open organizations because a driver's personal information is shared.
+
+An administrator of the organization may:
 * Update an organization, by:
-    * adding other administrators
-    * changing the name
-    * adding a user as an authorized driver
-    * creating an event
+    * Managing users
+    * Managing events
+    * Changing the name
 * Delete an organization.
+
+Organizations will have the following data:
+* Administrators
+* Drivers
+* Members
+* Name
+* Events
 
 ###### Event
 Event refers to the actual gathering that rides will go to.  7:30pm, Friday night at theHOUSE would be considered a event.
+
+An administrator of an organization may:
+* Create an event
+* Update an event
+* Delete an event
+
+Events will have the following data:
+* Name
+* Start Date/Time
+* Location
+* Description
 
 ###### Rides
 These are driven by people to services.
