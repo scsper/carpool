@@ -7,12 +7,13 @@
     padding: 1em 2em;
 }
 
-.event-list-item {
+.event-list-item, .ride-list-item {
     list-style: none;
     padding: 20px 20px;
 }
 
-.event-list-item:hover {
+.event-list-item:hover,
+.ride-list-item:hover {
     background-color: #eee;
 }
 
@@ -21,12 +22,12 @@
     margin-right: 15px;
 }
 
-.event {
+.event, .ride-driver {
     font: bold 18px/1.5 Helvetica, Verdana, sans-serif;
     margin: 0;
 }
 
-.date {
+.date, .ride-car {
     font: bold 14px/1.5 Helvetica, Verdana, sans-serif;
     margin: 0;
 }
@@ -35,4 +36,15 @@
     font: 200 14px/1.5 Georgia, Times New Roman, serif;
     margin: 3px 0 0 0;
     min-height: 50px;
+}
+
+.ride-date {
+    font: 200 14px/1.5 Georgia, Times New Roman, serif;
+    margin: 1px 0 0 0;
+}
+
+.ride-image {
+    height: 100px;
+    float: left;
+    margin-right: 15px;
 }

@@ -1,4 +1,4 @@
 .vagrant/
 .git
 node_modules/
-/public
+/public/bundle.js

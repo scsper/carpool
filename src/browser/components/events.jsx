@@ -28,8 +28,10 @@ Events = React.createClass({
                     </li>
 
                     <li className='event-list-item'>
-                        <h2 className='event'>Event 1</h2>
-                        <h3 className='date'>7/18/2015 at 7:00pm</h3>
+                        <div className='event-headers'>
+                            <h2 className='event'>Event 1</h2>
+                            <h3 className='date'>7/18/2015 at 7:00pm</h3>
+                        </div>
                         <p className='event-description'>Here is a description for Event 1</p>
                     </li>
                 </ul>
