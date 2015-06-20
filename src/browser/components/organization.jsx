@@ -9,7 +9,7 @@ Organization = React.createClass({
         return (
             <div className="pure-g">
                 <Events />
-                <Rides />
+                <Rides rides={this.props.rides} />
             </div>
         );
     }

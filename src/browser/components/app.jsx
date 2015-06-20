@@ -8,7 +8,7 @@ var Navigation = require('./navigation.jsx');
 var App;
 
 App = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore')],
+    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore')],
 
     getInitialState: function() {
         // for some reason, I have to return an empty object.
@@ -18,7 +18,10 @@ App = React.createClass({
     getStateFromFlux: function() {
         var flux = this.getFlux();
 
-        return flux.store('OrganizationStore').get();
+        return {
+            orgData: flux.store('OrganizationStore').get(),
+            rideData: flux.store('RideStore').get()
+        };
     },
 
     onClick: function() {
@@ -31,7 +34,7 @@ App = React.createClass({
         return (
             <div>
                 <Navigation />
-                <Organization onClick={this.onClick} orgs={this.state.orgs} />
+                <Organization onClick={this.onClick} orgs={this.state.orgData.orgs} rides={this.state.rideData.rides} />
             </div>
         );
     }
