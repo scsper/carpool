@@ -58,10 +58,27 @@ Rides are created by drivers or administrators.  They have the following informa
 * Return time, date
 * Driver
 
-###### People
-People can create and join rides.  They must be approved to join the group by an administrator.
+###### Users
 
+There are three types of users:
+* Administrators
+* Drivers
+* Passengers
 
+When a user signs up, he must either find an organization to join or create an organization.  A user may belong to multiple organizations.
+
+Users must share the following data:
+* First name
+* Last name
+* Phone Number
+* Email
+* Photo (optional)
+
+Drivers must share the following additional information:
+* Car Make
+* Car Model
+
+Drivers may sent preferred leave and return times for an event.
 
 #### Necessary Features
 * Email reminders
