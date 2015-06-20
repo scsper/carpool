@@ -1,6 +1,6 @@
 var Fluxxor = require('fluxxor');
 
-var OrganizationStore = Fluxxor.createStore({
+var RideStore = Fluxxor.createStore({
     initialize: function() {
         this.rides = require('../../../test/fixtures/rides.js');
     },
@@ -9,7 +9,11 @@ var OrganizationStore = Fluxxor.createStore({
         return {
             rides: this.rides
         };
+    },
+
+    getById: function(id) {
+        return this.rides[id];
     }
 });
 
-module.exports = OrganizationStore;
+module.exports = RideStore;
