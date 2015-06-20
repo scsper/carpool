@@ -80,6 +80,23 @@ Drivers must share the following additional information:
 
 Drivers may sent preferred leave and return times for an event.
 
+Users may:
+* Sign up for a ride
+* Request to join an organization
+* Create an organization
+
+Drivers may:
+* Do everything a normal user does
+* Create a ride
+
+Administrators may:
+* Do everything a driver does
+* Assign a passenger that does not have a ride to a ride
+
+
+##### TODO
+* Think about how the "join a ride" flow for a driver who is picking up from mulitple locations will work.
+
 #### Necessary Features
 * Email reminders
 	* Sent by a certain time every week
