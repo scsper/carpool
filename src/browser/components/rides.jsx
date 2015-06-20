@@ -7,9 +7,13 @@ Rides = React.createClass({
     render: function() {
         var rideComponents = [];
 
-        this.props.rides.forEach(function(ride) {
-            rideComponents.push(<Ride key={ride.driver} ride={ride} />);
-        });
+        if (this.props.rides.length) {
+            this.props.rides.forEach(function(ride) {
+                rideComponents.push(<Ride key={ride.driver} ride={ride} />);
+            });
+        } else {
+            rideComponents.push(<li>Please select an organization.</li>);
+        }
 
         return (
             <div className="pure-u-1-2">

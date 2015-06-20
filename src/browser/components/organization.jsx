@@ -8,7 +8,7 @@ Organization = React.createClass({
     render: function() {
         return (
             <div className="pure-g">
-                <Events events={this.props.events} />
+                <Events events={this.props.events} selectedEvent={this.props.selectedEvent} />
                 <Rides rides={this.props.rides} />
             </div>
         );

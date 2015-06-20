@@ -19,17 +19,19 @@ App = React.createClass({
         var rides = [];
         var eventData =  flux.store('EventStore').get();
         var rideStore = flux.store('RideStore');
+        var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
-        // hardcoded for now because this is just a prototype
-        eventData.events[0].rideIds.forEach(function(rideId) {
-            rides.push(rideStore.getById(rideId));
-        });
+        if (selectedEvent) {
+            selectedEvent.event.rideIds.forEach(function(rideId) {
+                rides.push(rideStore.getById(rideId));
+            });
+        }
 
         return {
             orgData: flux.store('OrganizationStore').get(),
             rides: rides,
-            eventData: flux.store('EventStore').get(),
-            selectedEvent: flux.store('EventStore').getSelectedEvent()
+            eventData: eventData,
+            selectedEvent: selectedEvent
         };
     },
 

@@ -13,7 +13,8 @@
 }
 
 .event-list-item:hover,
-.ride-list-item:hover {
+.ride-list-item:hover,
+.selected {
     background-color: #eee;
 }
 

@@ -8,8 +8,17 @@ Events = React.createClass({
         var eventComponents = [];
 
         this.props.events.forEach(function(event) {
-            eventComponents.push(<Event key={event.name} event={event} />);
-        });
+            var isSelected = false;
+            var selectedEvent = this.props.selectedEvent;
+
+            if (selectedEvent) {
+                if (selectedEvent.event.name === event.name) {
+                    isSelected = true;
+                }
+            }
+
+            eventComponents.push(<Event key={event.name} event={event} isSelected={isSelected} />);
+        }, this);
 
         return (
             <div className="pure-u-1-2">
