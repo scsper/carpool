@@ -4,6 +4,7 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Organization = require('./organization.jsx');
 var Navigation = require('./navigation.jsx');
+var GenericForm = require('./form.jsx');
 var App;
 
 App = React.createClass({
