@@ -24,7 +24,8 @@
     "express": "^4.12.4",
     "fluxxor": "^1.5.4",
     "jade": "^1.10.0",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
   },
   "devDependencies": {
     "babel-core": "^5.5.8",
