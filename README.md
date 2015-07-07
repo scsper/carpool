@@ -32,8 +32,13 @@ carpool
 1. brew install postgres
 2. npm install
 3. postgres -D /usr/local/var/postgres
-4. In psql, `create database esl_development;`
+4. In psql, `create database carpool_dev;`
 
 ###### If things aren't working with your user
 1. In a new shell, start psql `psql --username=<USERNAME> -d template1` // use unix username
 2. In psql, `create database <USERNAME>;` // use unix username
+
+###### Using psql
+
+* Connect to database: `\c carpool_dev`
+* List all databases: `\dt`
