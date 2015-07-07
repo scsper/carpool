@@ -23,10 +23,10 @@ carpool
 
 ### Setting up Node
 1. Install nvm from [here](https://github.com/creationix/nvm).
-2. `nvm install 0.10.30`
-3. `nvm use 0.10.30`
+2. `nvm install 0.10.36`
+3. `nvm use 0.10.36`
 4. Add `source ~/.nvm/nvm.sh` to your ~/.profile (load nvm when you open a shell)
-5. Add `nvm use 0.10.30` to your ~/.profile (load the correct version of Node automatically when you open a shell)
+5. Add `nvm use 0.10.36` to your ~/.profile (load the correct version of Node automatically when you open a shell)
 
 #### Setting up postgres
 1. brew install postgres
