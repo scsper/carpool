@@ -23,9 +23,14 @@
   "dependencies": {
     "express": "^4.12.4",
     "fluxxor": "^1.5.4",
+    "gulp-exec": "^2.1.1",
     "jade": "^1.10.0",
+    "pg": "^4.4.0",
+    "pg-hstore": "^2.3.2",
     "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "sequelize": "^3.3.2",
+    "sequelize-cli": "^1.7.0"
   },
   "devDependencies": {
     "babel-core": "^5.5.8",
