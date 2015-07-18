@@ -11,8 +11,7 @@ App = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore')],
 
     getInitialState: function() {
-        debugger;
-        // for some reason, I have to return an empty object.
+        // for some reason, I have to return an empty object (because of fluxxor)
         return {};
     },
 
@@ -38,7 +37,6 @@ App = React.createClass({
     },
 
     render: function() {
-        debugger;
         return (
             <div>
                 <Navigation />
