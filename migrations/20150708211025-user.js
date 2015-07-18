@@ -13,6 +13,9 @@ module.exports = {
             },
             updatedAt: {
                 type: Sequelize.DATE
+            },
+            name: {
+                type: Sequelize.STRING
             }
         });
     },
