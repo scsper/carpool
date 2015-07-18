@@ -8,7 +8,7 @@ carpool
 2. Add the following line to `/etc/hosts/`: `127.0.0.1       localhost       local.carpool.com`
 3. Set up postgres (see below)
 4. Start postgres `postgres -D /usr/local/var/postgres`
-5. While postgres is running, perform migrations `make migrate`
+5. While postgres is running, perform migrations `gulp migrate`
 6. `npm install -g gulp`
 7. `npm install -g gulp-cli`
 8. Open new shell and start the web server: `gulp`
@@ -33,6 +33,22 @@ carpool
 2. npm install
 3. postgres -D /usr/local/var/postgres
 4. In psql, `create database carpool_dev;`
+
+###### Migrations
+Create a migration:
+```
+./node_modules/sequelize-cli/bin/sequelize migration:create --name rides --config="config/pg.json"
+```
+
+Run migrations:
+```
+gulp migrate
+```
+
+Undo migrations:
+```
+gulp rollback
+```
 
 ###### If things aren't working with your user
 1. In a new shell, start psql `psql --username=<USERNAME> -d template1` // use unix username
