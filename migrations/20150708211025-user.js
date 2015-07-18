@@ -31,6 +31,9 @@ module.exports = {
             },
             activated: {
                 type: Sequelize.BOOLEAN
+            },
+            address: {
+                type: Sequelize.STRING
             }
         });
     },
