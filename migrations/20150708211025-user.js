@@ -16,6 +16,21 @@ module.exports = {
             },
             name: {
                 type: Sequelize.STRING
+            },
+            phone: {
+                type: Sequelize.STRING
+            },
+            email: {
+                type: Sequelize.STRING
+            },
+            password: {
+                type: Sequelize.STRING
+            },
+            type: {
+                type: Sequelize.ENUM('admin', 'driver', 'passenger')
+            },
+            activated: {
+                type: Sequelize.BOOLEAN
             }
         });
     },
