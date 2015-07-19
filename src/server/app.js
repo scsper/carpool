@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/hello', function(req, res) {
-    models.user.findOrCreate({
+    models.User.findOrCreate({
         where: {
             name: 'Scott'
         }

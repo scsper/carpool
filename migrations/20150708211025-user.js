@@ -3,38 +3,20 @@
 module.exports = {
     up: function (queryInterface, Sequelize) {
         return queryInterface.createTable('users', {
-            id: {
+            userId: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            createdAt: {
-                type: Sequelize.DATE
-            },
-            updatedAt: {
-                type: Sequelize.DATE
-            },
-            name: {
-                type: Sequelize.STRING
-            },
-            phone: {
-                type: Sequelize.STRING
-            },
-            email: {
-                type: Sequelize.STRING
-            },
-            password: {
-                type: Sequelize.STRING
-            },
-            type: {
-                type: Sequelize.ENUM('admin', 'driver', 'passenger')
-            },
-            activated: {
-                type: Sequelize.BOOLEAN
-            },
-            address: {
-                type: Sequelize.STRING
-            }
+            createdAt: Sequelize.DATE,
+            updatedAt: Sequelize.DATE,
+            name: Sequelize.STRING,
+            phone: Sequelize.STRING,
+            email: Sequelize.STRING,
+            password: Sequelize.STRING,
+            type: Sequelize.ENUM('admin', 'driver', 'passenger'),
+            activated: Sequelize.BOOLEAN,
+            address: Sequelize.STRING
         });
     },
 
