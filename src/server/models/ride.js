@@ -12,7 +12,10 @@ module.exports = function(sequelize) {
     }, {
         classMethods: {
             associate: function(Models) {
+                // set the many-to-many relationship for rides and passengers
                 Models.Ride.belongsToMany(Models.User, { foreignKey: 'rideId', through: 'ride_passengers' });
+
+                // set a foreign key of 'driverId'
                 Models.User.belongsTo(Models.Ride, {as: 'driver'});
             }
         }

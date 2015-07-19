@@ -37,7 +37,7 @@ carpool
 ###### Migrations
 Create a migration:
 ```
-./node_modules/sequelize-cli/bin/sequelize migration:create --name rides --config="config/pg.json"
+./node_modules/sequelize-cli/bin/sequelize migration:create --config="config/pg.json" --name NAME_HERE
 ```
 
 Run migrations:

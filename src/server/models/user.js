@@ -18,6 +18,7 @@ module.exports = function(sequelize) {
     }, {
         classMethods: {
             associate: function(Models) {
+                // set the many-to-many relationship for rides and passengers
                 Models.User.belongsToMany(Models.Ride, {
                     foreignKey: 'userId',
                     through: 'ride_passengers'
