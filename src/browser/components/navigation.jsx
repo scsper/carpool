@@ -8,8 +8,8 @@ Navigation = React.createClass({
     },
 
     generateMenuItems() {
-        var menuItems = [];
-        var menuComponents = [];
+        let menuItems = [];
+        let menuComponents = [];
 
         switch (this.props.type) {
             case 'admin':
@@ -36,7 +36,7 @@ Navigation = React.createClass({
         return menuComponents;
     },
 
-    render: function() {
+    render() {
         return (
             <div className='header'>
                 <div className='pure-menu pure-menu-horizontal'>

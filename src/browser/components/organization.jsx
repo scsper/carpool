@@ -16,6 +16,7 @@ Organization = React.createClass({
 
                 <Rides
                     rides={this.props.rides}
+                    members={this.props.members}
                 />
             </div>
         );

@@ -3,6 +3,7 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Organization = require('./organization.jsx');
+var MemberList = require('./member_list.jsx');
 var Navigation = require('./navigation.jsx');
 var GenericForm = require('./form.jsx');
 var App;
@@ -22,7 +23,8 @@ App = React.createClass({
         var orgData = flux.store('OrganizationStore').get();
         var userData = flux.store('UserStore').get();
         var rideStore = flux.store('RideStore');
-        var memberStore = flux.store('MemberStore');
+        var members = flux.store('MemberStore').get();
+        var memberList = flux.store('MemberStore').getList();
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
         if (selectedEvent) {
@@ -36,15 +38,16 @@ App = React.createClass({
             rides: rides,
             eventData: eventData,
             user: userData.user,
-            members: memberStore.get(1), // hard code this while prototyping
-            selectedEvent: selectedEvent
+            selectedEvent: selectedEvent,
+            members: members,
+            memberList: memberList
         };
     },
 
     render: function() {
         return (
             <div>
-                <Navigation name={this.state.user.firstName}  type={this.state.user.type} />
+                <Navigation name={this.state.user.name}  type={this.state.user.type} />
 
                 <Organization
                     onClick={this.onClick}
@@ -53,7 +56,10 @@ App = React.createClass({
                     events={this.state.eventData.events}
                     selectedEvent={this.state.selectedEvent}
                     userType={this.state.user.type}
+                    members={this.state.members}
                 />
+
+                <MemberList members={this.state.memberList} />
             </div>
         );
     }

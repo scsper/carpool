@@ -1,5 +1,4 @@
 module.exports = {
-    firstName: 'Scott',
-    lastName: 'Sperling',
+    name: 'Scott Sperling',
     type: 'passenger'
 };
