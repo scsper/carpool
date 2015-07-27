@@ -8,13 +8,15 @@ var MemberStore = Fluxxor.createStore({
     initialize: function() {
         // key: organization id
         // value: list of members belonging to that organization
-        this.membersByOrganization = {
-            1: members
-        }
+        // this.membersByOrganization = {
+        //     1: members
+        // }
+
+        this.members = members;
     },
 
-    get: function(id) {
-        return this.membersByOrganization[id];
+    get: function() {
+        return this.members;
     }
 });
 
