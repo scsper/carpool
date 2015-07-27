@@ -48,6 +48,7 @@
     "mocha": "^2.2.5",
     "sinon": "^1.15.3",
     "sinon-chai": "^2.8.0",
+    "sql-migrations": "0.0.1",
     "style-loader": "^0.12.3"
   }
 }
