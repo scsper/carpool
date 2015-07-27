@@ -1,4 +1,5 @@
 module.exports = {
     name: 'Scott Sperling',
-    type: 'admin'
+    type: 'admin',
+    id: 1
 };

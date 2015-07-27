@@ -1,20 +1,21 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
-var Events = require('./events.jsx');
-var Rides = require('./rides.jsx');
+var EventList = require('./events/event_list.jsx');
+var EventView = require('./events/event_view.jsx');
 var Organization;
 
 Organization = React.createClass({
     render: function() {
         return (
             <div className="pure-g">
-                <Events
+                <EventList
                     events={this.props.events}
                     selectedEvent={this.props.selectedEvent}
                     userType={this.props.userType}
                 />
 
-                <Rides
+                <EventView
+                    event={this.props.selectedEvent}
                     rides={this.props.rides}
                     members={this.props.members}
                 />

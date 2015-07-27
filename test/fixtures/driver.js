@@ -1,4 +1,5 @@
 module.exports = {
     name: 'Scott Sperling',
-    type: 'driver'
+    type: 'driver',
+    id: 1
 };

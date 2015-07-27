@@ -1,4 +1,5 @@
 module.exports = {
     name: 'Scott Sperling',
-    type: 'passenger'
+    type: 'passenger',
+    id: 1
 };
