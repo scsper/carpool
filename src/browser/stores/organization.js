@@ -3,9 +3,7 @@ var OrganizationConstants = require('../constants/organization.js');
 
 var OrganizationStore = Fluxxor.createStore({
     initialize: function() {
-        this.organizations = [{
-            name: 'hello'
-        }];
+        this.organizations = require('../../../test/fixtures/organization.js');
 
         this.bindActions(
             OrganizationConstants.CREATE, this.create

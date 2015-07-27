@@ -1,0 +1,31 @@
+module.exports = [{
+    firstName: 'Scott',
+    lastName: 'Sperling',
+    type: 'admin',
+    id: 1
+}, {
+    firstName: 'Dmitrii',
+    lastName: 'Abramov',
+    type: 'driver',
+    id: 2
+}, {
+    firstName: 'Philemon',
+    lastName: 'Chan',
+    type: 'passenger',
+    id: 3
+}, {
+    firstName: 'Benjamin',
+    lastName: 'Dang',
+    type: 'passenger',
+    id: 4
+}, {
+    firstName: 'Brian',
+    lastName: 'Kinder',
+    type: 'passenger',
+    id: 5
+}, {
+    firstName: 'Addison',
+    lastName: 'Luh',
+    type: 'passenger',
+    id: 6
+}];
