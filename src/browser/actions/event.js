@@ -1,9 +1,16 @@
 var EventConstants = require('../constants/event.js');
 
 var EventActions = {
-    selectEvent: function(event) {
-        this.dispatch(EventConstants.SELECT_EVENT, {
-            event: event
+    openEvent(payload) {
+        this.dispatch(EventConstants.OPEN_EVENT, {
+            event: payload.event,
+            rides: require('../../../test/fixtures/rides.js')
+        });
+    },
+
+    getInitialEvents(payload) {
+        this.dispatch(EventConstants.GET_INITIAL_EVENTS, {
+            events: require('../../../test/fixtures/events.js')
         });
     }
 };

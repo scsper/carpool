@@ -13,8 +13,10 @@ Event = React.createClass({
         userType: React.PropTypes.string.isRequired
     },
 
-    selectEvent: function() {
-        this.getFlux().actions.Event.selectEvent(this.props.event);
+    openEvent: function() {
+        this.getFlux().actions.Event.openEvent({
+            event: this.props.event
+        });
     },
 
     getButtonText() {
@@ -39,7 +41,7 @@ Event = React.createClass({
         });
 
         return (
-            <li onClick={this.selectEvent} className={liClasses}>
+            <li onClick={this.openEvent} className={liClasses}>
                 <div className='event-headers'>
                     <h2 className='event'>{event.name}</h2>
                     <h3 className='date'>{event.date} at {event.time}</h3>

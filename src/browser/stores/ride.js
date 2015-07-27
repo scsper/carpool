@@ -1,18 +1,27 @@
 var Fluxxor = require('fluxxor');
+var EventConstants = require('../constants/event.js');
 
 var RideStore = Fluxxor.createStore({
-    initialize: function() {
-        this.rides = require('../../../test/fixtures/rides.js');
+    initialize() {
+        this.rides = [];
+
+        this.bindActions(
+            EventConstants.OPEN_EVENT, this._storeRides
+        );
     },
 
-    get: function() {
+    get() {
         return {
             rides: this.rides
         };
     },
 
-    getById: function(id) {
+    getById(id) {
         return this.rides[id];
+    },
+
+    _storeRides(payload) {
+        this.rides = payload.rides;
     }
 });
 

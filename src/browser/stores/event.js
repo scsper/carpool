@@ -1,29 +1,41 @@
 var Fluxxor = require('fluxxor');
 var EventConstants = require('../constants/event.js');
 
+import EventRecord from '../records/event.js';
+
 var EventStore = Fluxxor.createStore({
-    initialize: function() {
-        this.events = require('../../../test/fixtures/events.js');
+    initialize() {
+        this.events = [];
         this.selectedEvent = null;
 
         this.bindActions(
-            EventConstants.SELECT_EVENT, this.selectEvent
+            EventConstants.OPEN_EVENT, this.selectEvent,
+            EventConstants.GET_INITIAL_EVENTS, this._getInitialEvents
         );
     },
 
-    get: function() {
+    get() {
         return {
             events: this.events
         };
     },
 
-    selectEvent: function(payload) {
+    selectEvent(payload) {
         this.selectedEvent = payload.event;
         this.emit('change');
     },
 
-    getSelectedEvent: function() {
+    getSelectedEvent() {
         return this.selectedEvent;
+    },
+
+    /**
+     * Receives a list of events from the backend
+     */
+    _getInitialEvents(payload) {
+        payload.events.forEach(eventData => {
+            this.events.push(new EventRecord(eventData));
+        }, this);
     }
 });
 
