@@ -1,5 +1,6 @@
 // es6 require hook
-require("babel/register");
+require('babel/register');
+require('es6-promise').polyfill();
 
 var express = require('express');
 var app = express();
