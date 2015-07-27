@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var models = require('./models');
 
 app.set('views', 'src/server/views/');
 app.set('view engine', 'jade');
@@ -13,15 +12,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/hello', function(req, res) {
-    models.User.findOrCreate({
-        where: {
-            name: 'Scott'
-        }
-    }).then(function(user) {
-        console.log(user[0].dataValues.name);
-    }).error(function(error) {
-        console.log(error);
-    });
     res.send('hello');
 });
 

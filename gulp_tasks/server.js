@@ -1,9 +1,14 @@
+// Gulpfile.js
 var gulp = require('gulp');
-var server = require('gulp-express');
+var nodemon = require('gulp-nodemon');
 
 gulp.task('server', function() {
-    server.run(['index.js']);
-
-    gulp.watch(['index.js', 'src/server/**/*'], [server.run]);
-    gulp.watch(['src/browser/**/*'], ['webpack']);
+    nodemon({
+            script: 'src/server/app.js',
+            ext: 'jsx js',
+            ignore: [],
+            tasks: ['webpack']
+        }).on('restart', function() {
+            console.log('restarted!')
+        });
 });
