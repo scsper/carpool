@@ -37,6 +37,11 @@
     font: 200 14px/1.5 Georgia, Times New Roman, serif;
     margin: 3px 0 0 0;
     min-height: 50px;
+    display: inline-block;
+}
+
+.event-button {
+    float: right;
 }
 
 .ride-date {

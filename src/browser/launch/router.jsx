@@ -4,9 +4,8 @@ var Route = Router.Route;
 var React = require('react');
 var App = require('../components/app.jsx');
 
-// wow. react-router REQUIRES that path="/" use double quotes, not single quotes.
 var routes = (
-    <Route path="/" handler={App} name='home'>
+    <Route path='/' handler={App} name='home'>
     </Route>
 );
 

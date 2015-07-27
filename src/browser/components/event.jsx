@@ -26,6 +26,7 @@ Event = React.createClass({
                     <h3 className='date'>{event.date} at {event.time}</h3>
                 </div>
                 <p className='event-description'>{event.description}</p>
+                <button className='event-button pure-button'>Ride</button>
             </li>
         );
     }
