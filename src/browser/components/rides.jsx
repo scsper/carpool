@@ -9,14 +9,14 @@ Rides = React.createClass({
         rides: React.PropTypes.array.isRequired
     },
 
-    getPassengersForRide() {
+    getPassengersForRide(ride) {
         let passengers = [];
 
-        this.props.rides.forEach(ride => {
-            ride.passengers.forEach(passengerId => {
-                passengers.push(this.props.members[passengerId]);
-            }, this);
+        ride.passengers.forEach(passengerId => {
+            passengers.push(this.props.members[passengerId]);
         }, this);
+
+        console.log(passengers);
 
         return passengers;
     },
@@ -26,7 +26,11 @@ Rides = React.createClass({
 
         if (this.props.rides.length) {
             this.props.rides.forEach(function(ride) {
-                rideComponents.push(<Ride key={ride.driver} ride={ride} passengers={this.getPassengersForRide()} />);
+                rideComponents.push(<Ride
+                    key={ride.driver}
+                    ride={ride}
+                    passengers={this.getPassengersForRide(ride)}
+                />);
             }, this);
         } else {
             rideComponents.push(<li>Please select an event.</li>);
