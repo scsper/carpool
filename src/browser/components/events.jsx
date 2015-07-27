@@ -4,6 +4,12 @@ var Event = require('./event.jsx');
 var Events;
 
 Events = React.createClass({
+    propTypes: {
+        userType: React.PropTypes.string.isRequired,
+        selectedEvent: React.PropTypes.object.isRequired,
+        events: React.PropTypes.array.isRequired
+    },
+
     render: function() {
         var eventComponents = [];
 
@@ -17,7 +23,12 @@ Events = React.createClass({
                 }
             }
 
-            eventComponents.push(<Event key={event.name} event={event} isSelected={isSelected} />);
+            eventComponents.push(<Event
+                key={event.name}
+                event={event}
+                isSelected={isSelected}
+                userType={this.props.userType}
+            />);
         }, this);
 
         return (

@@ -7,8 +7,27 @@ var cx = React.addons.classSet;
 Event = React.createClass({
     mixins: [FluxMixin],
 
+    propTypes: {
+        event: React.PropTypes.object.isRequired,
+        isSelected: React.PropTypes.bool.isRequired,
+        userType: React.PropTypes.string.isRequired
+    },
+
     selectEvent: function() {
         this.getFlux().actions.Event.selectEvent(this.props.event);
+    },
+
+    getButtonText() {
+        switch (this.props.userType) {
+            case 'admin':
+                return 'Admin';
+            case 'driver':
+                return 'Drive';
+            case 'passenger':
+                return 'Ride';
+            default:
+                throw new Error('Invalid userType ' + this.props.userType + ' passed to Event component');
+        }
     },
 
     render: function() {
@@ -26,7 +45,7 @@ Event = React.createClass({
                     <h3 className='date'>{event.date} at {event.time}</h3>
                 </div>
                 <p className='event-description'>{event.description}</p>
-                <button className='event-button pure-button'>Ride</button>
+                <button className='event-button pure-button'>{this.getButtonText()}</button>
             </li>
         );
     }

@@ -50,6 +50,7 @@ App = React.createClass({
                     rides={this.state.rides}
                     events={this.state.eventData.events}
                     selectedEvent={this.state.selectedEvent}
+                    userType={this.state.user.type}
                 />
             </div>
         );
