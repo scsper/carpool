@@ -47,7 +47,7 @@ App = React.createClass({
     render: function() {
         return (
             <div>
-                <Navigation name={this.state.user.firstName}  type={this.state.user.type} />
+                <Navigation name={this.state.user.name}  type={this.state.user.type} />
 
                 <Organization
                     onClick={this.onClick}

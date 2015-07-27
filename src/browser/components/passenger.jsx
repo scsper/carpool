@@ -6,7 +6,7 @@ Passenger = React.createClass({
     render: function() {
         return (
             <li>
-                {this.props.passenger.firstName + ' ' + this.props.passenger.lastName}
+                {this.props.passenger.name}
             </li>
         );
     }
