@@ -65,12 +65,17 @@ MemberList = React.createClass({
         return memberComponents;
     },
 
+    displayAddMemberButton() {
+        return <button>Add Members</button>;
+    },
+
     render() {
         return (
             <div>
                 <input type='text' placeholder='Add Passenger' onChange={this.onChange}></input>
                 <ul>
                     {this.displayMemberComponents()}
+                    {this.displayAddMemberButton()}
                 </ul>
             </div>
         );

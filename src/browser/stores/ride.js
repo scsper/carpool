@@ -4,7 +4,7 @@ var EventConstants = require('../constants/event.js');
 
 var RideStore = Fluxxor.createStore({
     initialize() {
-        this.rides = [];
+        this.rides = {};
 
         this.bindActions(
             EventConstants.OPEN_EVENT, this._storeRides
@@ -22,9 +22,13 @@ var RideStore = Fluxxor.createStore({
     },
 
     _storeRides(payload) {
-        payload.rides.forEach(ride => {
-            this.rides.push(new RideRecord(rideData));
-        });
+        for(let rideId in payload.rides) {
+            if (payload.rides.hasOwnProperty(rideId)) {
+                let rideData = payload.rides[rideId];
+
+                this.rides[rideId] = new RideRecord(rideData);
+            }
+        }
     }
 });
 
