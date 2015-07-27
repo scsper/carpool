@@ -1,3 +1,5 @@
+// /api/organizations/1/events
+//
 module.exports = [{
     name: 'College Group',
     date: '7/14/2015',
