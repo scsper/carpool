@@ -8,7 +8,7 @@ var GenericForm = require('./form.jsx');
 var App;
 
 App = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore')],
+    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore', 'UserStore')],
 
     getInitialState: function() {
         // for some reason, I have to return an empty object (because of fluxxor)
@@ -19,6 +19,8 @@ App = React.createClass({
         var flux = this.getFlux();
         var rides = [];
         var eventData =  flux.store('EventStore').get();
+        var orgData = flux.store('OrganizationStore').get();
+        var userData = flux.store('UserStore').get();
         var rideStore = flux.store('RideStore');
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
@@ -29,9 +31,10 @@ App = React.createClass({
         }
 
         return {
-            orgData: flux.store('OrganizationStore').get(),
+            orgData: orgData,
             rides: rides,
             eventData: eventData,
+            user: userData.user,
             selectedEvent: selectedEvent
         };
     },
@@ -39,7 +42,8 @@ App = React.createClass({
     render: function() {
         return (
             <div>
-                <Navigation />
+                <Navigation name={this.state.user.firstName}  type={this.state.user.type} />
+
                 <Organization
                     onClick={this.onClick}
                     orgs={this.state.orgData.orgs}
