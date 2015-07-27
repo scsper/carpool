@@ -27,7 +27,9 @@ Navigation = React.createClass({
 
         menuItems.forEach(item => {
             menuComponents.push(
-                <li className='nav-item pure-menu-item'><a href='#' className='pure-menu-link'>{item}</a></li>
+                <li className='nav-item pure-menu-item' key={item}>
+                    <a href='#' className='pure-menu-link'>{item}</a>
+                </li>
             );
         });
 
