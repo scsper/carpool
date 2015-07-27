@@ -1,16 +1,16 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
-var Event = require('./event.jsx');
-var Events;
+var EventListItem = require('./event_list_item.jsx');
+var EventList;
 
-Events = React.createClass({
+EventList = React.createClass({
     propTypes: {
         userType: React.PropTypes.string.isRequired,
         selectedEvent: React.PropTypes.object.isRequired,
         events: React.PropTypes.array.isRequired
     },
 
-    render: function() {
+    render() {
         var eventComponents = [];
 
         this.props.events.forEach(function(event) {
@@ -23,7 +23,7 @@ Events = React.createClass({
                 }
             }
 
-            eventComponents.push(<Event
+            eventComponents.push(<EventListItem
                 key={event.name}
                 event={event}
                 isSelected={isSelected}
@@ -41,4 +41,4 @@ Events = React.createClass({
     }
 });
 
-module.exports = Events;
+module.exports = EventList;

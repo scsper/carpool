@@ -6,6 +6,7 @@ var Organization = require('./organization.jsx');
 var MemberList = require('./member_list.jsx');
 var Navigation = require('./navigation.jsx');
 var GenericForm = require('./form.jsx');
+var EventForm = require('./event_form.jsx');
 var App;
 
 App = React.createClass({
@@ -60,6 +61,8 @@ App = React.createClass({
                 />
 
                 <MemberList members={this.state.memberList} />
+
+                <EventForm />
             </div>
         );
     }
