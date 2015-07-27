@@ -2,8 +2,12 @@ import gulp from 'gulp';
 import mocha from 'gulp-mocha';
 import istanbul from 'gulp-istanbul';
 import runSequence from 'run-sequence';
+import path from 'path';
+
 
 import {Instrumenter} from 'isparta';
+import {server} from 'karma';
+
 
 var COVERAGE_DIR = './coverage';
 var JSON_COVERAGE_DIR = './coverage/json';
@@ -60,6 +64,21 @@ gulp.task('test:integration', (cb) => {
                     }
                 })).on('end', cb);
         });
+});
+
+gulp.task('test:browser', (cb) => {
+    const configFile = path.resolve(__dirname, '../config/karma.conf.js');
+
+    server.start({
+        configFile: configFile,
+        // singleRun: true
+    }, (code) => {
+        console.log('Karma exited with code: ', code);
+        if (code !== 0) {
+            throw new Error('Karma tests failed');
+        }
+        cb();
+    });
 });
 
 gulp.task('test', (cb) => {
