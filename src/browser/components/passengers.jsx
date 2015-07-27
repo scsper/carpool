@@ -31,11 +31,11 @@ Passengers = React.createClass({
         }
     },
 
-    render: function() {
+    render() {
         return (
             <ul className='passenger-list'>
-                {this.getAddPassengerButton()}
                 {this.getPassengerComponents()}
+                {this.getAddPassengerButton()}
             </ul>
         );
     }
