@@ -36,7 +36,7 @@ Rides = React.createClass({
         }
 
         return (
-            <div className="pure-u-1-2">
+            <div className='pure-u-md-1-1 pure-u-lg-1-2'>
                 <ul>
                     {rideComponents}
                 </ul>
