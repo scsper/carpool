@@ -29,13 +29,17 @@ Ride = React.createClass({
 
     render() {
         let ride = this.props.ride;
-        let passengerComponent = this.state.isActive ? <Passengers passengers={this.props.passengers} /> : null;
+        let availableSpots = this.getAvailableSpots();
+        let passengerComponent = this.state.isActive ? <Passengers
+            passengers={this.props.passengers}
+            availableSpots={availableSpots}
+        /> : null;
 
         return (
             <li onClick={this.toggleActive} className='ride-list-item'>
                 <img className='ride-image' src="assets/person.jpg"/>
                 <h2 className='ride-driver'>{ride.driver}</h2>
-                <h3 className='ride-spots'>{this.getAvailableSpots()} available</h3>
+                <h3 className='ride-spots'>{availableSpots} available</h3>
                 <p className='ride-date'>Leaving at {ride.leaveTime} on {ride.leaveDate}</p>
                 <p className='ride-date'>Returning at {ride.returnTime} on {ride.returnDate}</p>
 

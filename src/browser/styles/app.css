@@ -7,6 +7,10 @@
     padding: 1em 2em;
 }
 
+.hidden {
+    display: none;
+}
+
 .event-list-item, .ride-list-item {
     list-style: none;
     padding: 20px 20px;

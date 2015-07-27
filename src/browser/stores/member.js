@@ -17,6 +17,22 @@ var MemberStore = Fluxxor.createStore({
 
     get: function() {
         return this.members;
+    },
+
+    getList() {
+        let members = [];
+
+        for (let memberId in this.members) {
+            if (this.members.hasOwnProperty(memberId)) {
+                members.push(this.members[memberId]);
+            }
+        }
+
+        members.sort((a, b) => {
+            return a.name > b.name;
+        });
+
+        return members;
     }
 });
 

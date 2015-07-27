@@ -16,22 +16,21 @@ Rides = React.createClass({
             passengers.push(this.props.members[passengerId]);
         }, this);
 
-        console.log(passengers);
-
         return passengers;
     },
 
     render() {
-        var rideComponents = [];
+        let rideComponents = [];
+        let rides = this.props.rides;
 
-        if (this.props.rides.length) {
-            this.props.rides.forEach(function(ride) {
+        if (rides.length) {
+            rides.forEach(ride => {
                 rideComponents.push(<Ride
                     key={ride.driver}
                     ride={ride}
                     passengers={this.getPassengersForRide(ride)}
                 />);
-            }, this);
+            });
         } else {
             rideComponents.push(<li>Please select an event.</li>);
         }

@@ -3,6 +3,7 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Organization = require('./organization.jsx');
+var MemberList = require('./member_list.jsx');
 var Navigation = require('./navigation.jsx');
 var GenericForm = require('./form.jsx');
 var App;
@@ -23,6 +24,7 @@ App = React.createClass({
         var userData = flux.store('UserStore').get();
         var rideStore = flux.store('RideStore');
         var members = flux.store('MemberStore').get();
+        var memberList = flux.store('MemberStore').getList();
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
         if (selectedEvent) {
@@ -37,7 +39,8 @@ App = React.createClass({
             eventData: eventData,
             user: userData.user,
             selectedEvent: selectedEvent,
-            members: members
+            members: members,
+            memberList: memberList
         };
     },
 
@@ -55,6 +58,8 @@ App = React.createClass({
                     userType={this.state.user.type}
                     members={this.state.members}
                 />
+
+                <MemberList members={this.state.memberList} />
             </div>
         );
     }

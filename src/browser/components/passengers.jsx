@@ -4,6 +4,10 @@ var Passenger = require('./passenger.jsx');
 var Passengers;
 
 Passengers = React.createClass({
+    propTypes: {
+        availableSpots: React.PropTypes.number.isRequired
+    },
+
     getPassengerComponents() {
         let passengers = this.props.passengers;
         let components = [];
@@ -19,9 +23,18 @@ Passengers = React.createClass({
         return components;
     },
 
+    getAddPassengerButton() {
+        if (this.props.availableSpots > 0) {
+            return <li><button className='pure-button'>Add Passengers</button></li>;
+        } else {
+            return null;
+        }
+    },
+
     render: function() {
         return (
             <ul>
+                {this.getAddPassengerButton()}
                 {this.getPassengerComponents()}
             </ul>
         );
