@@ -12,7 +12,7 @@ Rides = React.createClass({
                 rideComponents.push(<Ride key={ride.driver} ride={ride} />);
             });
         } else {
-            rideComponents.push(<li>Please select an organization.</li>);
+            rideComponents.push(<li>Please select an event.</li>);
         }
 
         return (

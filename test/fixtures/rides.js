@@ -6,6 +6,8 @@ module.exports = {
         leaveDate: '7/14/2015',
         returnTime: '9:30pm',
         returnDate: '7/14/2015',
+        totalSpots: 7,
+        passengers: [2, 4],
         id: 1
     },
 
@@ -16,6 +18,8 @@ module.exports = {
         leaveDate: '7/14/2015',
         returnTime: '10:30pm',
         returnDate: '7/14/2015',
+        totalSpots: 5,
+        passengers: [],
         id: 2
     },
 
@@ -26,6 +30,8 @@ module.exports = {
         leaveDate: '7/14/2015',
         returnTime: '8:15pm',
         returnDate: '7/14/2015',
+        totalSpots: 5,
+        passengers: [],
         id: 3
     },
 
@@ -36,6 +42,8 @@ module.exports = {
         leaveDate: '7/23/2015',
         returnTime: '1:00pm',
         returnDate: '7/23/2015',
+        totalSpots: 5,
+        passengers: [],
         id: 4
     },
 
@@ -46,6 +54,8 @@ module.exports = {
         leaveDate: '7/23/2015',
         returnTime: '2:00pm',
         returnDate: '7/23/2015',
+        totalSpots: 5,
+        passengers: [],
         id: 5
     },
 
@@ -56,6 +66,8 @@ module.exports = {
         leaveDate: '7/29/2015',
         returnTime: '8:15pm',
         returnDate: '7/29/2015',
+        totalSpots: 5,
+        passengers: [],
         id: 6
     }
 };
