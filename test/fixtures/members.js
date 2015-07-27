@@ -33,5 +33,29 @@ module.exports = {
         name: 'Addison Luh',
         type: 'passenger',
         id: 6
+    },
+
+    7: {
+        name: 'Clayton Chancey',
+        type: 'passenger',
+        id: 7
+    },
+
+    8: {
+        name: 'Scott Varney',
+        type: 'passenger',
+        id: 8
+    },
+
+    9: {
+        name: 'Tim Wong',
+        type: 'passenger',
+        id: 9
+    },
+
+    10: {
+        name: 'Tim Yip',
+        type: 'passenger',
+        id: 10
     }
 };

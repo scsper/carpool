@@ -33,6 +33,8 @@ Ride = React.createClass({
         let passengerComponent = this.state.isActive ? <Passengers
             passengers={this.props.passengers}
             availableSpots={availableSpots}
+            ride={ride.id}
+            memberList={this.props.memberList}
         /> : null;
 
         return (

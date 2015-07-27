@@ -18,7 +18,7 @@ EventList = React.createClass({
             var selectedEvent = this.props.selectedEvent;
 
             if (selectedEvent) {
-                if (selectedEvent.event.name === event.name) {
+                if (selectedEvent.name === event.name) {
                     isSelected = true;
                 }
             }

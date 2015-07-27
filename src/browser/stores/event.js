@@ -17,8 +17,8 @@ var EventStore = Fluxxor.createStore({
         };
     },
 
-    selectEvent: function(event) {
-        this.selectedEvent = event;
+    selectEvent: function(payload) {
+        this.selectedEvent = payload.event;
         this.emit('change');
     },
 

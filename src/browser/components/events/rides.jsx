@@ -6,6 +6,7 @@ var Rides;
 Rides = React.createClass({
     propTypes: {
         members: React.PropTypes.object.isRequired,
+        memberList: React.PropTypes.array.isRequired,
         rides: React.PropTypes.array.isRequired
     },
 
@@ -29,14 +30,16 @@ Rides = React.createClass({
                     key={ride.driver}
                     ride={ride}
                     passengers={this.getPassengersForRide(ride)}
+                    memberList={this.props.memberList}
                 />);
             });
         } else {
-            rideComponents.push(<li>Please select an event.</li>);
+            rideComponents.push(<li>There are no drivers for this event.</li>);
         }
 
         return (
-            <div className='pure-u-1 pure-u-lg-2-3'>
+            <div>
+                <h2>Rides</h2>
                 <ul className='ride-list'>
                     {rideComponents}
                 </ul>

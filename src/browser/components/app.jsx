@@ -12,12 +12,12 @@ var App;
 App = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore', 'UserStore', 'MemberStore')],
 
-    getInitialState: function() {
+    getInitialState() {
         // for some reason, I have to return an empty object (because of fluxxor)
         return {};
     },
 
-    getStateFromFlux: function() {
+    getStateFromFlux() {
         var flux = this.getFlux();
         var rides = [];
         var eventData =  flux.store('EventStore').get();
@@ -29,7 +29,7 @@ App = React.createClass({
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
         if (selectedEvent) {
-            selectedEvent.event.rideIds.forEach(function(rideId) {
+            selectedEvent.rideIds.forEach(function(rideId) {
                 rides.push(rideStore.getById(rideId));
             });
         }
@@ -45,7 +45,7 @@ App = React.createClass({
         };
     },
 
-    render: function() {
+    render() {
         return (
             <div>
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />
@@ -58,13 +58,13 @@ App = React.createClass({
                     selectedEvent={this.state.selectedEvent}
                     userType={this.state.user.type}
                     members={this.state.members}
+                    memberList={this.state.memberList}
                 />
-
-                <MemberList members={this.state.memberList} />
-
-                <EventForm />
             </div>
         );
+
+
+        //         <EventForm />
     }
 });
 

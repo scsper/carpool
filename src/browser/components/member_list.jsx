@@ -49,12 +49,15 @@ MemberList = React.createClass({
         this.props.members.forEach(member => {
             // if the member's name is not in the "membersToDisplay" object, then we hide it
             let liClasses = cx({
-                'hidden': !this.state.membersToDisplay[member.name]
+                'hidden': !this.state.membersToDisplay[member.name],
+                'member-list-item': true
             });
 
             memberComponents.push(
                 <li className={liClasses}>
-                    <input type='checkbox' value={member.id}>{member.name}</input>
+                    <input type='checkbox' value={member.id}>
+                        <span className='member-list-item-name'>{member.name}</span>
+                    </input>
                 </li>
             );
         });
@@ -65,7 +68,7 @@ MemberList = React.createClass({
     render() {
         return (
             <div>
-                <input type='text' placeholder='Search me' onChange={this.onChange}></input>
+                <input type='text' placeholder='Add Passenger' onChange={this.onChange}></input>
                 <ul>
                     {this.displayMemberComponents()}
                 </ul>

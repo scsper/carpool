@@ -5,7 +5,7 @@ var Passenger = require('./passenger.jsx');
 Passenger = React.createClass({
     render: function() {
         return (
-            <li>
+            <li className='passenger-list-item'>
                 {this.props.passenger.name}
             </li>
         );

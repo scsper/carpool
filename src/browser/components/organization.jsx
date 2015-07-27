@@ -5,7 +5,7 @@ var EventView = require('./events/event_view.jsx');
 var Organization;
 
 Organization = React.createClass({
-    render: function() {
+    render() {
         return (
             <div className="pure-g">
                 <EventList
@@ -18,6 +18,7 @@ Organization = React.createClass({
                     event={this.props.selectedEvent}
                     rides={this.props.rides}
                     members={this.props.members}
+                    memberList={this.props.memberList}
                 />
             </div>
         );
