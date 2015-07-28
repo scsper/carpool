@@ -24,7 +24,7 @@ App = React.createClass({
         var userData = flux.store('UserStore').get();
         var rideStore = flux.store('RideStore');
         var members = flux.store('MemberStore').get();
-        var memberList = flux.store('MemberStore').getList();
+        var memberList = flux.store('MemberStore').getMembersWhoNeedRides();
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
         if (selectedEvent) {
@@ -61,9 +61,6 @@ App = React.createClass({
                 />
             </div>
         );
-
-
-        //         <EventForm />
     }
 });
 

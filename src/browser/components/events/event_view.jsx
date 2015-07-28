@@ -18,7 +18,6 @@ EventView = React.createClass({
             return (
                 <div>
                     <h1 className='event-view-name'>{this.props.event.name}</h1>
-                    <Map />
                     <Rides rides={this.props.rides} members={this.props.members} memberList={this.props.memberList} />
                 </div>
             );

@@ -55,7 +55,7 @@ MemberList = React.createClass({
 
             memberComponents.push(
                 <li className={liClasses}>
-                    <input type='checkbox' value={member.id}>
+                    <input type='checkbox' key={member.id} value={member.id}>
                         <span className='member-list-item-name'>{member.name}</span>
                     </input>
                 </li>
@@ -65,18 +65,34 @@ MemberList = React.createClass({
         return memberComponents;
     },
 
+    addMembersToRide(event) {
+        let ids = [];
+
+        Array.prototype.forEach.call(event.target.elements, htmlElement => {
+            if (htmlElement.type === 'checkbox') {
+                if (htmlElement.checked) {
+                    ids.push(htmlElement.value);
+                }
+            }
+        });
+
+        this.props.addMembersToRide(ids);
+    },
+
     displayAddMemberButton() {
-        return <button>Add Members</button>;
+        return <button onClick={this.addMembers} className='pure-button pure-button-primary'>Add Members</button>;
     },
 
     render() {
         return (
             <div>
                 <input type='text' placeholder='Add Passenger' onChange={this.onChange}></input>
-                <ul>
-                    {this.displayMemberComponents()}
-                    {this.displayAddMemberButton()}
-                </ul>
+                <form onSubmit={this.addMembersToRide}>
+                    <ul>
+                        {this.displayMemberComponents()}
+                        {this.displayAddMemberButton()}
+                    </ul>
+                </form>
             </div>
         );
     }

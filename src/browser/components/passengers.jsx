@@ -7,7 +7,8 @@ var Passengers;
 Passengers = React.createClass({
     propTypes: {
         availableSpots: React.PropTypes.number.isRequired,
-        memberList: React.PropTypes.array.isRequired
+        memberList: React.PropTypes.array.isRequired,
+        addMembersToRide: React.PropTypes.func.isRequired
     },
 
     getPassengerComponents() {
@@ -27,7 +28,7 @@ Passengers = React.createClass({
 
     getAddPassengerList() {
         if (this.props.availableSpots > 0) {
-            return <MemberList members={this.props.memberList}/>;
+            return <MemberList addMembersToRide={this.props.addMembersToRide} members={this.props.memberList}/>;
         } else {
             return null;
         }

@@ -7,7 +7,7 @@ module.exports = {
         returnTime: '9:30pm',
         returnDate: '7/14/2015',
         totalSpots: 7,
-        passengers: [2, 4],
+        passengers: [4],
         id: 1
     },
 

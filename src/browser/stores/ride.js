@@ -1,13 +1,15 @@
 var Fluxxor = require('fluxxor');
 var RideRecord = require('../records/ride.js');
 var EventConstants = require('../constants/event.js');
+var RideConstants = require('../constants/ride.js');
 
 var RideStore = Fluxxor.createStore({
     initialize() {
         this.rides = {};
 
         this.bindActions(
-            EventConstants.OPEN_EVENT, this._storeRides
+            EventConstants.OPEN_EVENT, this._storeRides,
+            RideConstants.ADD_MEMBERS_TO_RIDE, this._addMembersToRide
         );
     },
 
@@ -19,6 +21,18 @@ var RideStore = Fluxxor.createStore({
 
     getById(id) {
         return this.rides[id];
+    },
+
+    _addMembersToRide(payload) {
+        let ride = this.rides[payload.rideId];
+
+        payload.memberIds.forEach(memberId => {
+            let id = parseInt(memberId, 10);
+
+            ride.passengers.push(id);
+        });
+
+        this.emit('change');
     },
 
     _storeRides(payload) {

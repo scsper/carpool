@@ -8,6 +8,7 @@ var UserStore = require('../stores/user.js');
 
 var OrganizationActions = require('../actions/organization.js');
 var EventActions = require('../actions/event.js');
+var RideActions = require('../actions/ride.js');
 
 module.exports = (function() {
     var stores = {
@@ -20,7 +21,8 @@ module.exports = (function() {
 
     var actions = {
         Organization: OrganizationActions,
-        Event: EventActions
+        Event: EventActions,
+        Ride: RideActions
     };
 
     var flux = new Fluxxor.Flux(stores, actions);
