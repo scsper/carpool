@@ -53,6 +53,12 @@ node ./scripts/migrate.js rollback
 will roll back the latest migration
 
 
+Add dummy data
+```
+node ./scripts/seed.js
+```
+
+
 ###### Tests
 ```
 gulp test
