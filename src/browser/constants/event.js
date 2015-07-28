@@ -1,6 +1,7 @@
 // bad strategy for constants, but I will improve this later.
 var EventConstants = {
-    SELECT_EVENT: 'select_event'
+    OPEN_EVENT: 'open_event',
+    GET_INITIAL_EVENTS: 'get_initial_events'
 };
 
 module.exports = EventConstants;

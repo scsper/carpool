@@ -1,3 +1,7 @@
+li {
+    list-style: none;
+}
+
 .nav-item {
     padding: .5em 1em;
 }
@@ -12,7 +16,6 @@
 }
 
 .event-list-item, .ride-list-item {
-    list-style: none;
     padding: 20px 20px;
 }
 
@@ -61,4 +64,26 @@
 
 .passenger-list {
     margin: 20px 0 0 0;
+}
+
+.passenger-list-item {
+    margin: 0 10px 0 0;
+}
+
+.member-list-item-name {
+    padding: 0 0 0 7px;
+}
+
+.map-placeholder {
+    height: 275px;
+    background-color: antiquewhite;
+    width: 350px;
+}
+
+.member-list-container {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    min-width: 500px;
+    background-color: antiquewhite;
 }

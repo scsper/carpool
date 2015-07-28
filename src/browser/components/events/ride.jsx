@@ -1,9 +1,12 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
+var FluxMixin = Fluxxor.FluxMixin(React);
 var Passengers = require('../passengers.jsx');
 var Ride;
 
 Ride = React.createClass({
+    mixins: [FluxMixin],
+
     propTypes: {
         ride: React.PropTypes.object.isRequired,
         passengers: React.PropTypes.array.isRequired
@@ -27,12 +30,22 @@ Ride = React.createClass({
         });
     },
 
+    addMembersToRide(memberIds) {
+        this.getFlux().actions.Ride.addMembersToRide({
+            memberIds: memberIds,
+            rideId: this.props.ride.id
+        });
+    },
+
     render() {
         let ride = this.props.ride;
         let availableSpots = this.getAvailableSpots();
         let passengerComponent = this.state.isActive ? <Passengers
             passengers={this.props.passengers}
             availableSpots={availableSpots}
+            ride={ride.id}
+            memberList={this.props.memberList}
+            addMembersToRide={this.addMembersToRide}
         /> : null;
 
         return (

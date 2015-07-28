@@ -49,12 +49,15 @@ MemberList = React.createClass({
         this.props.members.forEach(member => {
             // if the member's name is not in the "membersToDisplay" object, then we hide it
             let liClasses = cx({
-                'hidden': !this.state.membersToDisplay[member.name]
+                'hidden': !this.state.membersToDisplay[member.name],
+                'member-list-item': true
             });
 
             memberComponents.push(
                 <li className={liClasses}>
-                    <input type='checkbox' value={member.id}>{member.name}</input>
+                    <input type='checkbox' key={member.id} value={member.id}>
+                        <span className='member-list-item-name'>{member.name}</span>
+                    </input>
                 </li>
             );
         });
@@ -62,13 +65,34 @@ MemberList = React.createClass({
         return memberComponents;
     },
 
+    addMembersToRide(event) {
+        let ids = [];
+
+        Array.prototype.forEach.call(event.target.elements, htmlElement => {
+            if (htmlElement.type === 'checkbox') {
+                if (htmlElement.checked) {
+                    ids.push(htmlElement.value);
+                }
+            }
+        });
+
+        this.props.addMembersToRide(ids);
+    },
+
+    displayAddMemberButton() {
+        return <button onClick={this.addMembers} className='pure-button pure-button-primary'>Add Members</button>;
+    },
+
     render() {
         return (
             <div>
-                <input type='text' placeholder='Search me' onChange={this.onChange}></input>
-                <ul>
-                    {this.displayMemberComponents()}
-                </ul>
+                <input type='text' placeholder='Add Passenger' onChange={this.onChange}></input>
+                <form onSubmit={this.addMembersToRide}>
+                    <ul>
+                        {this.displayMemberComponents()}
+                        {this.displayAddMemberButton()}
+                    </ul>
+                </form>
             </div>
         );
     }

@@ -5,19 +5,18 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Organization = require('./organization.jsx');
 var MemberList = require('./member_list.jsx');
 var Navigation = require('./navigation.jsx');
-var GenericForm = require('./form.jsx');
 var EventForm = require('./event_form.jsx');
 var App;
 
 App = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore', 'UserStore', 'MemberStore')],
 
-    getInitialState: function() {
+    getInitialState() {
         // for some reason, I have to return an empty object (because of fluxxor)
         return {};
     },
 
-    getStateFromFlux: function() {
+    getStateFromFlux() {
         var flux = this.getFlux();
         var rides = [];
         var eventData =  flux.store('EventStore').get();
@@ -25,11 +24,11 @@ App = React.createClass({
         var userData = flux.store('UserStore').get();
         var rideStore = flux.store('RideStore');
         var members = flux.store('MemberStore').get();
-        var memberList = flux.store('MemberStore').getList();
+        var memberList = flux.store('MemberStore').getMembersWhoNeedRides();
         var selectedEvent = flux.store('EventStore').getSelectedEvent();
 
         if (selectedEvent) {
-            selectedEvent.event.rideIds.forEach(function(rideId) {
+            selectedEvent.rideIds.forEach(function(rideId) {
                 rides.push(rideStore.getById(rideId));
             });
         }
@@ -45,7 +44,7 @@ App = React.createClass({
         };
     },
 
-    render: function() {
+    render() {
         return (
             <div>
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />
@@ -58,11 +57,8 @@ App = React.createClass({
                     selectedEvent={this.state.selectedEvent}
                     userType={this.state.user.type}
                     members={this.state.members}
+                    memberList={this.state.memberList}
                 />
-
-                <MemberList members={this.state.memberList} />
-
-                <EventForm />
             </div>
         );
     }

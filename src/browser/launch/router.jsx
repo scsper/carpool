@@ -12,6 +12,8 @@ var routes = (
 module.exports = function() {
     var flux = require('./flux.js');
 
+    flux.actions.Event.getInitialEvents({});
+
     Router.run(routes, Router.HistoryLocation, function(Root) {
         React.render(
             <Root flux={flux} />,

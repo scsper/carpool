@@ -1,11 +1,14 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
 var Passenger = require('./passenger.jsx');
+var MemberList = require('./member_list.jsx');
 var Passengers;
 
 Passengers = React.createClass({
     propTypes: {
-        availableSpots: React.PropTypes.number.isRequired
+        availableSpots: React.PropTypes.number.isRequired,
+        memberList: React.PropTypes.array.isRequired,
+        addMembersToRide: React.PropTypes.func.isRequired
     },
 
     getPassengerComponents() {
@@ -23,19 +26,26 @@ Passengers = React.createClass({
         return components;
     },
 
-    getAddPassengerButton() {
+    getAddPassengerList() {
         if (this.props.availableSpots > 0) {
-            return <li><button className='pure-button'>Add Passengers</button></li>;
+            return <MemberList addMembersToRide={this.props.addMembersToRide} members={this.props.memberList}/>;
         } else {
             return null;
         }
     },
 
+    /**
+     * We don't want to collapse the passenger we have expanded every time we click on the list.
+     */
+    handleClick(event) {
+        event.stopPropagation();
+    },
+
     render() {
         return (
-            <ul className='passenger-list'>
+            <ul onClick={this.handleClick} className='passenger-list'>
                 {this.getPassengerComponents()}
-                {this.getAddPassengerButton()}
+                {this.getAddPassengerList()}
             </ul>
         );
     }
