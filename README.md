@@ -37,17 +37,28 @@ carpool
 ###### Migrations
 Create a migration:
 ```
-./node_modules/sequelize-cli/bin/sequelize migration:create --config="config/pg.json" --name NAME_HERE
+node ./scripts/migrate.js create migration_name
 ```
+it will create two `.sql` files (up and down) inside `./migrations` directory
 
 Run migrations:
 ```
-gulp migrate
+node ./scripts/migrate.js migrate
 ```
 
 Undo migrations:
 ```
-gulp rollback
+node ./scripts/migrate.js rollback
+```
+will roll back the latest migration
+
+
+###### Tests
+```
+gulp test
+gulp test:unit
+gulp test:integration
+gulp test:browser
 ```
 
 ###### If things aren't working with your user
