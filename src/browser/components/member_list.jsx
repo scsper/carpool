@@ -1,7 +1,7 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
 var startsWith = require('lodash/string/startsWith');
-var cx = React.addons.classSet;
+var classnames = require('classnames');
 var MemberList;
 
 MemberList = React.createClass({
@@ -48,7 +48,7 @@ MemberList = React.createClass({
 
         this.props.members.forEach(member => {
             // if the member's name is not in the "membersToDisplay" object, then we hide it
-            let liClasses = cx({
+            let liClasses = classnames({
                 'hidden': !this.state.membersToDisplay[member.name],
                 'member-list-item': true
             });

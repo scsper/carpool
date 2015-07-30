@@ -1,8 +1,8 @@
 var React = require('react/addons');
 var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
+var classnames = require('classnames');
 var Event;
-var cx = React.addons.classSet;
 
 Event = React.createClass({
     mixins: [FluxMixin],
@@ -35,7 +35,7 @@ Event = React.createClass({
     render() {
         var event = this.props.event;
 
-        var liClasses = cx({
+        var liClasses = classnames({
             'event-list-item': true,
             'selected': this.props.isSelected
         });

@@ -36,7 +36,7 @@ var RideStore = Fluxxor.createStore({
     },
 
     _storeRides(payload) {
-        for(let rideId in payload.rides) {
+        for (let rideId in payload.rides) {
             if (payload.rides.hasOwnProperty(rideId)) {
                 let rideData = payload.rides[rideId];
 

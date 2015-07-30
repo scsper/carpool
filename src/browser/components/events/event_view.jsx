@@ -6,9 +6,10 @@ var EventView;
 
 EventView = React.createClass({
     propTypes: {
-        event: React.PropTypes.object.isRequired,
+        event: React.PropTypes.object,
         rides: React.PropTypes.array.isRequired,
-        members: React.PropTypes.array.isRequired
+        members: React.PropTypes.object.isRequired,
+        memberList: React.PropTypes.array.isRequired
     },
 
     displayEvent() {

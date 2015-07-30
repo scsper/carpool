@@ -6,7 +6,7 @@ var EventList;
 EventList = React.createClass({
     propTypes: {
         userType: React.PropTypes.string.isRequired,
-        selectedEvent: React.PropTypes.object.isRequired,
+        selectedEvent: React.PropTypes.object,
         events: React.PropTypes.array.isRequired
     },
 

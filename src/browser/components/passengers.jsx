@@ -26,11 +26,11 @@ Passengers = React.createClass({
         return components;
     },
 
+    /**
+     * If there are no spots in the ride OR no one in the organization needs a ride to the event,
+     * don't display the list to add members to a ride.
+     */
     getAddPassengerList() {
-        /**
-         * If there are no spots in the ride OR no one in the organization needs a ride to the event,
-         * don't display the list to add members to a ride.
-         */
         if (this.props.availableSpots > 0 && this.props.memberList.length > 0) {
             return <MemberList addMembersToRide={this.props.addMembersToRide} members={this.props.memberList}/>;
         } else {
