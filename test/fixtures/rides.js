@@ -10,7 +10,8 @@ module.exports = {
         returnDate: '7/14/2015',
         totalSpots: 7,
         passengers: [4],
-        id: 1
+        id: 1,
+        eventId: 1
     },
 
     2: {
@@ -22,7 +23,8 @@ module.exports = {
         returnDate: '7/14/2015',
         totalSpots: 5,
         passengers: [],
-        id: 2
+        id: 2,
+        eventId: 1
     },
 
     3: {
@@ -34,7 +36,8 @@ module.exports = {
         returnDate: '7/14/2015',
         totalSpots: 5,
         passengers: [],
-        id: 3
+        id: 3,
+        eventId: 1
     },
 
     4: {
@@ -46,7 +49,8 @@ module.exports = {
         returnDate: '7/23/2015',
         totalSpots: 5,
         passengers: [],
-        id: 4
+        id: 4,
+        eventId: 2
     },
 
     5: {
@@ -58,18 +62,7 @@ module.exports = {
         returnDate: '7/23/2015',
         totalSpots: 5,
         passengers: [],
-        id: 5
-    },
-
-    6: {
-        driver: 'Should not show up in theHOUSE',
-        car: 'Yellow Honda Accord',
-        leaveTime: '5:15pm',
-        leaveDate: '7/29/2015',
-        returnTime: '8:15pm',
-        returnDate: '7/29/2015',
-        totalSpots: 5,
-        passengers: [],
-        id: 6
+        id: 5,
+        eventId: 2
     }
 };

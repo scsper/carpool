@@ -32,7 +32,10 @@ Passengers = React.createClass({
      */
     getAddPassengerList() {
         if (this.props.availableSpots > 0 && this.props.memberList.length > 0) {
-            return <MemberList addMembersToRide={this.props.addMembersToRide} members={this.props.memberList}/>;
+            return <MemberList
+                addMembersToRide={this.props.addMembersToRide}
+                members={this.props.memberList}
+            />;
         } else {
             return null;
         }

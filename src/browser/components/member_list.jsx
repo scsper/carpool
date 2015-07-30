@@ -70,6 +70,9 @@ MemberList = React.createClass({
         event.preventDefault();
         event.stopPropagation();
 
+        /**
+         * event.target.elements is an object with numbers for keys.
+         */
         Array.prototype.forEach.call(event.target.elements, htmlElement => {
             if (htmlElement.type === 'checkbox') {
                 if (htmlElement.checked) {

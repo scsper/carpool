@@ -17,17 +17,19 @@ App = React.createClass({
     },
 
     getStateFromFlux() {
-        var flux = this.getFlux();
-        var rides = [];
-        var eventData =  flux.store('EventStore').get();
-        var orgData = flux.store('OrganizationStore').get();
-        var userData = flux.store('UserStore').get();
-        var rideStore = flux.store('RideStore');
-        var members = flux.store('MemberStore').get();
-        var memberList = flux.store('MemberStore').getMembersWhoNeedRides();
-        var selectedEvent = flux.store('EventStore').getSelectedEvent();
+        let flux = this.getFlux();
+        let rides = [];
+        let eventData =  flux.store('EventStore').get();
+        let orgData = flux.store('OrganizationStore').get();
+        let userData = flux.store('UserStore').get();
+        let rideStore = flux.store('RideStore');
+        let members = flux.store('MemberStore').get();
+        let selectedEvent = flux.store('EventStore').getSelectedEvent();
+        let memberList = [];
 
         if (selectedEvent) {
+            memberList = flux.store('MemberStore').getMembersWhoNeedRides(selectedEvent.id);
+
             selectedEvent.rideIds.forEach(function(rideId) {
                 rides.push(rideStore.getById(rideId));
             });

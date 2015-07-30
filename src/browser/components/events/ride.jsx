@@ -33,7 +33,8 @@ Ride = React.createClass({
     addMembersToRide(memberIds) {
         this.getFlux().actions.Ride.addMembersToRide({
             memberIds: memberIds,
-            rideId: this.props.ride.id
+            rideId: this.props.ride.id,
+            eventId: this.props.ride.eventId
         });
     },
 

@@ -1,6 +1,7 @@
 export default class Ride {
     constructor(payload) {
         this.id = payload.id;
+        this.eventId = payload.eventId;
         this.driver = payload.driver;
         this.car = payload.car;
         this.leaveTime = payload.leaveTime;

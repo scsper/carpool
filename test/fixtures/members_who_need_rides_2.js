@@ -1,19 +1,19 @@
 module.exports = [
     {
-        name: 'Brian Kinder',
+        name: 'Scott Varney',
         type: 'passenger',
-        id: 5
+        id: 8
     },
 
     {
-        name: 'Addison Luh',
+        name: 'Tim Wong',
         type: 'passenger',
-        id: 6
+        id: 9
     },
 
     {
-        name: 'Clayton Chancey',
+        name: 'Tim Yip',
         type: 'passenger',
-        id: 7
+        id: 10
     }
 ];

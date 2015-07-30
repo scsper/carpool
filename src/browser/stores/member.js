@@ -1,9 +1,9 @@
 var Fluxxor = require('fluxxor');
+var EventConstants = require('../constants/event.js');
 var RideConstants = require('../constants/ride.js');
 var remove = require('lodash/array/remove');
 
 var members = require('../../../test/fixtures/members.js');
-var membersWhoNeedRides = require('../../../test/fixtures/members_who_need_rides.js');
 
 /**
  * This store contains all the members for a given organization.
@@ -11,19 +11,28 @@ var membersWhoNeedRides = require('../../../test/fixtures/members_who_need_rides
 var MemberStore = Fluxxor.createStore({
     initialize() {
         this.members = members;
-        this.membersWhoNeedRides = membersWhoNeedRides.sort((a, b) => {
+        // key: event id
+        // value: array of members who need rides for that event
+        this.membersWhoNeedRides = {};
+
+        this.bindActions(
+            RideConstants.ADD_MEMBERS_TO_RIDE, this._removeMembersWhoNeedRides,
+            EventConstants.OPEN_EVENT, this._addEvent
+        );
+    },
+
+    _addEvent(payload) {
+        this.membersWhoNeedRides[payload.event.id] = payload.membersWhoNeedRides.sort((a, b) => {
             return a.name > b.name;
         });
 
-        this.bindActions(
-            RideConstants.ADD_MEMBERS_TO_RIDE, this._removeMembersWhoNeedRides
-        );
+        this.emit('change');
     },
 
     _removeMembersWhoNeedRides(payload) {
         let memberIds = payload.memberIds;
 
-        remove(this.membersWhoNeedRides, member => {
+        remove(this.membersWhoNeedRides[payload.eventId], member => {
             let shouldBeRemoved = false;
 
             memberIds.forEach(memberId => {
@@ -42,8 +51,8 @@ var MemberStore = Fluxxor.createStore({
         return this.members;
     },
 
-    getMembersWhoNeedRides() {
-        return this.membersWhoNeedRides;
+    getMembersWhoNeedRides(eventId) {
+        return this.membersWhoNeedRides[eventId];
     }
 });
 

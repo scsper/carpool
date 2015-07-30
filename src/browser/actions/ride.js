@@ -4,7 +4,8 @@ var RideActions = {
     addMembersToRide(payload) {
         this.dispatch(RideConstants.ADD_MEMBERS_TO_RIDE, {
             memberIds: payload.memberIds,
-            rideId: payload.rideId
+            rideId: payload.rideId,
+            eventId: payload.eventId
         });
     }
 };
