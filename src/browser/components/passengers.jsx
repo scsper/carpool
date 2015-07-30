@@ -17,10 +17,10 @@ Passengers = React.createClass({
 
         if (passengers.length > 0) {
             this.props.passengers.forEach(passenger => {
-                components.push(<Passenger passenger={passenger} />);
+                components.push(<Passenger key={passenger.id} passenger={passenger} />);
             });
         } else {
-            components.push(<li>There are no passengers signed up for this ride.</li>);
+            components.push(<li key='no-passengers'>There are no passengers signed up for this ride.</li>);
         }
 
         return components;

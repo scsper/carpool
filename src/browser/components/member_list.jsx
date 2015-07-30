@@ -54,10 +54,9 @@ MemberList = React.createClass({
             });
 
             memberComponents.push(
-                <li className={liClasses}>
-                    <input type='checkbox' key={member.id} value={member.id}>
-                        <span className='member-list-item-name'>{member.name}</span>
-                    </input>
+                <li className={liClasses} key={member.id}>
+                    <input type='checkbox' value={member.id}></input>
+                    <span className='member-list-item-name'>{member.name}</span>
                 </li>
             );
         });
@@ -67,6 +66,9 @@ MemberList = React.createClass({
 
     addMembersToRide(event) {
         let ids = [];
+
+        event.preventDefault();
+        event.stopPropagation();
 
         Array.prototype.forEach.call(event.target.elements, htmlElement => {
             if (htmlElement.type === 'checkbox') {
@@ -79,10 +81,6 @@ MemberList = React.createClass({
         this.props.addMembersToRide(ids);
     },
 
-    displayAddMemberButton() {
-        return <button onClick={this.addMembers} className='pure-button pure-button-primary'>Add Members</button>;
-    },
-
     render() {
         return (
             <div>
@@ -90,7 +88,10 @@ MemberList = React.createClass({
                 <form onSubmit={this.addMembersToRide}>
                     <ul>
                         {this.displayMemberComponents()}
-                        {this.displayAddMemberButton()}
+                        <button
+                            onClick={this.addMembers}
+                            className='pure-button pure-button-primary'
+                        >Add Members</button>
                     </ul>
                 </form>
             </div>
