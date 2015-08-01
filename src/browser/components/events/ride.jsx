@@ -38,15 +38,23 @@ Ride = React.createClass({
         });
     },
 
+    removeMembersFromRide(memberIds) {
+        this.getFlux().actions.Ride.removeMembersFromRide({
+            memberIds: memberIds,
+            rideId: this.props.ride.id,
+            eventId: this.props.ride.eventId
+        });
+    },
+
     render() {
         let ride = this.props.ride;
         let availableSpots = this.getAvailableSpots();
         let passengerComponent = this.state.isActive ? <Passengers
             passengers={this.props.passengers}
             availableSpots={availableSpots}
-            ride={ride.id}
             memberList={this.props.memberList}
             addMembersToRide={this.addMembersToRide}
+            removeMembersFromRide={this.removeMembersFromRide}
         /> : null;
 
         return (

@@ -17,6 +17,7 @@ var MemberStore = Fluxxor.createStore({
 
         this.bindActions(
             RideConstants.ADD_MEMBERS_TO_RIDE, this._removeMembersWhoNeedRides,
+            RideConstants.REMOVE_MEMBERS_FROM_RIDE, this._addMembersWhoNeedRides,
             EventConstants.OPEN_EVENT, this._addEvent
         );
     },
@@ -43,6 +44,14 @@ var MemberStore = Fluxxor.createStore({
 
             return shouldBeRemoved;
         });
+
+        this.emit('change');
+    },
+
+    _addMembersWhoNeedRides(payload) {
+        payload.memberIds.forEach(memberId => {
+            this.membersWhoNeedRides[payload.eventId].push(this.members[memberId]);
+        }, this);
 
         this.emit('change');
     },

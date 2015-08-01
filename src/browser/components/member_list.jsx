@@ -11,15 +11,23 @@ MemberList = React.createClass({
 
     getInitialState() {
         return {
-            membersToDisplay: this.filterMemberList('')
+            membersToDisplay: this.filterMemberList(this.props.members, ''),
+            filterString: ''
         };
+    },
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            membersToDisplay: this.filterMemberList(nextProps.members, this.state.filterString)
+        });
     },
 
     onChange(event) {
         let filterString = event.target.value;
 
         this.setState({
-            membersToDisplay: this.filterMemberList(filterString)
+            membersToDisplay: this.filterMemberList(this.props.members, filterString),
+            filterString: event.target.value
         })
     },
 
@@ -27,10 +35,11 @@ MemberList = React.createClass({
      * Returns an object that has a member's name as both key and value.
      * The members that appear in the object are the ones that passed the filter criteria.
      */
-    filterMemberList(filterString) {
+    filterMemberList(members, filterString) {
         let memberObject = {};
+        let filterString = filterString || '';
 
-        this.props.members.filter(member => {
+        members.filter(member => {
             return startsWith(member.name.toLowerCase(), filterString.toLowerCase());
         }).forEach(member => {
             memberObject[member.name] = member.name;

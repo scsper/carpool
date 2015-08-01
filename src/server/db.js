@@ -17,7 +17,6 @@ const query = (text, values) => {
                 return reject(connectionErr);
             }
 
-
             if (DEBUG) {
                 console.log(chalk.red('========================================'));
                 console.log(chalk.blue('=> SQL:'), chalk.green(text));

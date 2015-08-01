@@ -9,7 +9,8 @@ var RideStore = Fluxxor.createStore({
 
         this.bindActions(
             EventConstants.OPEN_EVENT, this._storeRides,
-            RideConstants.ADD_MEMBERS_TO_RIDE, this._addMembersToRide
+            RideConstants.ADD_MEMBERS_TO_RIDE, this._addMembersToRide,
+            RideConstants.REMOVE_MEMBERS_FROM_RIDE, this._removeMembersFromRide
         );
     },
 
@@ -30,6 +31,20 @@ var RideStore = Fluxxor.createStore({
             let id = parseInt(memberId, 10);
 
             ride.passengers.push(id);
+        });
+
+        this.emit('change');
+    },
+
+    _removeMembersFromRide(payload) {
+        let ride = this.rides[payload.rideId];
+
+        payload.memberIds.forEach(memberId => {
+            let index = ride.passengers.indexOf(memberId);
+
+            if (index > -1) {
+                ride.passengers.splice(index, 1);
+            }
         });
 
         this.emit('change');

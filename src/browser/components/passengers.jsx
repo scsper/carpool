@@ -8,7 +8,8 @@ Passengers = React.createClass({
     propTypes: {
         availableSpots: React.PropTypes.number.isRequired,
         memberList: React.PropTypes.array.isRequired,
-        addMembersToRide: React.PropTypes.func.isRequired
+        addMembersToRide: React.PropTypes.func.isRequired,
+        removeMembersFromRide: React.PropTypes.func.isRequired
     },
 
     getPassengerComponents() {
@@ -17,7 +18,11 @@ Passengers = React.createClass({
 
         if (passengers.length > 0) {
             this.props.passengers.forEach(passenger => {
-                components.push(<Passenger key={passenger.id} passenger={passenger} />);
+                components.push(<Passenger
+                    removeMembersFromRide={this.props.removeMembersFromRide}
+                    key={passenger.id}
+                    passenger={passenger}
+                />);
             });
         } else {
             components.push(<li key='no-passengers'>There are no passengers signed up for this ride.</li>);

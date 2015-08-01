@@ -87,3 +87,7 @@ li {
     min-width: 500px;
     background-color: antiquewhite;
 }
+
+.passenger-delete {
+    padding: 0 5px 0 0;
+}
