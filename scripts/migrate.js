@@ -1,13 +1,12 @@
 // migrate.js
 var path = require('path');
-
-console.log(path.resolve(__dirname, '../'));
+var config = require('../config/pg.json');
 
 require('sql-migrations').run({
     basedir: path.resolve(__dirname, '../'),
     migrationsDir: path.resolve(__dirname, '../migrations'),
-    user: 'dabramov',
+    user: config.development.username,
     host: 'localhost',
     password: 'password',
-    db: 'carpool_dev'
+    db: config.development.database
 });
