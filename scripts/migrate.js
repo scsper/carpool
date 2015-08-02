@@ -5,8 +5,8 @@ var config = require('../config/pg.json');
 require('sql-migrations').run({
     basedir: path.resolve(__dirname, '../'),
     migrationsDir: path.resolve(__dirname, '../migrations'),
-    user: config.development.username,
+    user: 'ssperlin',
     host: 'localhost',
     password: 'password',
-    db: config.development.database
+    db: 'carpool_dev'
 });
