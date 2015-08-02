@@ -10,7 +10,10 @@ var members = require('../../../test/fixtures/members.js');
  */
 var MemberStore = Fluxxor.createStore({
     initialize() {
+        // key: Member ID
+        // value: Member Record
         this.members = members;
+
         // key: event id
         // value: array of members who need rides for that event
         this.membersWhoNeedRides = {};

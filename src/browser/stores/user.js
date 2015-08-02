@@ -6,9 +6,7 @@ var UserStore = Fluxxor.createStore({
     },
 
     get: function() {
-        return {
-            user: this.user
-        };
+        return this.user;
     }
 });
 
