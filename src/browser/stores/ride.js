@@ -14,12 +14,6 @@ var RideStore = Fluxxor.createStore({
         );
     },
 
-    get() {
-        return {
-            rides: this.rides
-        };
-    },
-
     getById(id) {
         return this.rides[id];
     },
@@ -51,10 +45,10 @@ var RideStore = Fluxxor.createStore({
     },
 
     _storeRides(payload) {
+        // payload.rides is an object with key: rideId and value: ride
         for (let rideId in payload.rides) {
             if (payload.rides.hasOwnProperty(rideId)) {
                 let rideData = payload.rides[rideId];
-
                 this.rides[rideId] = new RideRecord(rideData);
             }
         }
