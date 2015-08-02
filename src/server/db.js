@@ -1,7 +1,7 @@
 import pg from 'pg';
 import chalk from 'chalk';
 
-const connString = 'postgress://ssperlin:password@localhost/carpool_dev';
+const connString = 'postgress://dabramov:password@localhost/carpool_dev';
 const DEBUG = false;
 
 /**
