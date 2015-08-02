@@ -1,8 +1,7 @@
 import pg from 'pg';
 import chalk from 'chalk';
-var config = require('../../config/pg.json');
 
-const connString = 'postgress://' + config.development.username + ':password@localhost/carpool_dev';
+const connString = 'postgress://ssperlin:password@localhost/carpool_dev';
 const DEBUG = false;
 
 /**
