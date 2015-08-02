@@ -9,16 +9,22 @@ var EventStore = Fluxxor.createStore({
         this.selectedEvent = null;
 
         this.bindActions(
-            EventConstants.OPEN_EVENT, this.selectEvent,
+            EventConstants.OPEN_EVENT, this._selectEvent,
             EventConstants.GET_INITIAL_EVENTS, this._getInitialEvents
         );
     },
 
+    /**
+     * Returns a list of all events.
+     */
     get() {
         return this.events;
     },
 
-    selectEvent(payload) {
+    /**
+     * This should probably change to be ID-based, not object-based.
+     */
+    _selectEvent(payload) {
         this.selectedEvent = payload.event;
         this.emit('change');
     },
