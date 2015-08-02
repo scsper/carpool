@@ -15,9 +15,7 @@ var EventStore = Fluxxor.createStore({
     },
 
     get() {
-        return {
-            events: this.events
-        };
+        return this.events;
     },
 
     selectEvent(payload) {

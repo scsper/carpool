@@ -37,10 +37,10 @@ MemberList = React.createClass({
      */
     filterMemberList(members, filterString) {
         let memberObject = {};
-        let filterString = filterString || '';
+        let str = filterString || '';
 
         members.filter(member => {
-            return startsWith(member.name.toLowerCase(), filterString.toLowerCase());
+            return startsWith(member.name.toLowerCase(), str.toLowerCase());
         }).forEach(member => {
             memberObject[member.name] = member.name;
         });

@@ -19,7 +19,7 @@ App = React.createClass({
     getStateFromFlux() {
         let flux = this.getFlux();
         let rides = [];
-        let eventData =  flux.store('EventStore').get();
+        let events =  flux.store('EventStore').get();
         let orgData = flux.store('OrganizationStore').get();
         let userData = flux.store('UserStore').get();
         let rideStore = flux.store('RideStore');
@@ -38,7 +38,7 @@ App = React.createClass({
         return {
             orgData: orgData,
             rides: rides,
-            eventData: eventData,
+            events: events,
             user: userData.user,
             selectedEvent: selectedEvent,
             members: members,
@@ -55,7 +55,7 @@ App = React.createClass({
                     onClick={this.onClick}
                     orgs={this.state.orgData.orgs}
                     rides={this.state.rides}
-                    events={this.state.eventData.events}
+                    events={this.state.events}
                     selectedEvent={this.state.selectedEvent}
                     userType={this.state.user.type}
                     members={this.state.members}
