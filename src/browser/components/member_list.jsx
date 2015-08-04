@@ -1,7 +1,7 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
-var startsWith = require('lodash/string/startsWith');
 var classnames = require('classnames');
+var filterMemberList = require('./utils/filter_member_list.js');
 var MemberList;
 
 MemberList = React.createClass({
@@ -11,14 +11,14 @@ MemberList = React.createClass({
 
     getInitialState() {
         return {
-            membersToDisplay: this.filterMemberList(this.props.members, ''),
+            membersToDisplay: filterMemberList(this.props.members, ''),
             filterString: ''
         };
     },
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            membersToDisplay: this.filterMemberList(nextProps.members, this.state.filterString)
+            membersToDisplay: filterMemberList(nextProps.members, this.state.filterString)
         });
     },
 
@@ -26,26 +26,9 @@ MemberList = React.createClass({
         let filterString = event.target.value;
 
         this.setState({
-            membersToDisplay: this.filterMemberList(this.props.members, filterString),
+            membersToDisplay: filterMemberList(this.props.members, filterString),
             filterString: event.target.value
         })
-    },
-
-    /**
-     * Returns an object that has a member's name as both key and value.
-     * The members that appear in the object are the ones that passed the filter criteria.
-     */
-    filterMemberList(members, filterString) {
-        let memberObject = {};
-        let str = filterString || '';
-
-        members.filter(member => {
-            return startsWith(member.name.toLowerCase(), str.toLowerCase());
-        }).forEach(member => {
-            memberObject[member.name] = member.name;
-        });
-
-        return memberObject;
     },
 
     /**
