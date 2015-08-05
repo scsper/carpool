@@ -1,5 +1,6 @@
 var React = require('react');
 var Navigation;
+var getMenuTitles = require('./utils/get_menu_titles.js');
 
 Navigation = React.createClass({
     propTypes: {
@@ -8,24 +9,10 @@ Navigation = React.createClass({
     },
 
     generateMenuItems() {
-        let menuItems = [];
+        let menuTitles = getMenuTitles(this.props.type);
         let menuComponents = [];
 
-        switch (this.props.type) {
-            case 'admin':
-                menuItems = ['Events', 'Members', 'Notifications'];
-                break;
-            case 'driver':
-                menuItems = ['Drive', 'Upcoming Drives', 'Notifications'];
-                break;
-            case 'passenger':
-                menuItems = ['Book', 'Upcoming Rides', 'Notifications'];
-                break;
-            default:
-                throw new Error ('Unknown passenger type ' + this.state.type + ' passed to Navigation component.');
-        }
-
-        menuItems.forEach(item => {
+        menuTitles.forEach(item => {
             menuComponents.push(
                 <li className='nav-item pure-menu-item' key={item}>
                     <a href='#' className='pure-menu-link'>{item}</a>
