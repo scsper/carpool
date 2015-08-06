@@ -1,0 +1,22 @@
+{
+    "development": {
+      "user"     : "<USER>",
+      "password" : null,
+      "db"       : "carpool_development",
+      "host"     : "127.0.0.1"
+    },
+
+    "test": {
+      "user"     : "<USER>",
+      "password" : null,
+      "db"       : "carpool_test",
+      "host"     : "127.0.0.1"
+    },
+
+    "production": {
+      "user"     : "<USER>",
+      "password" : null,
+      "db"       : "carpool_production",
+      "host"     : "127.0.0.1"
+    }
+}

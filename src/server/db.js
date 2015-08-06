@@ -1,7 +1,9 @@
 import pg from 'pg';
 import chalk from 'chalk';
+import database from '../../config/database.json';
 
-const connString = 'postgress://ssperlin:password@localhost/carpool_dev';
+const config = database[process.env.ENV || 'development'];
+const connString = `postgress://${config.user}:${config.password}@${config.host}/${config.db}`;
 const DEBUG = false;
 
 /**

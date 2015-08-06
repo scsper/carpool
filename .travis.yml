@@ -1,8 +1,13 @@
-language: node_js
+language:
+  - node_js
 node_js:
-- '0.10'
-before_install: npm install -g grunt-cli
-install: npm install
+  - '0.10'
+install:
+  - npm install
+  - cp config/database.json.ci config/database.json
+before_script:
+  - psql -c 'CREATE DATABASE carpool_test;' -U postgres
+  - ENV=test node ./scripts/migrate.js migrate
 deploy:
   provider: heroku
   api_key:
