@@ -8,7 +8,11 @@ Promise.all([
     organizationsQueries.create({name: 'C3 Silicon Valley', address: '299 Bassett Street, San Jose, CA'}),
     organizationsQueries.create({name: 'City Church Chicago', address: '777 North Green Street, Chicago, IL'}),
     usersQueries.create({name: 'Dmitrii Abramov', address: 'Some random house in San Jone'}),
-    usersQueries.create({name: 'Scott Sperling', address: 'Some random house in Sunnyvale'})
+    usersQueries.create({name: 'Scott Sperling', address: 'Some random house in Sunnyvale'}),
+    usersQueries.create({name: 'Jessica Sperling', address: 'Some random house in Sunnyvale'}),
+    usersQueries.create({name: 'Philemon Chan', address: 'Some random house in Chicago'}),
+    usersQueries.create({name: 'Benjamin Dang', address: 'Some random house in Los Angeles'}),
+    usersQueries.create({name: 'Addison Luh', address: 'Some random house in Sunnyvale'})
 ]).then(function(results) {
     var org1id = results[0].id;
     var org2id = results[1].id;
