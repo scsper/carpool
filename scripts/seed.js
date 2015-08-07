@@ -3,6 +3,7 @@ require('es6-promise').polyfill();
 
 var organizationsQueries = require('../src/server/queries/organizations');
 var usersQueries = require('../src/server/queries/users');
+var eventsQueries = require('../src/server/queries/events');
 
 Promise.all([
     organizationsQueries.create({name: 'C3 Silicon Valley', address: '299 Bassett Street, San Jose, CA'}),
@@ -12,7 +13,7 @@ Promise.all([
     usersQueries.create({name: 'Jessica Sperling', address: 'Some random house in Sunnyvale'}),
     usersQueries.create({name: 'Philemon Chan', address: 'Some random house in Chicago'}),
     usersQueries.create({name: 'Benjamin Dang', address: 'Some random house in Los Angeles'}),
-    usersQueries.create({name: 'Addison Luh', address: 'Some random house in Sunnyvale'})
+    usersQueries.create({name: 'Addison Luh', address: 'Some random house in Sunnyvale'}),
 ]).then(function(results) {
     var org1id = results[0].id;
     var org2id = results[1].id;
@@ -21,7 +22,10 @@ Promise.all([
 
     Promise.all([
         organizationsQueries.addMember(org1id, user1id),
-        organizationsQueries.addMember(org1id, user2id)
+        organizationsQueries.addMember(org1id, user2id),
+        eventsQueries.create(
+            {name: 'Youth Group', address: '299 Bassett Street, San Jose, CA', organizationId: org1id}
+        )
     ]).then(function() {
         console.log('Successfully populated the database');
         process.exit(0);
