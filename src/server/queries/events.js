@@ -13,4 +13,15 @@ const create = (params) => {
     });
 };
 
-export default {create};
+const getEvents = (organizationId) => {
+    return new Promise((resolve, reject) => {
+        query(
+            'select * from events where organizationId = ($1)',
+            [organizationId]
+        ).then((result) => {
+            resolve(result.rows);
+        }).catch(reject);
+    });
+};
+
+export default {create, getEvents};

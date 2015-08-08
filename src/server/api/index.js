@@ -15,4 +15,10 @@ router.get('/organizations/:id/members', (req, res, next) => {
     }).catch(next);
 });
 
+router.get('/organizations/:organizationId/events', (req, res, next) => {
+    eventsQueries.getEvents(req.params.organizationId).then((events) => {
+        res.json(events);
+    }).catch(next);
+});
+
 export default router;
