@@ -19,10 +19,19 @@ Promise.all([
     var org2id = results[1].id;
     var user1id = results[2].id;
     var user2id = results[3].id;
+    var user3id = results[4].id;
+    var user4id = results[5].id;
+    var user5id = results[6].id;
+    var user6id = results[7].id;
 
     Promise.all([
         organizationsQueries.addMember(org1id, user1id),
         organizationsQueries.addMember(org1id, user2id),
+        organizationsQueries.addMember(org1id, user3id),
+        organizationsQueries.addMember(org1id, user4id),
+        organizationsQueries.addMember(org1id, user5id),
+        organizationsQueries.addMember(org1id, user6id),
+
         eventsQueries.create(
             {name: 'Youth Group', address: '299 Bassett Street, San Jose, CA', organizationId: org1id}
         )

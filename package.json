@@ -28,6 +28,7 @@
     "gulp-exec": "^2.1.1",
     "jade": "^1.10.0",
     "lodash": "^3.10.0",
+    "lodash.template": "^3.6.2",
     "pg": "^4.4.0",
     "pg-hstore": "^2.3.2",
     "react": "^0.13.3",
