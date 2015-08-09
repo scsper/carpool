@@ -7,7 +7,7 @@ install:
   - cp config/database.json.ci config/database.json
 before_script:
   - psql -c 'CREATE DATABASE carpool_test;' -U postgres
-  - ENV=test node ./scripts/migrate.js migrate
+  - ENV=test gulp db:migrate
 deploy:
   provider: heroku
   api_key:
