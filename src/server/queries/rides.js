@@ -12,4 +12,15 @@ const create = (params) => {
     });
 };
 
-export default {create};
+const get = (rideId) => {
+    return new Promise((resolve, reject) => {
+        query(
+            'select * from rides where id = ($1)',
+            [rideId]
+        ).then((result) => {
+            resolve(result.rows[0])
+        }).catch(reject);
+    });
+};
+
+export default {create, get};
