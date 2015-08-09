@@ -4,6 +4,7 @@ require('es6-promise').polyfill();
 var organizationsQueries = require('../src/server/queries/organizations');
 var usersQueries = require('../src/server/queries/users');
 var eventsQueries = require('../src/server/queries/events');
+var ridesQueries = require('../src/server/queries/rides');
 
 Promise.all([
     organizationsQueries.create({name: 'C3 Silicon Valley', address: '299 Bassett Street, San Jose, CA'}),
@@ -35,9 +36,20 @@ Promise.all([
         eventsQueries.create(
             {name: 'Youth Group', address: '299 Bassett Street, San Jose, CA', organizationId: org1id}
         )
-    ]).then(function() {
-        console.log('Successfully populated the database');
-        process.exit(0);
+    ]).then(function(results) {
+        var params = {
+            eventId: results[6].id,
+            driverId: user1id,
+            seats: 4,
+            departureTime: '2015-01-08 11:00',
+            arrivalTime: '2015-01-08 08:00',
+            notes: 'ello moto'
+        };
+
+        ridesQueries.create(params).then(function(results) {
+            console.log('Successfully populated the database');
+            process.exit(0);
+        });
     });
 }).catch(function(err) {
     console.error('Error: ', err);

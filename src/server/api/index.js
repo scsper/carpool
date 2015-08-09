@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import organizationsQueries from '../queries/organizations';
+import ridesQueries from '../queries/rides';
 
 const router = Router();
 
@@ -21,4 +22,11 @@ router.get('/organizations/:organizationId/events', (req, res, next) => {
     }).catch(next);
 });
 
+router.get('/rides/:id', (req, res, next) => {
+	ridesQueries.get(req.params.id).then((ride) => {
+		res.json(ride);
+	}).catch(next);
+});
+
 export default router;
+ 
