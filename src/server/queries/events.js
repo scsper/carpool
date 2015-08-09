@@ -9,7 +9,6 @@ const create = (params) => {
         ).then((result) => {
             resolve(result.rows[0]);
         }).catch(reject);
-
     });
 };
 
