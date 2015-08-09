@@ -24,4 +24,15 @@ const getEvents = (organizationId) => {
     });
 };
 
-export default {create, getEvents};
+const get = (eventId) => {
+    return new Promise((resolve, reject) => {
+        query(
+            'select * from events where id = ($1)',
+            [eventId]
+        ).then((result) => {
+            resolve(result.rows[0]);
+        }).catch(reject);
+    });
+};
+
+export default {create, getEvents, get};

@@ -8,7 +8,7 @@ describe('event queries', () => {
                 expect(event.id).to.be.a('number');
                 done();
             }).catch(done);
-        });
+        }).catch(done);
     });
 
     it('gets a list of events for an organization', function(done) {
@@ -26,6 +26,17 @@ describe('event queries', () => {
                             }).catch(done);
                         }).catch(done);
                     }).catch(done);
+                }).catch(done);
+            }).catch(done);
+        }).catch(done);
+    });
+
+    it('gets an event', function(done) {
+        organizationsQueries.create({name: 'test'}).then(({id}) => {
+            eventsQueries.create({organizationId: id}).then((createdEvent) => {
+                eventsQueries.get(createdEvent.id).then((event) => {
+                    expect(event.id).to.be.a('number');
+                    done();
                 }).catch(done);
             }).catch(done);
         }).catch(done);
