@@ -9,12 +9,12 @@ describe('queries organizations', () => {
         Promise.all([
             usersQueries.create({name: 'test1', address: 'abc'}),
             usersQueries.create({name: 'test2', address: 'abc'}),
-            create({name: 'test', addres: 'abc'}),
+            create({name: 'test', address: 'abc'}),
             // create other organization and members
             // to make sure we separate the users
             usersQueries.create({name: 'test3', address: 'abc'}),
             usersQueries.create({name: 'test4', address: 'abc'}),
-            create({name: 'other_org', addres: 'cde'})
+            create({name: 'other_org', address: 'cde'})
         ]).then((results) => {
             const [
                 user1Id,
