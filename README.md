@@ -61,3 +61,11 @@ gulp test:browser
 
 * Connect to database: `\c carpool_development`
 * List all databases: `\dt`
+
+##### New to React or Flux? Start here!
+* [React tutorial](https://facebook.github.io/react/docs/tutorial.html)
+* [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+* [Flux introduction](https://facebook.github.io/flux/docs/overview.html)
+* [Flux tutorial](https://facebook.github.io/flux/docs/todo-list.html#content)
+* [React Debugger](https://facebook.github.io/react/blog/2015/08/03/new-react-devtools-beta.html)
+
