@@ -29,4 +29,4 @@ router.get('/rides/:id', (req, res, next) => {
 });
 
 export default router;
- 
+
