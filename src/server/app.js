@@ -18,7 +18,6 @@ app.use(morgan('combined'));
 
 app.get('/', function(req, res, next) {
     organizationsQueries.index().then(function(data) {
-        console.log(data);
         res.render('index', {
             organizations: data
         });
