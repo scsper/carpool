@@ -17,10 +17,13 @@ app.use(express.static(path.resolve(__dirname, '../../public')));
 app.use(morgan('combined'));
 
 app.get('/', function(req, res, next) {
-    organizationsQueries.index().then(function(data) {
-        res.render('index', {
-            organizations: data
-        });
+    organizationsQueries.index().then(function(organizations) {
+        organizationsQueries.members(organizations[0].id).then(function(members) {
+            res.render('index', {
+                organizations: organizations,
+                members: members
+            });
+        }).catch(next);
     }).catch(next);
 });
 
