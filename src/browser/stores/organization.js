@@ -2,8 +2,8 @@ var Fluxxor = require('fluxxor');
 var OrganizationConstants = require('../constants/organization.js');
 
 var OrganizationStore = Fluxxor.createStore({
-    initialize() {
-        this.organizations = window.organizations;
+    initialize(organizations) {
+        this.organizations = organizations;
     },
 
     get() {

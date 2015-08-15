@@ -12,7 +12,7 @@ var RideActions = require('../actions/ride.js');
 
 module.exports = (function() {
     var stores = {
-        OrganizationStore: new OrganizationStore(),
+        OrganizationStore: new OrganizationStore(window.organizations),
         RideStore: new RideStore(),
         EventStore: new EventStore(),
         UserStore: new UserStore(),
