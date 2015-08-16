@@ -33,9 +33,13 @@ Promise.all([
         organizationsQueries.addMember(org1id, user5id),
         organizationsQueries.addMember(org1id, user6id),
 
-        eventsQueries.create(
-            {name: 'Youth Group', address: '299 Bassett Street, San Jose, CA', organizationId: org1id}
-        )
+        eventsQueries.create({
+            name: 'Youth Group',
+            address: '299 Bassett Street, San Jose, CA',
+            organizationId: org1id,
+            date: '2015-01-08 09:00',
+            description: 'A time to worship for our youth.'
+        })
     ]).then(function(results) {
         var params = {
             eventId: results[6].id,
