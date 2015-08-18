@@ -28,7 +28,7 @@ carpool
 4. Add `. ~/.nvm/nvm.sh` to your ~/.profile (load nvm when you open a shell)
 5. Add `nvm use 0.12.0` to your ~/.profile (load the correct version of Node automatically when you open a shell)
 
-#### Setting up postgres
+### Setting up postgres
 1. `brew install postgres`
 2. `postgres -D /usr/local/var/postgres`
 3. In a new shell, start psql `psql --username=<USERNAME> -d template1` // use unix username
@@ -36,7 +36,7 @@ carpool
 5. Exit psql (Ctrl-D on Mac).  If you do not exit psql, you will get an error about multiple users accessing the database when you try to run the setup scripts.
 
 
-###### Database commands
+#### Database commands
 ```
 gulp db:config                           | Generate database config from template
 gulp g:migration --name=<MIGRATION NAME> | Create a migration: it will create two `.sql` files (up and down) inside `./migrations` directory
@@ -48,7 +48,12 @@ gulp db:reset                            | Reset database (drop and setup)
 gulp db:test:prepare                     | Prepare test database
 ```
 
-###### Tests
+#### Using psql
+
+* Connect to database: `\c carpool_development`
+* List all databases: `\dt`
+
+### Tests
 ```
 gulp db:test:prepare
 gulp test
@@ -57,12 +62,7 @@ gulp test:integration
 gulp test:browser
 ```
 
-###### Using psql
-
-* Connect to database: `\c carpool_development`
-* List all databases: `\dt`
-
-##### New to React or Flux? Start here!
+### New to React or Flux? Start here!
 * [React tutorial](https://facebook.github.io/react/docs/tutorial.html)
 * [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
 * [Flux introduction](https://facebook.github.io/flux/docs/overview.html)
