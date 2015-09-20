@@ -4,8 +4,8 @@ var EventConstants = require('../constants/event.js');
 import EventRecord from '../records/event.js';
 
 var EventStore = Fluxxor.createStore({
-    initialize() {
-        this.events = [];
+    initialize(eventsData) {
+        this.events = this._getInitialEvents(eventsData);
         this.selectedEvent = null;
 
         this.bindActions(
@@ -36,10 +36,14 @@ var EventStore = Fluxxor.createStore({
     /**
      * Receives a list of events from the backend
      */
-    _getInitialEvents(payload) {
-        payload.events.forEach(eventData => {
-            this.events.push(new EventRecord(eventData));
+    _getInitialEvents(eventsData) {
+        var events = [];
+
+        eventsData.forEach(eventData => {
+            events.push(new EventRecord(eventData));
         }, this);
+
+        return events;
     }
 });
 

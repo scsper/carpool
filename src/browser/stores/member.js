@@ -3,13 +3,11 @@ var EventConstants = require('../constants/event.js');
 var RideConstants = require('../constants/ride.js');
 var remove = require('lodash/array/remove');
 
-var members = require('../../../test/fixtures/members.js');
-
 /**
  * This store contains all the members for a given organization.
  */
 var MemberStore = Fluxxor.createStore({
-    initialize() {
+    initialize(members) {
         // key: Member ID
         // value: Member Record
         this.members = members;

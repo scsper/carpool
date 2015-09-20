@@ -5,6 +5,7 @@ var RideConstants = require('../constants/ride.js');
 
 var RideStore = Fluxxor.createStore({
     initialize() {
+        this.eventToRidesMap = {};
         this.rides = {};
 
         this.bindActions(
@@ -13,6 +14,8 @@ var RideStore = Fluxxor.createStore({
             RideConstants.REMOVE_MEMBERS_FROM_RIDE, this._removeMembersFromRide
         );
     },
+
+
 
     getById(id) {
         return this.rides[id];

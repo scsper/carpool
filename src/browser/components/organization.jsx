@@ -12,6 +12,7 @@ Organization = React.createClass({
                     events={this.props.events}
                     selectedEvent={this.props.selectedEvent}
                     userType={this.props.userType}
+                    organizationId={this.props.organizationId}
                 />
 
                 <EventView

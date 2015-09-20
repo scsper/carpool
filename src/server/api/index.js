@@ -1,6 +1,7 @@
 import {Router} from 'express';
 import organizationsQueries from '../queries/organizations';
 import ridesQueries from '../queries/rides';
+import eventsQueries from '../queries/events';
 
 const router = Router();
 
@@ -22,7 +23,13 @@ router.get('/organizations/:organizationId/events', (req, res, next) => {
     }).catch(next);
 });
 
-router.get('/rides/:id', (req, res, next) => {
+router.get('/organizations/:organizationId/events/:eventId/rides', (req, res, next) => {
+    eventsQueries.getRides(req.params.eventId).then((rides) => {
+        res.json(rides);
+    });
+});
+
+router.get('/organizations/:organizationId/events/:eventId/rides/:id', (req, res, next) => {
 	ridesQueries.get(req.params.id).then((ride) => {
 		res.json(ride);
 	}).catch(next);

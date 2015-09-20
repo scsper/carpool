@@ -1,20 +1,25 @@
-var EventConstants = require('../constants/event.js');
+import EventConstants from '../constants/event';
+import EventService from '../services/events';
+
 
 var EventActions = {
-    openEvent(payload) {
+    openEvent({event, organizationId}) {
         let mWNR; // membersWhoNeedRides
 
-        if (payload.event.id === 1) {
+        if (event.id === 1) {
             mWNR = require('../../../test/fixtures/members_who_need_rides.js');
-        } else if (payload.event.id === 2) {
+        } else if (event.id === 2) {
             mWNR = require('../../../test/fixtures/members_who_need_rides_2.js');
         }
 
-        this.dispatch(EventConstants.OPEN_EVENT, {
-            event: payload.event,
-            rides: require('../../../test/fixtures/rides.js'),
-            membersWhoNeedRides: mWNR
-        });
+        EventService.getRidesForEvent(organizationId, event.id).then((payload) => {
+            this.dispatch(EventConstants.OPEN_EVENT, {
+                event: event,
+                rides: payload.rides,
+                membersWhoNeedRides: mWNR
+            });
+        }).catch(error);
+
     },
 
     getInitialEvents(payload) {

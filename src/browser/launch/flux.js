@@ -14,9 +14,9 @@ module.exports = (function() {
     var stores = {
         OrganizationStore: new OrganizationStore(window.organizations),
         RideStore: new RideStore(),
-        EventStore: new EventStore(),
+        EventStore: new EventStore(window.events),
         UserStore: new UserStore(),
-        MemberStore: new MemberStore()
+        MemberStore: new MemberStore(window.members)
     };
 
     var actions = {

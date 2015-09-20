@@ -47,6 +47,7 @@ App = React.createClass({
     },
 
     render() {
+        // TODO remove the hardcoded org id
         return (
             <div>
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />
@@ -60,6 +61,7 @@ App = React.createClass({
                     userType={this.state.user.type}
                     members={this.state.members}
                     memberList={this.state.memberList}
+                    organizationId={this.state.orgs[0].id}
                 />
             </div>
         );
