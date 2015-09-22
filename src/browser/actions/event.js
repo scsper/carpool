@@ -12,14 +12,16 @@ var EventActions = {
             mWNR = require('../../../test/fixtures/members_who_need_rides_2.js');
         }
 
-        EventService.getRidesForEvent(organizationId, event.id).then((payload) => {
+        EventService.getRidesForEvent(organizationId, event.id).then(rides => {
+            debugger;
             this.dispatch(EventConstants.OPEN_EVENT, {
                 event: event,
-                rides: payload.rides,
+                rides: rides,
                 membersWhoNeedRides: mWNR
             });
-        }).catch(error);
-
+        }).catch(error => {
+            throw new Error(error);
+        });
     },
 
     getInitialEvents(payload) {

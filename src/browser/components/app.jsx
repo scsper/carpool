@@ -9,7 +9,7 @@ var EventForm = require('./event_form.jsx');
 var App;
 
 App = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'RideStore', 'EventStore', 'UserStore', 'MemberStore')],
+    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'EventStore', 'UserStore', 'MemberStore')],
 
     getInitialState() {
         // for some reason, I have to return an empty object (because of fluxxor)
@@ -18,21 +18,19 @@ App = React.createClass({
 
     getStateFromFlux() {
         let flux = this.getFlux();
-        let rides = [];
-        let events =  flux.store('EventStore').get();
+        let eventStore = flux.store('EventStore');
+        let events =  eventStore.getEvents();
         let orgs = flux.store('OrganizationStore').get();
         let user = flux.store('UserStore').get();
-        let rideStore = flux.store('RideStore');
         let members = flux.store('MemberStore').get();
         let selectedEvent = flux.store('EventStore').getSelectedEvent();
         let memberList = [];
+        let rides;
 
         if (selectedEvent) {
             memberList = flux.store('MemberStore').getMembersWhoNeedRides(selectedEvent.id);
 
-            selectedEvent.rideIds.forEach(function(rideId) {
-                rides.push(rideStore.getById(rideId));
-            });
+            rides = eventStore.getRidesForEvent(selectedEvent.id);
         }
 
         return {
@@ -48,6 +46,7 @@ App = React.createClass({
 
     render() {
         // TODO remove the hardcoded org id
+        console.log(this.state.rides);
         return (
             <div>
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />

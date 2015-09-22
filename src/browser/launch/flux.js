@@ -1,7 +1,6 @@
 var Fluxxor = require('fluxxor');
 
 var OrganizationStore = require('../stores/organization.js');
-var RideStore = require('../stores/ride.js');
 var EventStore = require('../stores/event.js');
 var MemberStore = require('../stores/member.js');
 var UserStore = require('../stores/user.js');
@@ -13,7 +12,6 @@ var RideActions = require('../actions/ride.js');
 module.exports = (function() {
     var stores = {
         OrganizationStore: new OrganizationStore(window.organizations),
-        RideStore: new RideStore(),
         EventStore: new EventStore(window.events),
         UserStore: new UserStore(),
         MemberStore: new MemberStore(window.members)
