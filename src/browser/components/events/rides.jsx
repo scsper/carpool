@@ -11,6 +11,7 @@ Rides = React.createClass({
     },
 
     getPassengersForRide(ride) {
+        debugger;
         let passengers = [];
 
         ride.passengers.forEach(passengerId => {
@@ -21,6 +22,7 @@ Rides = React.createClass({
     },
 
     render() {
+        debugger;
         let rideComponents = [];
         let rides = this.props.rides;
 

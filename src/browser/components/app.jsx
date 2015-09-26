@@ -9,7 +9,7 @@ var EventForm = require('./event_form.jsx');
 var App;
 
 App = React.createClass({
-    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'EventStore', 'UserStore', 'MemberStore')],
+    mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'EventStore', 'UserStore')],
 
     getInitialState() {
         // for some reason, I have to return an empty object (because of fluxxor)
@@ -22,13 +22,13 @@ App = React.createClass({
         let events =  eventStore.getEvents();
         let orgs = flux.store('OrganizationStore').get();
         let user = flux.store('UserStore').get();
-        let members = flux.store('MemberStore').get();
-        let selectedEvent = flux.store('EventStore').getSelectedEvent();
+        let members = eventStore.getMembers();
+        let selectedEvent = eventStore.getSelectedEvent();
         let memberList = [];
         let rides;
 
         if (selectedEvent) {
-            memberList = flux.store('MemberStore').getMembersWhoNeedRides(selectedEvent.id);
+            memberList = eventStore.getMembersWhoNeedRides(selectedEvent.id);
 
             rides = eventStore.getRidesForEvent(selectedEvent.id);
         }

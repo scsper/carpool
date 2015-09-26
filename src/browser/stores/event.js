@@ -1,18 +1,22 @@
 import Fluxxor from 'fluxxor';
 import EventCollection from './collections/event';
 import RideCollection from './collections/ride';
+import MemberCollection from './collections/member';
 
 import EventConstants from '../constants/event';
 import RideConstants from '../constants/ride.js';
 import EventRecord from '../records/event';
 
 var EventStore = Fluxxor.createStore({
-    initialize(eventsData) {
+    initialize({events, members}) {
         this.eventCollection = new EventCollection();
         this.rideCollection = new RideCollection();
+        this.memberCollection = new MemberCollection();
         this.selectedEvent = null; // This should probably change to be ID-based, not object-based.
 
-        this.eventCollection.addEvents(eventsData);
+        debugger;
+        this.eventCollection.addEvents(events);
+        this.memberCollection.setMembers(members);
 
         this.bindActions(
             EventConstants.OPEN_EVENT, this._handleOpenEvent,
@@ -32,17 +36,20 @@ var EventStore = Fluxxor.createStore({
 
     _addMembersToRide(payload) {
         this.rideCollection.addMembersToRide(payload.rideId, payload.memberIds);
+        this.memberCollection.remove(payload.eventId, payload.memberIds);
         this.emit('change');
     },
 
     _removeMembersFromRide(payload) {
         this.rideCollection.removeMembersFromRide(payload.rideId, payload.memberIds);
+        this.memberCollection.addMembersToEvent(payload.eventId, payload.memberIds)
         this.emit('change');
     },
 
-    _handleOpenEvent({event, rides}) {
+    _handleOpenEvent({event, rides, membersWhoNeedRides}) {
         this.selectedEvent = event;
         this.rideCollection.addRides(rides);
+        this.memberCollection.insert(event.id, membersWhoNeedRides);
 
         rides.forEach(ride => {
             this.eventCollection.addRideToEvent(event.id, ride);
@@ -68,6 +75,14 @@ var EventStore = Fluxxor.createStore({
 
     getSelectedEvent() {
         return this.selectedEvent;
+    },
+
+    getMembers() {
+        return this.memberCollection.get();
+    },
+
+    getMembersWhoNeedRides(eventId) {
+        return this.memberCollection.getMembersWhoNeedRides(eventId);
     },
 
     _getInitialEvents(rawEvents) {
