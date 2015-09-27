@@ -2,6 +2,7 @@ import {Router} from 'express';
 import organizationsQueries from '../queries/organizations';
 import ridesQueries from '../queries/rides';
 import eventsQueries from '../queries/events';
+import ridesPassengerQueries from '../queries/rides_passengers';
 
 const router = Router();
 
@@ -25,7 +26,33 @@ router.get('/organizations/:organizationId/events', (req, res, next) => {
 
 router.get('/organizations/:organizationId/events/:eventId/rides', (req, res, next) => {
     eventsQueries.getRides(req.params.eventId).then((rides) => {
-        res.json(rides);
+        let ridePromises = [];
+
+        rides.forEach(ride => {
+            ridePromises.push(ridesPassengerQueries.getPassengers(ride.id))
+        });
+
+        console.log(rides);
+
+        /* TODO: this is really dirty.  fix it.  */
+        Promise.all(ridePromises).then(results => {
+            var ridesWithPassengers = [];
+            console.log(results);
+
+            rides.forEach((ride, index) => {
+                let rideWithPassenger = JSON.parse(JSON.stringify(ride));
+                rideWithPassenger.passengers = results[index].map(passenger => {
+                    return passenger.userid;
+                });
+                console.log(rideWithPassenger);
+                ridesWithPassengers.push(rideWithPassenger);
+            });
+
+            console.log(ridesWithPassengers);
+            res.json(ridesWithPassengers);
+        }).catch(error => {
+            throw new Error('Failed to get all of the rides.');
+        });
     });
 });
 

@@ -17,9 +17,10 @@ class RideCollection {
     }
 
     addRides(rawRides) {
-        for (let rideId in rawRides) {
-            if (rawRides.hasOwnProperty(rideId)) {
-                this.rides[rideId] = new RideRecord(rawRides[rideId]);
+        for (let key in rawRides) {
+            if (rawRides.hasOwnProperty(key)) {
+                let rawRide = rawRides[key];
+                this.rides[rawRide.id] = new RideRecord(rawRide);
             }
         }
     }
@@ -33,7 +34,7 @@ class RideCollection {
         });
     }
 
-    removeMembersFromRide(rideId, memberId) {
+    removeMembersFromRide(rideId, memberIds) {
         var ride = this.rides[rideId];
 
         memberIds.forEach(memberId => {

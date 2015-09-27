@@ -1,14 +1,13 @@
 export default class Ride {
     constructor(payload) {
         this.id = payload.id;
-        this.eventId = payload.eventId;
-        this.driver = payload.driver;
-        this.car = payload.car;
-        this.leaveTime = payload.leaveTime;
+        this.eventId = payload.eventid;
+        this.driver = payload.driverid;
+        this.leaveTime = payload.arrivaltime;
         this.leaveDate = payload.leaveDate;
-        this.returnTime = payload.returnTime;
+        this.returnTime = payload.departuretime;
         this.returnDate = payload.returnDate;
-        this.totalSpots = payload.totalSpots; // total spots the driver has in the car
+        this.totalSpots = payload.seats; // total spots the driver has in the car
         this.passengers = payload.passengers; // [] of the passenger ids
     }
 }

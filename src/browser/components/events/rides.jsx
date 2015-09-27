@@ -11,9 +11,9 @@ Rides = React.createClass({
     },
 
     getPassengersForRide(ride) {
-        debugger;
         let passengers = [];
 
+        /* TODO: This logic should be handled in the store, not the component */
         ride.passengers.forEach(passengerId => {
             passengers.push(this.props.members[passengerId]);
         }, this);
@@ -22,7 +22,6 @@ Rides = React.createClass({
     },
 
     render() {
-        debugger;
         let rideComponents = [];
         let rides = this.props.rides;
 

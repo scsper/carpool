@@ -27,12 +27,12 @@ class EventCollection {
         });
     }
 
-    addRideToEvent(eventId, ride) {
+    addRideToEvent(rideId, eventId) {
         if (!this.eventsToRidesMap[eventId]) {
             this.eventsToRidesMap[eventId] = [];
         }
 
-        this.eventsToRidesMap[eventId].push(ride);
+        this.eventsToRidesMap[eventId].push(rideId);
     }
 };
 

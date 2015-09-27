@@ -14,7 +14,6 @@ var EventStore = Fluxxor.createStore({
         this.memberCollection = new MemberCollection();
         this.selectedEvent = null; // This should probably change to be ID-based, not object-based.
 
-        debugger;
         this.eventCollection.addEvents(events);
         this.memberCollection.setMembers(members);
 
@@ -27,11 +26,17 @@ var EventStore = Fluxxor.createStore({
     },
 
     getRide(id) {
-        return this.rides[id];
+        return this.rideCollection.get(id);
     },
 
     getRidesForEvent(eventId) {
-        return this.eventCollection.getRidesForEvent(eventId);
+        let rideIds = this.eventCollection.getRidesForEvent(eventId);
+
+        let rides = rideIds.map(rideId => {
+            return this.rideCollection.get(rideId);
+        });
+
+        return rides;
     },
 
     _addMembersToRide(payload) {
@@ -52,7 +57,8 @@ var EventStore = Fluxxor.createStore({
         this.memberCollection.insert(event.id, membersWhoNeedRides);
 
         rides.forEach(ride => {
-            this.eventCollection.addRideToEvent(event.id, ride);
+            debugger;
+            this.eventCollection.addRideToEvent(ride.id, event.id);
         });
 
         this.emit('change');
