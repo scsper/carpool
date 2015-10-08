@@ -1,4 +1,4 @@
-import EventRecord from '../../records/event';
+import EventRecord from './records/event';
 
 class EventCollection {
     constructor() {
