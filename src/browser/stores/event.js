@@ -5,7 +5,6 @@ import MemberCollection from './collections/member';
 
 import EventConstants from '../constants/event';
 import RideConstants from '../constants/ride.js';
-import EventRecord from '../records/event';
 
 var EventStore = Fluxxor.createStore({
     initialize({events, members}) {
