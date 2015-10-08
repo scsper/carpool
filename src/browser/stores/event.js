@@ -57,7 +57,6 @@ var EventStore = Fluxxor.createStore({
         this.memberCollection.insert(event.id, membersWhoNeedRides);
 
         rides.forEach(ride => {
-            debugger;
             this.eventCollection.addRideToEvent(ride.id, event.id);
         });
 

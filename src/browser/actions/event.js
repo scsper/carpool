@@ -13,7 +13,6 @@ var EventActions = {
         }
 
         EventService.getRidesForEvent(organizationId, event.id).then(rides => {
-            debugger;
             this.dispatch(EventConstants.OPEN_EVENT, {
                 event: event,
                 rides: rides,

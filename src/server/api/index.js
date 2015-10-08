@@ -32,23 +32,18 @@ router.get('/organizations/:organizationId/events/:eventId/rides', (req, res, ne
             ridePromises.push(ridesPassengerQueries.getPassengers(ride.id))
         });
 
-        console.log(rides);
-
         /* TODO: this is really dirty.  fix it.  */
         Promise.all(ridePromises).then(results => {
             var ridesWithPassengers = [];
-            console.log(results);
 
             rides.forEach((ride, index) => {
                 let rideWithPassenger = JSON.parse(JSON.stringify(ride));
                 rideWithPassenger.passengers = results[index].map(passenger => {
                     return passenger.userid;
                 });
-                console.log(rideWithPassenger);
                 ridesWithPassengers.push(rideWithPassenger);
             });
 
-            console.log(ridesWithPassengers);
             res.json(ridesWithPassengers);
         }).catch(error => {
             throw new Error('Failed to get all of the rides.');
