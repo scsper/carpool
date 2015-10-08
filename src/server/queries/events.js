@@ -3,9 +3,9 @@ import {query} from '../db';
 const create = (params) => {
     return new Promise((resolve, reject) => {
         query(
-            `insert into events (name, address, organizationId)
-            values ($1, $2, $3) returning id`,
-            [params.name, params.address, params.organizationId]
+            `insert into events (name, address, organizationId, date, description)
+            values ($1, $2, $3, $4, $5) returning id`,
+            [params.name, params.address, params.organizationId, params.date, params.description]
         ).then((result) => {
             resolve(result.rows[0]);
         }).catch(reject);
@@ -23,6 +23,19 @@ const getEvents = (organizationId) => {
     });
 };
 
+const getRides = (eventId) => {
+    return new Promise((resolve, reject) => {
+        query(
+            `select r.* from rides r
+            join events e on e.id = r.eventId
+            where r.eventId = $1`,
+            [eventId]
+        ).then((result) => {
+            resolve(result.rows);
+        }).catch(reject);
+    });
+};
+
 const get = (eventId) => {
     return new Promise((resolve, reject) => {
         query(
@@ -34,4 +47,4 @@ const get = (eventId) => {
     });
 };
 
-export default {create, getEvents, get};
+export default {create, getEvents, getRides, get};

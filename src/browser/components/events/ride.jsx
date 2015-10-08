@@ -47,6 +47,7 @@ Ride = React.createClass({
     },
 
     render() {
+        debugger;
         let ride = this.props.ride;
         let availableSpots = this.getAvailableSpots();
         let passengerComponent = this.state.isActive ? <Passengers

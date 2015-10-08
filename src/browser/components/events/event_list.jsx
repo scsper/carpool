@@ -7,7 +7,8 @@ EventList = React.createClass({
     propTypes: {
         userType: React.PropTypes.string.isRequired,
         selectedEvent: React.PropTypes.object,
-        events: React.PropTypes.array.isRequired
+        events: React.PropTypes.array.isRequired,
+        organizationId: React.PropTypes.number.isRequired
     },
 
     render() {
@@ -28,6 +29,7 @@ EventList = React.createClass({
                 event={event}
                 isSelected={isSelected}
                 userType={this.props.userType}
+                organizationId={this.props.organizationId}
             />);
         }, this);
 

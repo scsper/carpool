@@ -10,7 +10,6 @@ describe('Event Store', () => {
             date: '7/14/2015',
             time: '7:00pm',
             description: 'Come worship with the college group.',
-            rideIds: [1, 2, 3],
             id: 1
         });
     });
@@ -49,7 +48,6 @@ describe('Event Store', () => {
                 date: '7/14/2015',
                 time: '7:00pm',
                 description: 'Come worship with the college group.',
-                rideIds: [1, 2, 3],
                 id: 1
             }]
         };

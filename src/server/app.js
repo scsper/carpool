@@ -8,6 +8,7 @@ var path = require('path');
 var api = require('./api');
 var morgan = require('morgan');
 var organizationsQueries = require('./queries/organizations.js');
+var eventsQueries = require('./queries/events.js');
 
 app.set('views', 'src/server/views/');
 app.set('view engine', 'jade');
@@ -18,9 +19,18 @@ app.use(morgan('combined'));
 
 app.get('/', function(req, res, next) {
     organizationsQueries.index().then(function(organizations) {
-        organizationsQueries.members(organizations[0].id).then(function(members) {
+        var organizationId = organizations[0].id;
+
+        Promise.all([
+            organizationsQueries.members(organizationId),
+            eventsQueries.getEvents(organizationId),
+        ]).then(function(results) {
+            var members = results[0];
+            var events = results[1];
+
             res.render('index', {
                 organizations: organizations,
+                events: events,
                 members: members
             });
         }).catch(next);

@@ -5,6 +5,7 @@ var organizationsQueries = require('../src/server/queries/organizations');
 var usersQueries = require('../src/server/queries/users');
 var eventsQueries = require('../src/server/queries/events');
 var ridesQueries = require('../src/server/queries/rides');
+var ridesPassengersQueries = require('../src/server/queries/rides_passengers');
 
 Promise.all([
     organizationsQueries.create({name: 'C3 Silicon Valley', address: '299 Bassett Street, San Jose, CA'}),
@@ -51,8 +52,21 @@ Promise.all([
         };
 
         ridesQueries.create(params).then(function(results) {
-            console.log('Successfully populated the database');
-            process.exit(0);
+            console.log(results);
+            var rideId = results.id;
+            console.log(rideId);
+
+            Promise.all([
+                ridesPassengersQueries.insert(user2id, rideId),
+                ridesPassengersQueries.insert(user3id, rideId),
+                ridesPassengersQueries.insert(user4id, rideId)
+            ]).then(function() {
+                console.log('Successfully populated the database');
+                process.exit(0);
+            }).catch(function(error) {
+                console.error('Error:', error);
+                process.exit(1);
+            });
         });
     });
 }).catch(function(err) {

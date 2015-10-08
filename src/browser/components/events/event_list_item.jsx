@@ -10,12 +10,14 @@ Event = React.createClass({
     propTypes: {
         event: React.PropTypes.object.isRequired,
         isSelected: React.PropTypes.bool.isRequired,
-        userType: React.PropTypes.string.isRequired
+        userType: React.PropTypes.string.isRequired,
+        organizationId: React.PropTypes.number.isRequired
     },
 
     openEvent: function() {
         this.getFlux().actions.Event.openEvent({
-            event: this.props.event
+            event: this.props.event,
+            organizationId: this.props.organizationId
         });
     },
 
