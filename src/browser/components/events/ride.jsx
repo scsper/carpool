@@ -61,7 +61,7 @@ Ride = React.createClass({
         return (
             <li onClick={this.toggleActive} className='ride-list-item'>
                 <img className='ride-image' src="assets/person.jpg"/>
-                <h2 className='ride-driver'>{ride.driver}</h2>
+                <h2 className='ride-driver'>{ride.driverName}</h2>
                 <h3 className='ride-spots'>{availableSpots} available</h3>
                 <p className='ride-date'>Leaving at {ride.leaveTime} on {ride.leaveDate}</p>
                 <p className='ride-date'>Returning at {ride.returnTime} on {ride.returnDate}</p>

@@ -25,14 +25,17 @@ var EventStore = Fluxxor.createStore({
     },
 
     getRide(id) {
-        return this.rideCollection.get(id);
+        let ride = this.rideCollection.get(id);
+        ride.driverName = this.memberCollection.get(ride.driverId).name;
+
+        return ride;
     },
 
     getRidesForEvent(eventId) {
         let rideIds = this.eventCollection.getRidesForEvent(eventId);
 
         let rides = rideIds.map(rideId => {
-            return this.rideCollection.get(rideId);
+            return this.getRide(rideId);
         });
 
         return rides;
@@ -82,7 +85,7 @@ var EventStore = Fluxxor.createStore({
     },
 
     getMembers() {
-        return this.memberCollection.get();
+        return this.memberCollection.getAll();
     },
 
     getMembersWhoNeedRides(eventId) {

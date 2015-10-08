@@ -6,7 +6,7 @@ var OrganizationStore = Fluxxor.createStore({
         this.organizations = organizations;
     },
 
-    get() {
+    getAll() {
         return this.organizations;
     }
 });
