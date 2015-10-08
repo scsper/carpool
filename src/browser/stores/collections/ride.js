@@ -2,6 +2,7 @@ import RideRecord from './records/ride.js';
 import EventConstants from '../../constants/event.js';
 import RideConstants from '../../constants/ride.js';
 
+
 class RideCollection {
     constructor() {
         // key: rideId

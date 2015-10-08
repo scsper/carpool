@@ -28,7 +28,7 @@ Rides = React.createClass({
         if (rides.length) {
             rides.forEach(ride => {
                 rideComponents.push(<Ride
-                    key={ride.driver}
+                    key={ride.driverId}
                     ride={ride}
                     passengers={this.getPassengersForRide(ride)}
                     memberList={this.props.memberList}

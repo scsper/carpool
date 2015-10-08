@@ -37,8 +37,12 @@ class MemberCollection {
         });
     }
 
-    get() {
+    getAll() {
         return this.members;
+    }
+
+    get(id){
+        return this.members[id];
     }
 
     getMembersWhoNeedRides(eventId) {
