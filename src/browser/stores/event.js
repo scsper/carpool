@@ -42,13 +42,13 @@ var EventStore = Fluxxor.createStore({
     },
 
     _addMembersToRide(payload) {
-        this.rideCollection.addMembersToRide(payload.rideId, payload.memberIds);
+        this.rideCollection.addMemberIdsToRide(payload.rideId, payload.memberIds);
         this.memberCollection.remove(payload.eventId, payload.memberIds);
         this.emit('change');
     },
 
     _removeMembersFromRide(payload) {
-        this.rideCollection.removeMembersFromRide(payload.rideId, payload.memberIds);
+        this.rideCollection.removeMemberIdsFromRide(payload.rideId, payload.memberIds);
         this.memberCollection.addMembersToEvent(payload.eventId, payload.memberIds)
         this.emit('change');
     },

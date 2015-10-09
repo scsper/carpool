@@ -36,7 +36,7 @@ class RideCollection {
      * @param {String} rideId The id of the ride that will receive the passengers.
      * @param {String} membersIds The ids of the members that will be added as passengers.
      */
-    addMembersToRide(rideId, memberIds) {
+    addMemberIdsToRide(rideId, memberIds) {
         var ride = this.rides[rideId];
 
         memberIds.forEach(memberId => {
@@ -53,7 +53,7 @@ class RideCollection {
      * @param {String} rideId The id of the ride that will lose the passengers.
      * @param {String} membersIds The ids of the members that will be removed as passengers.
      */
-    removeMembersFromRide(rideId, memberIds) {
+    removeMemberIdsFromRide(rideId, memberIds) {
         var ride = this.rides[rideId];
 
         memberIds.forEach(memberId => {
