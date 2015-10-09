@@ -17,13 +17,13 @@ describe('stores/collections/event', function() {
         });
     });
 
-    describe('#getRidesForEvent', function() {
+    describe('#getRideIdsForEvent', function() {
         it('returns the ride ids for a given event id', function() {
             let eventId = 1;
             let rideIds = [1, 2, 3];
 
             this.collection.eventsToRidesMap[eventId] = rideIds;
-            expect(this.collection.getRidesForEvent(eventId)).to.deep.equal(rideIds);
+            expect(this.collection.getRideIdsForEvent(eventId)).to.deep.equal(rideIds);
         });
     });
 
@@ -64,13 +64,13 @@ describe('stores/collections/event', function() {
         });
     });
 
-    describe('#addRideToEvent', function() {
+    describe('#addRideIdToEvent', function() {
         it('associates a ride id with the given event id', function() {
             let rideId = 4;
             let eventId = 1;
             this.collection.eventsToRidesMap[eventId] = [1, 2, 3];
 
-            this.collection.addRideToEvent(rideId, eventId);
+            this.collection.addRideIdToEvent(rideId, eventId);
 
             expect(this.collection.eventsToRidesMap[eventId]).to.deep.equal([1, 2, 3, 4]);
         });
@@ -79,7 +79,7 @@ describe('stores/collections/event', function() {
             let rideId = 1;
             let eventId = 1;
 
-            this.collection.addRideToEvent(rideId, eventId);
+            this.collection.addRideIdToEvent(rideId, eventId);
 
             expect(this.collection.eventsToRidesMap[eventId]).to.deep.equal([1]);
         });

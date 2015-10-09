@@ -21,12 +21,11 @@ class EventCollection {
 
     /**
      * Returns the ride ids for a given event id.
-     * TODO: change this to getRideIdsForEvent
      *
      * @param {String} eventId The event id that we want the ride ids for
      * @return {Array} A list of ride ids.
      */
-    getRidesForEvent(eventId) {
+    getRideIdsForEvent(eventId) {
         return this.eventsToRidesMap[eventId];
     }
 
@@ -43,12 +42,11 @@ class EventCollection {
 
     /**
      * Associate a ride id with the given event id.
-     * TODO: Change to addRideIdToEvent
      *
      * @param {String} rideId The ride id to add
      * @param {String} eventId The event id to associate the ride id with
      */
-    addRideToEvent(rideId, eventId) {
+    addRideIdToEvent(rideId, eventId) {
         if (!this.eventsToRidesMap[eventId]) {
             this.eventsToRidesMap[eventId] = [];
         }

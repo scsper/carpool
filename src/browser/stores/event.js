@@ -32,7 +32,7 @@ var EventStore = Fluxxor.createStore({
     },
 
     getRidesForEvent(eventId) {
-        let rideIds = this.eventCollection.getRidesForEvent(eventId);
+        let rideIds = this.eventCollection.getRideIdsForEvent(eventId);
 
         let rides = rideIds.map(rideId => {
             return this.getRide(rideId);
@@ -59,7 +59,7 @@ var EventStore = Fluxxor.createStore({
         this.memberCollection.insert(event.id, membersWhoNeedRides);
 
         rides.forEach(ride => {
-            this.eventCollection.addRideToEvent(ride.id, event.id);
+            this.eventCollection.addRideIdToEvent(ride.id, event.id);
         });
 
         this.emit('change');
