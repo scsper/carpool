@@ -1,6 +1,6 @@
 import EventCollection from '../event';
 
-describe.only('stores/collections/event', function() {
+describe('stores/collections/event', function() {
     beforeEach(function() {
         this.collection = new EventCollection();
     });
