@@ -1,13 +1,13 @@
 var OrganizationStore = require('../organization.js');
 
-describe('Organization Store', () => {
+describe('Organization Store', function() {
     beforeEach(function() {
-        this.store = new OrganizationStore();
-        this.store.organizations = require('../../../../test/fixtures/organization.js');
+        let organizations = require('../../../../test/fixtures/organization.js');
+        this.store = new OrganizationStore(organizations);
     });
 
     it('returns a list of organizations', function() {
-        let orgs = this.store.get();
+        let orgs = this.store.getAll();
 
         expect(orgs[0].name).to.equal('hello');
         expect(orgs[0].id).to.equal(1);
