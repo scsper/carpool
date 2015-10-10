@@ -28,6 +28,8 @@ var EventStore = Fluxxor.createStore({
      */
     getRide(id) {
         let ride = this.rideCollection.get(id);
+
+        // TODO: we should change this to contain the entire driver, not just the name
         ride.driverName = this.memberCollection.get(ride.driverId).name;
 
         return ride;
@@ -144,6 +146,7 @@ var EventStore = Fluxxor.createStore({
      * @param {Array} membersWhoNeedRides A list of raw members who need rides for this event.
      */
     _handleOpenEvent({event, rides, membersWhoNeedRides}) {
+        // change this to ID-based
         this.selectedEvent = event;
         this.rideCollection.addRides(rides);
         this.memberCollection.insert(event.id, membersWhoNeedRides);
@@ -152,15 +155,6 @@ var EventStore = Fluxxor.createStore({
             this.eventCollection.addRideIdToEvent(ride.id, event.id);
         });
 
-        this.emit('change');
-    },
-
-    /**
-     * Sets the selected event.
-     * This should probably change to be ID-based, not object-based.
-     */
-    _selectEvent(payload) {
-        this.selectedEvent = payload.event;
         this.emit('change');
     }
 });
