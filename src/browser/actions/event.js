@@ -21,12 +21,6 @@ var EventActions = {
         }).catch(error => {
             throw new Error(error);
         });
-    },
-
-    getInitialEvents(payload) {
-        this.dispatch(EventConstants.GET_INITIAL_EVENTS, {
-            events: require('../../../test/fixtures/events.js')
-        });
     }
 };
 

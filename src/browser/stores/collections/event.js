@@ -14,6 +14,8 @@ class EventCollection {
 
     /**
      * Returns the list of all events.
+     *
+     * @return {Array} A list of EventRecords.
      */
     get() {
         return this.events;

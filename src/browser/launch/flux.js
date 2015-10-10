@@ -11,10 +11,7 @@ var RideActions = require('../actions/ride.js');
 module.exports = (function() {
     var stores = {
         OrganizationStore: new OrganizationStore(window.organizations),
-        EventStore: new EventStore({
-            events: window.events,
-            members: window.members
-        }),
+        EventStore: new EventStore(),
         UserStore: new UserStore()
     };
 
@@ -23,6 +20,9 @@ module.exports = (function() {
         Event: EventActions,
         Ride: RideActions
     };
+
+    stores.EventStore.addEvents(window.events);
+    stores.EventStore.addMembers(window.members);
 
     var flux = new Fluxxor.Flux(stores, actions);
 
