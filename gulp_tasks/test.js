@@ -21,7 +21,10 @@ gulp.task('test:unit', (cb) => {
         '!**/_{unit,integration}_/**/*_test.js{,x}',
     ])
         .pipe(istanbul({
-            instrumenter: Instrumenter
+            instrumenter: Instrumenter,
+            // istanbul does not include files that are not required in the coverage report.
+            // this will include them by default.
+            includeUntested: true
         }))
         .pipe(istanbul.hookRequire())
         .on('finish', function() {
