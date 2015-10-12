@@ -1,4 +1,5 @@
 import remove from 'lodash/array/remove';
+import MemberRecord from './records/member';
 
 class MemberCollection {
     constructor() {
@@ -51,7 +52,7 @@ class MemberCollection {
 
     setMembers(rawMembers) {
         rawMembers.forEach(rawMember => {
-            this.members[rawMember.id] = rawMember;
+            this.members[rawMember.id] = new MemberRecord(rawMember);
         });
     }
 }
