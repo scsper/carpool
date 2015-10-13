@@ -1,9 +1,9 @@
-import ridesQueries from '../rides';
+import ridesPassengersQueries from '../rides_passengers.js';
 import organizationsQueries from '../organizations';
 import usersQueries from '../users';
 import eventsQueries from '../events';
-
-describe('rides queries', function() {
+import ridesQueries from '../rides';
+describe('./server/queries/rides_passengers.js', function() {
     beforeEach(function(done) {
         let _this = this;
 
@@ -35,33 +35,24 @@ describe('rides queries', function() {
         }).catch(done);
     });
 
-    it('creates a ride for an event', function(done) {
-        let params = {
-            eventId: this.event.id,
-            driverId: this.userId,
-            seats: 4,
-            departureTime: '2015-01-08 11:00',
-            arrivalTime: '2015-01-08 08:00',
-            notes: 'hello'
-        };
+    describe('#insert', function() {
+        it('inserts a passenger into a ride', function(done) {
+            ridesPassengersQueries.insert(this.userId, this.rideId).then(result => {
+                expect(result.id).to.be.a('number');
 
-        ridesQueries.create(params).then(ride => {
-            expect(ride.id).to.be.a('number');
-            done();
-        }).catch(done);
+                done();
+            }).catch(done);
+        });
     });
 
-    it('gets a ride', function(done) {
-        let rideId = this.rideId;
-        let driverId = this.driverId;
-
-        ridesQueries.get(rideId).then(ride => {
-            expect(ride.id).to.equal(rideId);
-            expect(ride.notes).to.equal('hello');
-            expect(ride.seats).to.equal(4);
-            expect(ride.driverId).to.equal(driverId);
-
-            done();
-        }).catch(done);
+    describe('#getPassengers', function() {
+        it('gets the passengers for a given ride', function(done) {
+            ridesPassengersQueries.insert(this.userId, this.rideId).then(result => {
+                ridesPassengersQueries.getPassengers(this.rideId).then(rows => {
+                    expect(rows[0].userid).to.equal(this.userId);
+                    done();
+                })
+            }).catch(done);
+        });
     });
 });
