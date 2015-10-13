@@ -1,6 +1,6 @@
-var Promise = require('es6-promise').Promise;
-var request = require('superagent');
-var template = require('lodash.template');
+import {Promise} from 'es6-promise';
+import request from 'superagent';
+import template from 'lodash.template';
 
 module.exports = {
     getMembers: function(organizationId) {

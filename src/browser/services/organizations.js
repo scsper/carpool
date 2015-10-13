@@ -1,5 +1,5 @@
-var Promise = require('es6-promise').Promise;
-var request = require('superagent');
+import {Promise} from 'es6-promise';
+import request from 'superagent';
 
 module.exports = {
     getOrganizations: function() {
