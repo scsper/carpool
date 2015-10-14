@@ -12,6 +12,26 @@ class MemberCollection {
         this.membersWhoNeedRides = {};
     }
 
+    get(id) {
+        let member = this.members[id];
+
+        if (!member) {
+            throw new Error('No member found with this id: ' + id);
+        }
+
+        return member;
+    }
+
+    getAll() {
+        return this.members;
+    }
+
+    setMembers(rawMembers) {
+        rawMembers.forEach(rawMember => {
+            this.members[rawMember.id] = new MemberRecord(rawMember);
+        });
+    }
+
     insert(eventId, membersWhoNeedRides) {
         this.membersWhoNeedRides[eventId] = membersWhoNeedRides.sort((a, b) => {
             return a.name > b.name;
@@ -38,23 +58,11 @@ class MemberCollection {
         });
     }
 
-    getAll() {
-        return this.members;
-    }
-
-    get(id){
-        return this.members[id];
-    }
-
     getMembersWhoNeedRides(eventId) {
         return this.membersWhoNeedRides[eventId];
     }
 
-    setMembers(rawMembers) {
-        rawMembers.forEach(rawMember => {
-            this.members[rawMember.id] = new MemberRecord(rawMember);
-        });
-    }
+
 }
 
 export default MemberCollection;
