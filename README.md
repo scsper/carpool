@@ -69,3 +69,6 @@ gulp test:browser
 * [Flux tutorial](https://facebook.github.io/flux/docs/todo-list.html#content)
 * [React Debugger](https://facebook.github.io/react/blog/2015/08/03/new-react-devtools-beta.html)
 
+### Keep in Mind
+* [Side Project Launch Checklist](http://keepwomen.com/static_pages/checklist_tool)
+
