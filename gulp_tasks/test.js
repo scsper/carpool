@@ -18,7 +18,7 @@ gulp.task('test:unit', (cb) => {
         // cover all source files
         'src/**/*.js{,x}',
         // exclude test files from coverage
-        '!**/_{unit,integration}_/**/*_test.js{,x}',
+        '!**/_{browser,unit,integration}_/**/*_test.js{,x}',
     ])
         .pipe(istanbul({
             instrumenter: Instrumenter,
@@ -48,7 +48,7 @@ gulp.task('test:integration', (cb) => {
         // cover all source files
         'src/**/*.js{,x}',
         // exclude test files from coverage
-        '!**/_{unit,integration}_/**/*_test.js{,x}',
+        '!**/_{browser,unit,integration}_/**/*_test.js{,x}',
     ])
         .pipe(istanbul({
             instrumenter: Instrumenter,
