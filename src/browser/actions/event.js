@@ -1,7 +1,6 @@
 import EventConstants from '../constants/event';
 import EventService from '../services/events';
 
-
 var EventActions = {
     openEvent({event, organizationId}) {
         let mWNR; // membersWhoNeedRides
