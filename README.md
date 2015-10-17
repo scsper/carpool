@@ -33,7 +33,7 @@ carpool
 1. `brew install postgres`
 2. `postgres -D /usr/local/var/postgres`
 3. In a new shell, start psql `psql --username=<USERNAME> -d template1` // use unix username
-4. Type `create database <USERNAME>`
+4. Type `create database <USERNAME>;`
 5. Exit psql (Ctrl-D on Mac).  If you do not exit psql, you will get an error about multiple users accessing the database when you try to run the setup scripts.
 
 
