@@ -30,9 +30,7 @@ const getRides = (req, res, next) => {
             });
 
             res.json(ridesWithPassengers);
-        }).catch(error => {
-            throw new Error('Failed to get all of the rides.');
-        });
+        }).catch(next);
     }).catch(next);
 };
 

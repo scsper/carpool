@@ -40,6 +40,54 @@ describe('server/routes.js', function() {
         });
     });
 
+    describe('#getRides', function() {
+        beforeEach(function() {
+            this.eventDbStub = this.sandbox.stub(eventsQueries, 'getRides').returns(Promise.resolve([{
+                id: 'id'
+            }]));
+
+            this.passengerDbStub = this.sandbox.stub(ridesPassengerQueries, 'getPassengers').returns(Promise.resolve([{
+                userid: 1
+            }, {
+                userid: 2
+            }]));
+        });
+
+        it('gets the rides with the passengers', function(done) {
+            routes.getRides({params: {eventId: 1}}, this.resStub, this.nextStub).then(() => {
+                expect(this.eventDbStub).to.be.calledWith(1);
+                expect(this.passengerDbStub).to.be.calledWith('id');
+                expect(this.jsonStub).to.be.calledWith([{
+                    id: 'id',
+                    passengers: [1, 2]
+                }]);
+
+                done();
+            });
+        });
+
+        it('calls next with an error if the call to get rides fails', function(done) {
+            this.eventDbStub.returns(Promise.reject('error'));
+
+            routes.getRides({params: {eventId: 1}}, this.resStub, this.nextStub).then(() => {
+                expect(this.passengerDbStub).to.not.be.called;
+                expect(this.nextStub).to.be.calledWith('error');
+
+                done();
+            });
+        });
+
+        it('calls next with an error if any of the passengers fail', function() {
+            this.passengerDbStub.returns(Promise.reject('error'));
+
+            routes.getRides({params: {eventId: 1}}, this.resStub, this.nextStub).then(() => {
+                expect(this.nextStub).to.be.calledWith('error');
+
+                done();
+            });
+        });
+    });
+
     describe('#getEvents', function() {
         it('gets events from the database', function(done) {
             let dbStub = this.sandbox.stub(eventsQueries, 'getEvents').returns(Promise.resolve('events'));
