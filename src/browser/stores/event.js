@@ -85,7 +85,11 @@ var EventStore = Fluxxor.createStore({
      * @return {Array} A list of MemberRecords who need rides
      */
     getMembersWhoNeedRides(eventId) {
-        return this.memberCollection.getMembersWhoNeedRides(eventId);
+        let memberList = this.eventCollection.getMembersWhoNeedRides(eventId).map( memberId => {
+            return this.memberCollection.get(memberId);
+        });
+
+        return memberList;
     },
 
     /**
@@ -118,7 +122,7 @@ var EventStore = Fluxxor.createStore({
      */
     _addMembersToRide({rideId, memberIds, eventId}) {
         this.rideCollection.addMemberIdsToRide(rideId, memberIds);
-        this.memberCollection.remove(eventId, memberIds);
+        this.eventCollection.remove(eventId, memberIds);
 
         this.emit('change');
     },
@@ -133,7 +137,7 @@ var EventStore = Fluxxor.createStore({
      */
     _removeMembersFromRide({rideId, memberIds, eventId}) {
         this.rideCollection.removeMemberIdsFromRide(rideId, memberIds);
-        this.memberCollection.addMembersToEvent(eventId, memberIds);
+        this.eventCollection.addMemberIdsToEvent(eventId, memberIds);
 
         this.emit('change');
     },
@@ -147,9 +151,13 @@ var EventStore = Fluxxor.createStore({
      */
     _handleOpenEvent({event, rides, membersWhoNeedRides}) {
         // change this to ID-based
+        let memberIds = membersWhoNeedRides.map( member => {
+            return member.id;
+        });
+
         this.selectedEvent = event;
         this.rideCollection.addRides(rides);
-        this.memberCollection.insert(event.id, membersWhoNeedRides);
+        this.eventCollection.addMemberIdsToEvent(event.id, memberIds);
 
         rides.forEach(ride => {
             this.eventCollection.addRideIdToEvent(ride.id, event.id);

@@ -1,4 +1,5 @@
 import EventRecord from './records/event';
+import remove from 'lodash/array/remove';
 
 class EventCollection {
     constructor() {
@@ -10,6 +11,11 @@ class EventCollection {
          * value: array of ride ids
          */
         this.eventsToRidesMap = {};
+
+
+        // key: eventId
+        // value: array of members ids who still need rides
+        this.membersWhoNeedRides = {};
     }
 
     /**
@@ -39,6 +45,7 @@ class EventCollection {
     addEvents(rawEvents) {
         rawEvents.forEach(rawEvent => {
             this.events.push(new EventRecord(rawEvent));
+            this.membersWhoNeedRides[rawEvent.id] = [];
         });
     }
 
@@ -55,6 +62,23 @@ class EventCollection {
 
         this.eventsToRidesMap[eventId].push(rideId);
     }
+
+    remove(eventId, memberIds) {
+        remove(this.membersWhoNeedRides[eventId], memberId => {
+            return ( this.membersWhoNeedRides[eventId].indexOf(memberId) !== -1);
+        });
+    }
+
+    addMemberIdsToEvent(eventId, memberIds) {
+        memberIds.forEach(memberId => {
+            this.membersWhoNeedRides[eventId].push(memberId);
+        });
+    }
+
+    getMembersWhoNeedRides(eventId) {
+        return this.membersWhoNeedRides[eventId];
+    }
+
 };
 
 export default EventCollection;

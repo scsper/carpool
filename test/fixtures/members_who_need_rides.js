@@ -9,11 +9,5 @@ module.exports = [
         name: 'Addison Luh',
         type: 'passenger',
         id: 6
-    },
-
-    {
-        name: 'Clayton Chancey',
-        type: 'passenger',
-        id: 7
     }
 ];
