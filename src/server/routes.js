@@ -33,7 +33,7 @@ const getRides = (req, res, next) => {
         }).catch(error => {
             throw new Error('Failed to get all of the rides.');
         });
-    });
+    }).catch(next);
 };
 
 const getMembers = (req, res, next) => {
