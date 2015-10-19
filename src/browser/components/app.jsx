@@ -46,7 +46,6 @@ App = React.createClass({
 
     render() {
         // TODO remove the hardcoded org id
-        console.log(this.state.rides);
         return (
             <div>
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />
