@@ -39,12 +39,26 @@ const addMember = (organizationId, userId) => {
 const members = (organizationId) => {
     return new Promise((resolve, reject) => {
         query(
-            `select u.* from users u
+            `select u.*, m.driver, m.admin from users u
             join members m on m.userId = u.id
             where m.organizationId = $1`,
             [organizationId]
         ).then((result) => {
-            resolve(result.rows);
+            let members = result.rows.map(row => {
+                let member = row;
+
+                if (member.admin) {
+                    member.type = 'admin';
+                } else if (member.driver) {
+                    member.type = 'driver';
+                } else {
+                    member.type = 'passenger';
+                }
+
+                return member;
+            });
+
+            resolve(members);
         }).catch(reject);
     });
 };
