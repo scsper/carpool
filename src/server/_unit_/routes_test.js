@@ -234,4 +234,34 @@ describe('server/routes.js', function() {
             });
         });
     });
+
+    describe('#addPassengerToRide', function() {
+        beforeEach(function() {
+            this.passengerDbStub = this.sandbox.stub(ridesPassengerQueries, 'insert').returns(Promise.resolve('res'));
+            this.reqStub = {
+                body: {
+                    memberIds: ['1', '2']
+                },
+                params: {
+                    rideId: '1'
+                }
+            };
+        });
+
+        it('adds the list of passengers to the database', function(done) {
+            routes.addPassengerToRide(this.reqStub, this.resStub, this.nextStub).then(() => {
+                expect(this.passengerDbStub.firstCall).to.have.been.calledWith('1', '1');
+                expect(this.passengerDbStub.secondCall).to.have.been.calledWith('2', '1');
+                expect(this.jsonStub).to.have.been.calledWith(['res', 'res']);
+            }).then(done, done);
+        });
+
+        it('calls next with an error if adding the passengers failed', function(done) {
+            this.passengerDbStub.returns(Promise.reject('err'));
+
+            routes.addPassengerToRide(this.reqStub, this.resStub, this.nextStub).then(() => {
+                expect(this.nextStub).to.have.been.calledWith('err');
+            }).then(done, done);
+        });
+    });
 });

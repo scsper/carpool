@@ -1,19 +1,24 @@
 var RideConstants = require('../constants/ride.js');
+import RideService from '../services/rides';
 
 var RideActions = {
-    addMembersToRide(payload) {
-        this.dispatch(RideConstants.ADD_MEMBERS_TO_RIDE, {
-            memberIds: payload.memberIds,
-            rideId: payload.rideId,
-            eventId: payload.eventId
+    addMembersToRide({memberIds, rideId, eventId}) {
+        let organizationId = this.flux.store('OrganizationStore').getActiveOrganization().id;
+
+        RideService.addPassengersToRide(organizationId, memberIds, eventId, rideId).then(() => {
+            this.dispatch(RideConstants.ADD_MEMBERS_TO_RIDE, {
+                memberIds: memberIds,
+                rideId: rideId,
+                eventId: eventId
+            });
         });
     },
 
-    removeMembersFromRide(payload) {
+    removeMembersFromRide({memberIds, rideId, eventId}) {
         this.dispatch(RideConstants.REMOVE_MEMBERS_FROM_RIDE, {
-            memberIds: payload.memberIds,
-            rideId: payload.rideId,
-            eventId: payload.eventId
+            memberIds: memberIds,
+            rideId: rideId,
+            eventId: eventId
         });
     }
 };
