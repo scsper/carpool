@@ -51,18 +51,32 @@ describe('server/routes.js', function() {
             }, {
                 userid: 2
             }]));
+
+            this.organizationDbStub = this.sandbox.stub(organizationsQueries, 'members').returns(Promise.resolve([{
+                id: 1
+            }, {
+                id: 2
+            }, {
+                id: 3
+            }]));
         });
 
         it('gets the rides with the passengers', function(done) {
-            routes.getRides({params: {eventId: 1}}, this.resStub, this.nextStub).then(() => {
+            routes.getRides({params: {organizationId: 1, eventId: 1}}, this.resStub, this.nextStub).then(() => {
                 expect(this.eventDbStub).to.be.calledWith(1);
                 expect(this.passengerDbStub).to.be.calledWith('id');
-                expect(this.jsonStub).to.be.calledWith([{
-                    id: 'id',
-                    passengers: [1, 2]
-                }]);
 
-                done();
+                expect(this.jsonStub).to.be.calledWith({
+                    rides: [{
+                        id: 'id',
+                        passengers: [1, 2]
+                    }],
+                    membersWhoNeedRides: [{
+                        id: 3
+                    }]
+                });
+
+                 done();
             });
         });
 

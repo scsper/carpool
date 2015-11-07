@@ -18,18 +18,33 @@ const getRides = (req, res, next) => {
         });
 
         /* TODO: this is really dirty.  fix it.  */
-        Promise.all(ridePromises).then(results => {
+        return Promise.all(ridePromises).then(results => {
             var ridesWithPassengers = [];
+            let passengerIds = {};
 
             rides.forEach((ride, index) => {
                 let rideWithPassenger = JSON.parse(JSON.stringify(ride));
+
                 rideWithPassenger.passengers = results[index].map(passenger => {
+                    passengerIds[passenger.userid] = true;
                     return passenger.userid;
                 });
+
                 ridesWithPassengers.push(rideWithPassenger);
             });
 
-            res.json(ridesWithPassengers);
+            return organizationsQueries.members(req.params.organizationId).then(members => {
+                let membersWhoNeedRides = members.filter(member => {
+                    return !passengerIds[member.id];
+                });
+
+                let response = {
+                    rides: ridesWithPassengers,
+                    membersWhoNeedRides: membersWhoNeedRides
+                };
+
+                res.json(response);
+            }).catch(next);
         }).catch(next);
     }).catch(next);
 };
