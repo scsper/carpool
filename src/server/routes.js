@@ -87,11 +87,22 @@ const launch = (req, res, next) => {
     }).catch(next);
 };
 
+const addPassengerToRide = (req, res, next) => {
+    let memberIds = req.body.memberIds;
+    let rideId = req.params.rideId;
+    let addPassengerToRideQueries = memberIds.map(memberId => ridesPassengerQueries.insert(memberId, rideId));
+
+    return Promise.all(addPassengerToRideQueries).then(results => {
+        res.json(results);
+    }).catch(next);
+};
+
 export default {
     getOrganizations,
     getRides,
     getRide,
     getMembers,
     getEvents,
+    addPassengerToRide,
     launch
 };

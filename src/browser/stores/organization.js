@@ -8,6 +8,10 @@ var OrganizationStore = Fluxxor.createStore({
 
     getAll() {
         return this.organizations;
+    },
+
+    getActiveOrganization() {
+        return this.organizations[0];
     }
 });
 
