@@ -15,10 +15,14 @@ var RideActions = {
     },
 
     removeMembersFromRide({memberIds, rideId, eventId}) {
-        this.dispatch(RideConstants.REMOVE_MEMBERS_FROM_RIDE, {
-            memberIds: memberIds,
-            rideId: rideId,
-            eventId: eventId
+        let organizationId = this.flux.store('OrganizationStore').getActiveOrganization().id;
+
+        RideService.removePassengersFromRide(organizationId, memberIds, eventId, rideId).then(() => {
+            this.dispatch(RideConstants.REMOVE_MEMBERS_FROM_RIDE, {
+                memberIds: memberIds,
+                rideId: rideId,
+                eventId: eventId
+            });
         });
     }
 };

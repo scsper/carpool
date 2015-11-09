@@ -13,7 +13,7 @@ describe('browser/services/rides.js', function() {
             set: this.setStub
         });
 
-        this.postStub = this.sandbox.stub(request, 'post').returns({
+        this.putStub = this.sandbox.stub(request, 'put').returns({
             send: this.sendStub
         });
     });
@@ -29,8 +29,8 @@ describe('browser/services/rides.js', function() {
 
             RideService.addPassengersToRide(organizationId, memberIds, eventId, rideId);
 
-            expect(this.postStub).to.have.been.calledWith(expectedUrl);
-            expect(this.sendStub).to.have.been.calledWith({memberIds});
+            expect(this.putStub).to.have.been.calledWith(expectedUrl);
+            expect(this.sendStub).to.have.been.calledWith({memberIds, action: 'add'});
             expect(this.setStub).to.have.been.calledWith('Accept', 'application/json');
         });
 
@@ -60,6 +60,53 @@ describe('browser/services/rides.js', function() {
             });
 
             RideService.addPassengersToRide().catch(function(data) {
+                expect(data).to.equal('error');
+            }).then(done, done);
+        });
+    });
+
+    describe('#removePassengersFromRide', function() {
+        it('makes the call correctly', function() {
+            let organizationId = 1;
+            let eventId = 1;
+            let rideId = 1;
+            let memberIds = [1];
+
+            let expectedUrl = `/api/organizations/${organizationId}/events/${eventId}/rides/${rideId}`;
+
+            RideService.removePassengersFromRide(organizationId, memberIds, eventId, rideId);
+
+            expect(this.putStub).to.have.been.calledWith(expectedUrl);
+            expect(this.sendStub).to.have.been.calledWith({memberIds, action: 'remove'});
+            expect(this.setStub).to.have.been.calledWith('Accept', 'application/json');
+        });
+
+        it('resolves the promise with the response body', function(done) {
+            this.endStub = function(cb) {
+                cb(null, {
+                    body: '123'
+                });
+            };
+
+            this.setStub.returns({
+                end: this.endStub
+            });
+
+            RideService.removePassengersFromRide().then(function(data) {
+                expect(data).to.equal('123');
+            }).then(done, done);
+        });
+
+        it('rejects the promise with the error', function(done) {
+            this.endStub = function(cb) {
+                cb('error', null);
+            };
+
+            this.setStub.returns({
+                end: this.endStub
+            });
+
+            RideService.removePassengersFromRide().catch(function(data) {
                 expect(data).to.equal('error');
             }).then(done, done);
         });

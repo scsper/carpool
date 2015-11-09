@@ -235,12 +235,15 @@ describe('server/routes.js', function() {
         });
     });
 
-    describe('#addPassengerToRide', function() {
+    describe('#updateRidePassengers', function() {
         beforeEach(function() {
-            this.passengerDbStub = this.sandbox.stub(ridesPassengerQueries, 'insert').returns(Promise.resolve('res'));
+            this.insertDbStub = this.sandbox.stub(ridesPassengerQueries, 'insert').returns(Promise.resolve('res'));
+            this.removeDbStub = this.sandbox.stub(ridesPassengerQueries, 'remove').returns(Promise.resolve('res'));
+
             this.reqStub = {
                 body: {
-                    memberIds: ['1', '2']
+                    memberIds: ['1', '2'],
+                    action: 'invalid'
                 },
                 params: {
                     rideId: '1'
@@ -249,17 +252,46 @@ describe('server/routes.js', function() {
         });
 
         it('adds the list of passengers to the database', function(done) {
-            routes.addPassengerToRide(this.reqStub, this.resStub, this.nextStub).then(() => {
-                expect(this.passengerDbStub.firstCall).to.have.been.calledWith('1', '1');
-                expect(this.passengerDbStub.secondCall).to.have.been.calledWith('2', '1');
+            this.reqStub.body.action = 'add';
+            routes.updateRidePassengers(this.reqStub, this.resStub, this.nextStub).then(() => {
+                expect(this.insertDbStub.firstCall).to.have.been.calledWith('1', '1');
+                expect(this.insertDbStub.secondCall).to.have.been.calledWith('2', '1');
+                expect(this.removeDbStub).to.not.have.been.called;
                 expect(this.jsonStub).to.have.been.calledWith(['res', 'res']);
             }).then(done, done);
         });
 
         it('calls next with an error if adding the passengers failed', function(done) {
-            this.passengerDbStub.returns(Promise.reject('err'));
+            this.reqStub.body.action = 'add';
+            this.insertDbStub.returns(Promise.reject('err'));
 
-            routes.addPassengerToRide(this.reqStub, this.resStub, this.nextStub).then(() => {
+            routes.updateRidePassengers(this.reqStub, this.resStub, this.nextStub).then(() => {
+                expect(this.nextStub).to.have.been.calledWith('err');
+            }).then(done, done);
+        });
+
+        it('throws an error if an invalid action is passed in', function() {
+            let _this = this;
+            expect(function() {
+                routes.updateRidePassengers(_this.reqStub, _this.resStub, _this.nextStub);
+            }).to.throw(/Invalid action "invalid" passed to #updateRidePassengers/);
+        });
+
+        it('removes the list of passengers to the database', function(done) {
+            this.reqStub.body.action = 'remove';
+            routes.updateRidePassengers(this.reqStub, this.resStub, this.nextStub).then(() => {
+                expect(this.removeDbStub.firstCall).to.have.been.calledWith('1', '1');
+                expect(this.removeDbStub.secondCall).to.have.been.calledWith('2', '1');
+                expect(this.insertDbStub).to.not.have.been.called;
+                expect(this.jsonStub).to.have.been.calledWith(['res', 'res']);
+            }).then(done, done);
+        });
+
+        it('calls next with an error if removing the passengers failed', function(done) {
+            this.reqStub.body.action = 'remove';
+            this.removeDbStub.returns(Promise.reject('err'));
+
+            routes.updateRidePassengers(this.reqStub, this.resStub, this.nextStub).then(() => {
                 expect(this.nextStub).to.have.been.calledWith('err');
             }).then(done, done);
         });

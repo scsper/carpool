@@ -87,12 +87,20 @@ const launch = (req, res, next) => {
     }).catch(next);
 };
 
-const addPassengerToRide = (req, res, next) => {
+const updateRidePassengers = (req, res, next) => {
     let memberIds = req.body.memberIds;
     let rideId = req.params.rideId;
-    let addPassengerToRideQueries = memberIds.map(memberId => ridesPassengerQueries.insert(memberId, rideId));
+    let queries;
 
-    return Promise.all(addPassengerToRideQueries).then(results => {
+    if (req.body.action === 'add') {
+        queries = memberIds.map(memberId => ridesPassengerQueries.insert(memberId, rideId));
+    } else if (req.body.action === 'remove') {
+        queries = memberIds.map(memberId => ridesPassengerQueries.remove(memberId, rideId));
+    } else {
+        throw new Error(`Invalid action "${req.body.action}" passed to #updateRidePassengers.`);
+    }
+
+    return Promise.all(queries).then(results => {
         res.json(results);
     }).catch(next);
 };
@@ -103,6 +111,6 @@ export default {
     getRide,
     getMembers,
     getEvents,
-    addPassengerToRide,
+    updateRidePassengers,
     launch
 };

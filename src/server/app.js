@@ -25,6 +25,6 @@ app.get('/api/organizations/:organizationId/events/:eventId/rides', routes.getRi
 app.get('/api/organizations/:organizationId/events', routes.getEvents);
 app.get('/organizations/:organizationId/events/:eventId/rides/:id', routes.getRide);
 
-app.post('/api/organizations/:organizationId/events/:eventId/rides/:rideId', routes.addPassengerToRide);
+app.put('/api/organizations/:organizationId/events/:eventId/rides/:rideId', routes.updateRidePassengers);
 
 module.exports = app;

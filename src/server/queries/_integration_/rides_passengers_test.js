@@ -55,4 +55,16 @@ describe('./server/queries/rides_passengers.js', function() {
             }).catch(done);
         });
     });
+
+    describe('#remove', function() {
+        it('removes a passenger from a ride', function(done) {
+            ridesPassengersQueries.insert(this.userId, this.rideId).then(result => {
+                ridesPassengersQueries.remove(this.userId, this.rideId).then(result => {
+                    ridesPassengersQueries.getPassengers(this.rideId).then(rows => {
+                        expect(rows.length).to.equal(0);
+                    }).then(done, done);
+                }).catch(done);
+            }).catch(done);
+        });
+    });
 });

@@ -22,4 +22,15 @@ const insert = (userId, rideId) => {
     });
 };
 
-export default {getPassengers, insert};
+const remove = (userId, rideId) => {
+    return new Promise ((resolve, reject) => {
+        query(
+            'delete from rides_passengers where userId=$1 and rideId=$2 returning id',
+            [userId, rideId]
+        ).then(result => {
+            resolve(result.rows[0]);
+        }).catch(reject);
+    });
+}
+
+export default {getPassengers, insert, remove};
