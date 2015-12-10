@@ -7,8 +7,10 @@ gulp.task('webpack', function(callback) {
         entry: './src/browser/launch.js',
         output: {
             path: 'public',
-            filename: 'bundle.js'
+            filename: 'bundle.js',
+            sourceMapFilename: '[file].map'
         },
+        devtool: 'source-map',
         module: {
             loaders: [{
                 test: /\.jsx$/,

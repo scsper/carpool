@@ -1,6 +1,6 @@
 .vagrant/
 .git
 node_modules/
-/public/bundle.js
+public/
 config/database.json
 coverage/
