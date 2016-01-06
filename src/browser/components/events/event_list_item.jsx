@@ -3,6 +3,7 @@ var Fluxxor = require('fluxxor');
 var FluxMixin = Fluxxor.FluxMixin(React);
 var classnames = require('classnames');
 var Event;
+import moment from 'moment';
 
 Event = React.createClass({
     mixins: [FluxMixin],
@@ -46,10 +47,8 @@ Event = React.createClass({
             <li onClick={this.openEvent} className={liClasses}>
                 <div className='event-headers'>
                     <h2 className='event'>{event.name}</h2>
-                    <h3 className='date'>{event.date} at {event.time}</h3>
+                    <h3 className='date'>{moment(event.date).format('MMMM Do h:mm A')}</h3>
                 </div>
-                <p className='event-description'>{event.description}</p>
-                <button className='event-button pure-button'>{this.getButtonText()}</button>
             </li>
         );
     }

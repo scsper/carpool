@@ -8,6 +8,8 @@ var Navigation = require('./navigation.jsx');
 var EventForm = require('./event_form.jsx');
 var App;
 
+import AppBar from 'material-ui/lib/app-bar';
+
 App = React.createClass({
     mixins: [FluxMixin, StoreWatchMixin('OrganizationStore', 'EventStore', 'UserStore')],
 
@@ -48,6 +50,9 @@ App = React.createClass({
         // TODO remove the hardcoded org id
         return (
             <div>
+
+                <AppBar />
+
                 <Navigation name={this.state.user.name}  type={this.state.user.type} />
 
                 <Organization

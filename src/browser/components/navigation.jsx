@@ -1,6 +1,8 @@
 var React = require('react');
 var Navigation;
 var getMenuTitles = require('./utils/get_menu_titles.js');
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
 
 Navigation = React.createClass({
     propTypes: {
@@ -14,9 +16,7 @@ Navigation = React.createClass({
 
         menuTitles.forEach(item => {
             menuComponents.push(
-                <li className='nav-item pure-menu-item' key={item}>
-                    <a href='#' className='pure-menu-link'>{item}</a>
-                </li>
+                <Tab label={item} />
             );
         });
 
@@ -25,19 +25,9 @@ Navigation = React.createClass({
 
     render() {
         return (
-            <div className='header'>
-                <div className='pure-menu pure-menu-horizontal'>
-                    <a className='pure-menu-heading' href=''>{this.props.type}</a>
-
-                    <ul className='pure-menu-list'>
-                        {this.generateMenuItems()}
-                    </ul>
-
-                    <div className='user'>
-                        <span>Hello, {this.props.name}!</span>
-                    </div>
-                </div>
-            </div>
+            <Tabs>
+                {this.generateMenuItems()}
+            </Tabs>
         );
     }
 });
