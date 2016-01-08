@@ -18,7 +18,7 @@ const get = (rideId) => {
             'select * from rides where id = ($1)',
             [rideId]
         ).then((result) => {
-            resolve(result.rows[0])
+            resolve(result.rows[0]);
         }).catch(reject);
     });
 };

@@ -10,4 +10,9 @@ const create = (params) => {
     });
 };
 
+export function get(userId) {
+    return query('select * from events where id = ($1)', [userId])
+        .then(result => result.rows[0]);
+}
+
 export default {create};
