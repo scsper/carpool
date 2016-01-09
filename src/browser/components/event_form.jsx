@@ -1,6 +1,5 @@
 var React = require('react');
 var Fluxxor = require('fluxxor');
-var Calendar = require('react-input-calendar');
 var EventForm;
 
 EventForm = React.createClass({
@@ -20,13 +19,11 @@ EventForm = React.createClass({
 
                     <div className="pure-control-group">
                         <label htmlFor="event-start">Event Start</label>
-                        <Calendar format="MM/DD/YYYY" placeholder='Start Date' />
                         <input id="event-start-time" type="text" placeholder="Start Time" />
                     </div>
 
                     <div className="pure-control-group">
                         <label htmlFor="event-end">Event End</label>
-                        <Calendar format="MM/DD/YYYY" placeholder='End Date' />
                         <input id="event-end-time" type="text" placeholder="End Time" />
                     </div>
                     <div className='pure-control-group'>
