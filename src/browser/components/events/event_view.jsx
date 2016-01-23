@@ -4,6 +4,8 @@ var Rides = require('./rides.jsx');
 var Map = require('./map.jsx');
 var EventView;
 
+import moment from 'moment';
+
 EventView = React.createClass({
     propTypes: {
         event: React.PropTypes.object,
@@ -17,8 +19,12 @@ EventView = React.createClass({
 
         if (event) {
             return (
-                <div>
-                    <h1 className='event-view-name'>{this.props.event.name}</h1>
+                <div className='event-view-container'>
+                    <h1 className='event-view-name'>{event.name}</h1>
+                    <h2 className='event-view-address'>{event.address}</h2>
+                    <h2 className='event-view-date'>{moment(event.date).format('MMMM Do h:mm A')}</h2>
+                    <h3 className='event-view-description'>{event.description}</h3>
+
                     <Rides rides={this.props.rides} members={this.props.members} memberList={this.props.memberList} />
                 </div>
             );

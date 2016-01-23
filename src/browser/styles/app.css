@@ -50,7 +50,8 @@ li {
 }
 
 .ride-date {
-    font: 200 14px/1.5;
+    font-weight: 200px;
+    font-size: 12px;
     margin: 1px 0 0 0;
 }
 
@@ -65,11 +66,17 @@ li {
 }
 
 .passenger-list-item {
+    opacity: .54;
+    font-size: 12px;
+    font-weight: 400px;
     margin: 0 10px 0 0;
 }
 
 .member-list-item-name {
     padding: 0 0 0 7px;
+    opacity: .54;
+    font-size: 12px;
+    font-weight: 400px;
 }
 
 .map-placeholder {
@@ -88,4 +95,45 @@ li {
 
 .passenger-delete {
     padding: 0 5px 0 0;
+}
+
+.event-view-name {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 29px 0 43px 0;
+}
+
+.event-view-address, .event-view-date {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: .54;
+    margin: 0 0 14px 0;
+}
+
+.event-view-date {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: .54;
+    margin: 0 0 38px 0;
+}
+
+.event-view-description {
+    font-size: 14px;
+    color: #9E9E9E;
+    font-weight: 400;
+    margin: 0;
+}
+
+.event-view-container {
+    margin: 0 0 0 36px;
+}
+
+.ride-all-drivers {
+    text-transform: uppercase;
+    padding: 18px 0;
+    border: 1px solid #DBDBDB;
+    border-left-style: none;
+    border-right-style: none;
+    font-size: 12px;
+    font-weight: 500;
 }

@@ -5,5 +5,6 @@ export default class Event {
         this.time = payload.time;
         this.description = payload.description;
         this.id = payload.id;
+        this.address = payload.address;
     }
 }

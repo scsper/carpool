@@ -40,7 +40,7 @@ Rides = React.createClass({
 
         return (
             <div>
-                <h2>Rides</h2>
+                <h2 className='ride-all-drivers'>All Drivers</h2>
                 <ul className='ride-list'>
                     {rideComponents}
                 </ul>
