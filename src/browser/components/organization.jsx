@@ -8,19 +8,17 @@ Organization = React.createClass({
     render() {
         return (
             <div className="pure-g">
-                <EventList
-                    events={this.props.events}
-                    selectedEvent={this.props.selectedEvent}
-                    userType={this.props.userType}
-                    organizationId={this.props.organizationId}
-                />
-
-                <EventView
+                {this.props.selectedEvent ? <EventView
                     event={this.props.selectedEvent}
                     rides={this.props.rides}
                     members={this.props.members}
                     memberList={this.props.memberList}
-                />
+                /> : <EventList
+                    events={this.props.events}
+                    selectedEvent={this.props.selectedEvent}
+                    userType={this.props.userType}
+                    organizationId={this.props.organizationId}
+                />}
             </div>
         );
     }
