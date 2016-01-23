@@ -6,7 +6,7 @@ gulp.task('server', function() {
     nodemon({
             script: 'scripts/start.js',
             ext: 'jsx js',
-            ignore: [],
+            ignore: ['public'],
             tasks: ['webpack']
         }).on('restart', function() {
             console.log('restarted!')
