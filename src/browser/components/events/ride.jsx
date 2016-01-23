@@ -4,6 +4,8 @@ var FluxMixin = Fluxxor.FluxMixin(React);
 var Passengers = require('../passengers.jsx');
 var Ride;
 
+import moment from 'moment';
+
 Ride = React.createClass({
     mixins: [FluxMixin],
 
@@ -62,8 +64,8 @@ Ride = React.createClass({
                 <img className='ride-image' src="assets/person.jpg"/>
                 <h2 className='ride-driver'>{ride.driverName}</h2>
                 <h3 className='ride-spots'>{availableSpots} available</h3>
-                <p className='ride-date'>Leaving at {ride.leaveTime} on {ride.leaveDate}</p>
-                <p className='ride-date'>Returning at {ride.returnTime} on {ride.returnDate}</p>
+                <p className='ride-date'>Leaving at {moment(ride.leaveTime).format('MMMM Do h:mm A')}</p>
+                <p className='ride-date'>Returning at {moment(ride.returnTime).format('MMMM Do h:mm A')}</p>
 
                 {passengerComponent}
             </li>
