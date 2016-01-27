@@ -8,7 +8,8 @@ var path = require('path');
 var morgan = require('morgan');
 var routes = require('./routes');
 var bodyParser = require('body-parser');
-var graphql = require('./graphql/middleware');
+var graphqlHTTP = require('express-graphql');
+var schema = require('./graphql/schema');
 
 app.set('views', 'src/server/views/');
 app.set('view engine', 'jade');
@@ -25,8 +26,7 @@ app.get('/api/organizations/:id/members', routes.getMembers);
 app.get('/api/organizations/:organizationId/events/:eventId/rides', routes.getRides);
 app.get('/api/organizations/:organizationId/events', routes.getEvents);
 app.get('/organizations/:organizationId/events/:eventId/rides/:id', routes.getRide);
-app.post('/graphql', graphql);
-
 app.put('/api/organizations/:organizationId/events/:eventId/rides/:rideId', routes.updateRidePassengers);
+app.use('/graphql',  graphqlHTTP({schema: schema, graphiql: true}));
 
 module.exports = app;

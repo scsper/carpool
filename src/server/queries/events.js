@@ -36,15 +36,24 @@ const getRides = (eventId) => {
     });
 };
 
+const getOrganization = eventId => {
+    return query(
+        `select o.* from organizations o
+        join events e on e.organizationId = o.id
+        where e.id = $1`,
+        [eventId]
+    ).then(({rows}) => rows[0]);
+};
+
 const get = (eventId) => {
     return new Promise((resolve, reject) => {
         query(
             'select * from events where id = ($1)',
             [eventId]
-        ).then((result) => {
-            resolve(result.rows[0]);
+        ).then(({rows}) => {
+            resolve(rows[0]);
         }).catch(reject);
     });
 };
 
-export default {create, getEvents, getRides, get};
+export default {create, getEvents, getRides, get, getOrganization};

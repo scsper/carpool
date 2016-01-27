@@ -1,7 +1,12 @@
-import {GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLList, GraphQLNonNull} from 'graphql/type';
+import {GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLList, GraphQLNonNull, GraphQLID} from 'graphql/type';
 import {graphql} from 'graphql';
 import {get, getAll, create} from '../queries/users';
 import userType from './types/user';
+import eventType from './types/event';
+import orgType from './types/organization';
+
+import {get as getEvent} from '../queries/events';
+import {index as getOrganizations} from '../queries/organizations';
 
 let schema = new GraphQLSchema({
     query: new GraphQLObjectType({
@@ -30,7 +35,23 @@ let schema = new GraphQLSchema({
                 resolve: () => {
                     return getAll();
                 }
+            },
+            event: {
+                type: eventType,
+                args: {
+                    id: {
+                        description: 'If omitted, returns the hero of the whole saga. If ' +
+                        'provided, returns the hero of that particular episode.',
+                        type: new GraphQLNonNull(GraphQLID)
+                    }
+                },
+                resolve: (root, {id}) => getEvent(id)
+            },
+            organizations: {
+                type: new GraphQLList(orgType),
+                resolve: () => getOrganizations()
             }
+
         }
     }),
     mutation: new GraphQLObjectType({
@@ -53,7 +74,7 @@ let schema = new GraphQLSchema({
 
 export default schema;
 
-graphql(schema, 'mutation {addUser(name: "Deema Abraham", address: "USA") {id, name, address}}').then(result => {
+graphql(schema, '{organizations {id, name, address}}').then(result => {
     console.log(JSON.stringify(result, null, 4));
 }).catch(error => {
     console.error(error);

@@ -1,7 +1,7 @@
 import {GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID} from 'graphql/type';
 
 export default new GraphQLObjectType({
-    name: 'User',
+    name: 'Organization',
     description: 'An organization of a user?',
     fields: () => ({
         id: {
