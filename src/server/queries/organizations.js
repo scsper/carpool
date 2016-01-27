@@ -1,11 +1,7 @@
 import {query} from '../db';
 
 const index = () => {
-    return new Promise((resolve, reject) => {
-        query('select * from organizations').then((result) => {
-            resolve(result.rows);
-        }).catch(reject);
-    });
+    return query('select * from organizations').then(({rows}) => rows);
 };
 
 /**

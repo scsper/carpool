@@ -14,7 +14,7 @@ const getRides = (req, res, next) => {
         let ridePromises = [];
 
         rides.forEach(ride => {
-            ridePromises.push(ridesPassengerQueries.getPassengers(ride.id))
+            ridePromises.push(ridesPassengerQueries.getPassengers(ride.id));
         });
 
         /* TODO: this is really dirty.  fix it.  */
