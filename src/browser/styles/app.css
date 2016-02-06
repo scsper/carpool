@@ -142,3 +142,8 @@ li {
     font-size: 12px;
     font-weight: 500;
 }
+
+.icon {
+    vertical-align: middle;
+    padding: .25em;
+}
