@@ -7,8 +7,8 @@ carpool
 1. `npm install`
 2. `nvm use 0.12.0`
 3. Open new shell and start postgres: `postgres -D /usr/local/var/postgres`
-4. Seed the database: `gulp db:reset`
-4. Open new shell and start the web server: `gulp`
+4. Open new shell and seed the database: `gulp db:reset`
+4. Start the web server: `gulp`
 5. Go to http://local.carpool.com:3000
 
 #### Initial Setup
