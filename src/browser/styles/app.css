@@ -108,17 +108,18 @@ li {
 }
 
 .event-view-address, .event-view-date {
+    display: inline-block;
     font-size: 12px;
     font-weight: 400;
     opacity: .54;
-    margin: 0 0 14px 0;
+}
+
+.event-view-address {
+    margin: 0 0 14px 4px;
 }
 
 .event-view-date {
-    font-size: 12px;
-    font-weight: 400;
-    opacity: .54;
-    margin: 0 0 38px 0;
+    margin: 0 0 38px 4px;
 }
 
 .event-view-description {

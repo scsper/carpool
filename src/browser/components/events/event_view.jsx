@@ -21,8 +21,14 @@ EventView = React.createClass({
             return (
                 <div className='event-view-container'>
                     <h1 className='event-view-name'>{event.name}</h1>
-                    <h2 className='event-view-address'>{event.address}</h2>
-                    <h2 className='event-view-date'>{moment(event.date).format('MMMM Do h:mm A')}</h2>
+                    <div>
+                        <span className='icon icon-location' />
+                        <h2 className='event-view-address'>{event.address}</h2>
+                    </div>
+                    <div>
+                        <span className='icon icon-calendar' />
+                        <h2 className='event-view-date'>{moment(event.date).format('MMMM Do h:mm A')}</h2>
+                    </div>
                     <h3 className='event-view-description'>{event.description}</h3>
 
                     <Rides rides={this.props.rides} members={this.props.members} memberList={this.props.memberList} />
