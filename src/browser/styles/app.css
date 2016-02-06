@@ -28,11 +28,14 @@ li {
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    margin: 0;
 }
 
-.date {
-    display: inline-block;
+.event {
+    margin: 0 0 0 4px;
+}
+
+.ride-driver {
+    margin: 0;
 }
 
 .date, .ride-spots {
@@ -40,6 +43,10 @@ li {
     font-style: normal;
     font-weight: 400;
     margin: 0;
+}
+
+.date {
+    display: inline-block;
 }
 
 .event-description {
@@ -59,10 +66,10 @@ li {
     margin: 1px 0 0 0;
 }
 
-.ride-image {
-    height: 100px;
+.ride-icon {
     float: left;
-    margin-right: 15px;
+    margin-right: 10px;
+    font-size: 30px;
 }
 
 .passenger-list {
@@ -145,5 +152,4 @@ li {
 
 .icon {
     vertical-align: middle;
-    padding: .25em;
 }
