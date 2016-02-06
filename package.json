@@ -50,6 +50,7 @@
     "babel-loader": "^5.1.4",
     "chai": "^3.0.0",
     "css-loader": "^0.14.4",
+    "file-loader": "^0.8.5",
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-eslint": "0.14.0",

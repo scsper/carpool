@@ -47,6 +47,7 @@ Event = React.createClass({
             <li onClick={this.openEvent} className={liClasses}>
                 <div className='event-headers'>
                     <h2 className='event'>{event.name}</h2>
+                    <span className='icon icon-clock-start' />
                     <h3 className='date'>{moment(event.date).format('MMMM Do h:mm A')}</h3>
                 </div>
             </li>

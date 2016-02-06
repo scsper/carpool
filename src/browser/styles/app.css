@@ -31,6 +31,10 @@ li {
     margin: 0;
 }
 
+.date {
+    display: inline-block;
+}
+
 .date, .ride-spots {
     font-size: 14px;
     font-style: normal;
