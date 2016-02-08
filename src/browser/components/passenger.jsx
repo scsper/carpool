@@ -17,7 +17,7 @@ Passenger = React.createClass({
     render() {
         return (
             <li className='passenger-list-item'>
-                <span className='passenger-delete' onClick={this.onClick}>X</span>
+                <button className='icon icon-delete passenger-delete' onClick={this.onClick}></button>
                 {this.props.passenger.name}
             </li>
         );

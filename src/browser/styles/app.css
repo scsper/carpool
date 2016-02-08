@@ -105,6 +105,8 @@ li {
 }
 
 .passenger-delete {
+    background: none;
+    border: none;
     padding: 0 5px 0 0;
 }
 
