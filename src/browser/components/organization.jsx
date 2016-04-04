@@ -7,7 +7,7 @@ var Organization;
 Organization = React.createClass({
     render() {
         return (
-            <div className="pure-g">
+            <div>
                 {this.props.selectedEvent ? <EventView
                     event={this.props.selectedEvent}
                     rides={this.props.rides}

@@ -48,7 +48,7 @@ MemberList = React.createClass({
             memberComponents.push(
                 <li className={liClasses} key={member.id}>
                     <input type='checkbox' value={member.id}></input>
-                    <span className='member-list-item-name'>{member.name}</span>
+                    <span className='member-name'>{member.name}</span>
                 </li>
             );
         });
@@ -85,7 +85,6 @@ MemberList = React.createClass({
                         {this.displayMemberComponents()}
                         <button
                             onClick={this.addMembers}
-                            className='pure-button pure-button-primary'
                         >Add Members</button>
                     </ul>
                 </form>

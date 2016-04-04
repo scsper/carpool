@@ -1,9 +1,7 @@
+@import 'base';
+
 body {
     font-family: 'Roboto', sans-serif;
-}
-
-li {
-    list-style: none;
 }
 
 .nav-item {
@@ -15,13 +13,44 @@ li {
     padding: 1em 2em;
 }
 
-.hidden {
-    display: none;
+.event-view-container {
+    margin: 0 2em;
 }
+
+
+.event-view-name {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 29px 0 43px 0;
+}
+
+.event-view-address, .event-view-date {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: .54;
+}
+
+.event-view-address {
+    margin: 0 0 14px 4px;
+}
+
+.event-view-date {
+    margin: 0 0 38px 4px;
+}
+
+.event-view-description {
+    font-size: 14px;
+    color: #9E9E9E;
+    font-weight: 400;
+    margin: 0;
+}
+
+
 
 .event-headers {
     float: left;
-    margin-right: 15px;
+    margin-right: 1em;
 }
 
 .event, .ride-driver {
@@ -83,7 +112,7 @@ li {
     margin: 0 10px 0 0;
 }
 
-.member-list-item-name {
+.member-name {
     padding: 0 0 0 7px;
     opacity: .54;
     font-size: 12px;
@@ -110,38 +139,6 @@ li {
     padding: 0 5px 0 0;
 }
 
-.event-view-name {
-    font-size: 20px;
-    font-weight: 400;
-    margin: 29px 0 43px 0;
-}
-
-.event-view-address, .event-view-date {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 400;
-    opacity: .54;
-}
-
-.event-view-address {
-    margin: 0 0 14px 4px;
-}
-
-.event-view-date {
-    margin: 0 0 38px 4px;
-}
-
-.event-view-description {
-    font-size: 14px;
-    color: #9E9E9E;
-    font-weight: 400;
-    margin: 0;
-}
-
-.event-view-container {
-    margin: 0 0 0 36px;
-}
-
 .ride-all-drivers {
     text-transform: uppercase;
     padding: 18px 0;
@@ -151,8 +148,3 @@ li {
     font-size: 12px;
     font-weight: 500;
 }
-
-/*.icon {
-    vertical-align: middle;
-}
-*/
