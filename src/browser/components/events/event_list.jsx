@@ -34,11 +34,9 @@ EventList = React.createClass({
         }, this);
 
         return (
-            <div className='pure-u-1 pure-u-lg-1-3'>
-                <ul className='event-list'>
-                    {eventComponents}
-                </ul>
-            </div>
+            <ul className='event-list'>
+                {eventComponents}
+            </ul>
         );
     }
 });

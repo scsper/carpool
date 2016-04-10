@@ -1,0 +1,90 @@
+@import 'variables';
+@import 'mixins';
+
+$list-font-size : 1em;
+$event-highlight-color: #FFA100;
+$event-description-color: #9E9E9E;
+
+/****** Events ******/
+
+.event-view-container {
+    color : $secondary-color;
+    font-size: 1em;
+}
+
+.event-view-info {
+    margin: 2.25em;
+}
+
+.event-view-name {
+    color : $event-highlight-color;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 1em 0;
+}
+
+.event-view-detail{
+    font-size: .75em;
+    margin: .5em;
+}
+
+.event-view-description {
+    font-size: .875em;
+    font-weight: 400;
+    color : $event-description-color;
+
+    margin: 1.5em 0;
+}
+
+.event-view-address, .event-view-date {
+    font-size: 1.25em;
+    font-weight: 200;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/****** Drivers & Rides ******/
+
+.driver-summary{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.ride-all-drivers {
+    font-size: .75em;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    padding: 1.5em 1em;
+    border: 1px solid $header-border-color;
+    border-left-style: none;
+    border-right-style: none;
+    background: $header-background-color;
+}
+
+.ride-spots {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.ride-list{
+    padding: 0 1em;
+}
+
+.ride-icon {
+    font-size: $list-font-size * 3;
+    margin-right: $list-font-size / 3;
+    vertical-align: top;
+}
+
+.ride-date {
+    font-size: $list-font-size;
+    font-weight: 200;
+}
+
+.ride-driver {
+    font-size: $list-font-size;
+    font-weight: 500;
+}
+
